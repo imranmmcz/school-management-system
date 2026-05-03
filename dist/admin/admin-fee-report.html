@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ফি রিপোর্ট - পাঠশালা ই-ম্যানেজার</title>
+    
+    <!-- Google Fonts for Bengali -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Main Styles -->
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+    <!-- ==================== ADMIN PANEL ==================== -->
+    <div class="admin-layout">
+        <!-- Admin Sidebar -->
+        <aside class="admin-sidebar">
+            <div class="sidebar-header">
+                <a href="admin-dashboard.html">
+                    <img src="../assets/logo.png" alt="Logo">
+                </a>
+                <div class="sidebar-title">
+                    <h3>অ্যাডমিন প্যানেল</h3>
+                    <p>পাঠশালা ই-ম্যানেজার</p>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li>
+                        <a href="admin-dashboard.html">
+                            <i class="fas fa-tachometer-alt"></i>
+                            <span>ড্যাশবোর্ড</span>
+                        </a>
+                    </li>
+                    <li class="has-dropdown">
+                        <div class="dropdown-toggle" onclick="toggleDropdown(this)">
+                            <i class="fas fa-user-graduate"></i>
+                            <span>শিক্ষার্থী</span>
+                            <i class="fas fa-chevron-down arrow"></i>
+                        </div>
+                        <ul class="submenu">
+                            <li><a href="admin-students.html"><i class="fas fa-list"></i> সকল শিক্ষার্থী</a></li>
+                            <li><a href="#" onclick="openModal('add-student-modal'); return false;"><i class="fas fa-plus"></i> নতুন যোগ করুন</a></li>
+                            <li><a href="admin-student-attendance.html"><i class="fas fa-calendar-check"></i> উপস্থিতি</a></li>
+                            <li><a href="admin-student-fees.html"><i class="fas fa-money-bill-wave"></i> ফি তালিকা</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-dropdown">
+                        <div class="dropdown-toggle" onclick="toggleDropdown(this)">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                            <span>শিক্ষক</span>
+                            <i class="fas fa-chevron-down arrow"></i>
+                        </div>
+                        <ul class="submenu">
+                            <li><a href="admin-teachers.html"><i class="fas fa-list"></i> সকল শিক্ষক</a></li>
+                            <li><a href="#" onclick="openModal('add-teacher-modal'); return false;"><i class="fas fa-plus"></i> নতুন যোগ করুন</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="admin-attendance.html">
+                            <i class="fas fa-calendar-check"></i>
+                            <span>উপস্থিতি</span>
+                        </a>
+                    </li>
+                    <li class="has-dropdown active">
+                        <div class="dropdown-toggle" onclick="toggleDropdown(this)">
+                            <i class="fas fa-money-bill-wave"></i>
+                            <span>ফি ম্যানেজমেন্ট</span>
+                            <i class="fas fa-chevron-down arrow"></i>
+                        </div>
+                        <ul class="submenu">
+                            <li><a href="admin-fees.html"><i class="fas fa-list"></i> ফি তালিকা</a></li>
+                            <li><a href="admin-fee-collection.html"><i class="fas fa-coins"></i> ফি সংগ্রহ</a></li>
+                            <li class="active"><a href="admin-fee-report.html"><i class="fas fa-chart-bar"></i> ফি রিপোর্ট</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-dropdown">
+                        <div class="dropdown-toggle" onclick="toggleDropdown(this)">
+                            <i class="fas fa-clipboard-list"></i>
+                            <span>পরীক্ষা</span>
+                            <i class="fas fa-chevron-down arrow"></i>
+                        </div>
+                        <ul class="submenu">
+                            <li><a href="admin-exams.html"><i class="fas fa-list"></i> পরীক্ষার তালিকা</a></li>
+                            <li><a href="admin-exam-routine.html"><i class="fas fa-calendar"></i> পরীক্ষার রুটিন</a></li>
+                            <li><a href="admin-results.html"><i class="fas fa-chart-line"></i> ফলাফল</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="admin-payments.html">
+                            <i class="fas fa-credit-card"></i>
+                            <span>পেমেন্ট</span>
+                        </a>
+                    </li>
+                    <li class="has-dropdown">
+                        <div class="dropdown-toggle" onclick="toggleDropdown(this)">
+                            <i class="fas fa-book"></i>
+                            <span>একাডেমিক</span>
+                            <i class="fas fa-chevron-down arrow"></i>
+                        </div>
+                        <ul class="submenu">
+                            <li><a href="admin-classes.html"><i class="fas fa-list"></i> শ্রেণি তালিকা</a></li>
+                            <li><a href="admin-sections.html"><i class="fas fa-layer-group"></i> শাখা/সেকশন</a></li>
+                            <li><a href="admin-subjects.html"><i class="fas fa-book-open"></i> বিষয় তালিকা</a></li>
+                            <li><a href="admin-syllabus.html"><i class="fas fa-scroll"></i> সিলেবাস</a></li>
+                            <li><a href="admin-class-routine.html"><i class="fas fa-calendar-alt"></i> ক্লাস রুটিন</a></li>
+                            <li><a href="admin-academic-calendar.html"><i class="fas fa-calendar-week"></i> একাডেমিক ক্যালেন্ডার</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="admin-notifications.html">
+                            <i class="fas fa-bell"></i>
+                            <span>নোটিফিকেশন</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="admin-settings.html">
+                            <i class="fas fa-cogs"></i>
+                            <span>সেটিংস</span>
+                        </a>
+                    </li>
+                    <li class="logout-item">
+                        <a href="../index.html">
+                            <i class="fas fa-sign-out-alt"></i>
+                            <span>লগআউট</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Sidebar Overlay for Mobile -->
+        <div class="sidebar-overlay" onclick="toggleSidebar()"></div>
+
+        <!-- Admin Main Content -->
+        <main class="admin-main">
+            <!-- Top Bar -->
+            <div class="admin-topbar">
+                <button class="sidebar-toggle" onclick="toggleSidebar()">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="breadcrumb">
+                    <a href="admin-dashboard.html">ড্যাশবোর্ড</a>
+                    <span><i class="fas fa-chevron-left"></i></span>
+                    <span>ফি ম্যানেজমেন্ট</span>
+                    <span><i class="fas fa-chevron-left"></i></span>
+                    <span>ফি রিপোর্ট</span>
+                </div>
+                <div class="admin-actions">
+                    <button class="notification-btn">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-count">৩</span>
+                    </button>
+                    <div class="admin-profile">
+                        <img src="../assets/logo.png" alt="Admin">
+                        <span>অ্যাডমিন</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fee Report Content -->
+            <div class="module-content">
+                <!-- Page Header -->
+                <div class="page-header">
+                    <div class="page-title">
+                        <h2><i class="fas fa-chart-bar"></i> ফি রিপোর্ট</h2>
+                        <p>ফি সংগ্রহ এবং বকেয়ার বিস্তারিত রিপোর্ট</p>
+                    </div>
+                    <button class="btn-primary" onclick="exportReport()">
+                        <i class="fas fa-download"></i> রিপোর্ট ডাউনলোড
+                    </button>
+                </div>
+
+                <!-- Date Range Filter -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-filter"></i> রিপোর্ট ফিল্টার</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>শুরুর তারিখ</label>
+                                <input type="date" id="report-start-date">
+                            </div>
+                            <div class="form-group">
+                                <label>শেষ তারিখ</label>
+                                <input type="date" id="report-end-date">
+                            </div>
+                            <div class="form-group">
+                                <label>শ্রেণি</label>
+                                <select id="report-class">
+                                    <option value="">সব শ্রেণি</option>
+                                    <option value="1">৬ষ্ঠ শ্রেণি</option>
+                                    <option value="2">৭ম শ্রেণি</option>
+                                    <option value="3">৮ম শ্রেণি</option>
+                                    <option value="4">৯ম শ্রেণি</option>
+                                    <option value="5">১০ম শ্রেণি</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>&nbsp;</label>
+                                <button class="btn-primary" onclick="generateReport()">
+                                    <i class="fas fa-search"></i> রিপোর্ট দেখুন
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Summary Cards -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon total">
+                            <i class="fas fa-wallet"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h4 id="report-total-fees">০</h4>
+                            <p>মোট ফি</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon success">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h4 id="report-collected">০</h4>
+                            <p>সংগ্রহিত</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon warning">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h4 id="report-due">০</h4>
+                            <p>বকেয়া</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon info">
+                            <i class="fas fa-percentage"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h4 id="report-collection-rate">০%</h4>
+                            <p>সংগ্রহ হার</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Collection Chart Placeholder -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-chart-pie"></i> সংগ্রহ বিশ্লেষণ</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-container">
+                            <div class="chart-placeholder">
+                                <div class="chart-bar" id="chart-collected" style="height: 0%"></div>
+                                <div class="chart-bar" id="chart-due" style="height: 0%"></div>
+                            </div>
+                            <div class="chart-legend">
+                                <div class="legend-item">
+                                    <span class="legend-color collected"></span>
+                                    <span>সংগ্রহিত</span>
+                                </div>
+                                <div class="legend-item">
+                                    <span class="legend-color due"></span>
+                                    <span>বকেয়া</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fee Type Breakdown -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-list"></i> ফি ধরন অনুযায়ী বিভাজন</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="data-table-container">
+                            <table class="data-table" id="fee-type-report">
+                                <thead>
+                                    <tr>
+                                        <th>ফি ধরন</th>
+                                        <th>মোট</th>
+                                        <th>সংগ্রহিত</th>
+                                        <th>বকেয়া</th>
+                                        <th>সংগ্রহ হার</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="fee-type-body">
+                                    <tr>
+                                        <td colspan="5" class="empty-state">
+                                            <i class="fas fa-chart-bar"></i>
+                                            <p>রিপোর্ট তৈরি করতে ফিল্টার করুন</p>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Daily Collection Report -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-calendar"></i> দৈনিক সংগ্রহ রিপোর্ট</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="data-table-container">
+                            <table class="data-table" id="daily-collection-report">
+                                <thead>
+                                    <tr>
+                                        <th>তারিখ</th>
+                                        <th>লেনদেন সংখ্যা</th>
+                                        <th>সংগ্রহিত অর্থ</th>
+                                        <th>পেমেন্ট পদ্ধতি</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="daily-collection-body">
+                                    <tr>
+                                        <td colspan="4" class="empty-state">
+                                            <i class="fas fa-calendar"></i>
+                                            <p>রিপোর্ট তৈরি করতে ফিল্টার করুন</p>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast-container"></div>
+
+    <!-- Scripts -->
+    <script src="../js/storage.js"></script>
+    <script src="../js/app.js"></script>
+    <script>
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            StorageManager.init();
+            
+            // Set default date range (current month)
+            const now = new Date();
+            const firstDay = new Date(now.getFullYear(), now.getMonth(), 1);
+            document.getElementById('report-start-date').valueAsDate = firstDay;
+            document.getElementById('report-end-date').valueAsDate = now;
+            
+            // Generate initial report
+            generateReport();
+        });
+
+
+
+        // Generate report
+        function generateReport() {
+            const startDate = document.getElementById('report-start-date').value;
+            const endDate = document.getElementById('report-end-date').value;
+            const classId = document.getElementById('report-class').value;
+            
+            // Get all fees
+            let fees = StorageManager.getFees();
+            const students = StorageManager.getStudents();
+            
+            // Filter by class if selected
+            if (classId) {
+                const studentIds = students.filter(s => s.classId === parseInt(classId)).map(s => s.id);
+                fees = fees.filter(f => studentIds.includes(f.studentId));
+            }
+            
+            // Filter by date if selected
+            if (startDate && endDate) {
+                fees = fees.filter(f => {
+                    if (f.paidDate) {
+                        return f.paidDate >= startDate && f.paidDate <= endDate;
+                    }
+                    return false;
+                });
+            }
+            
+            // Calculate totals
+            let totalFees = 0;
+            let collected = 0;
+            let due = 0;
+            
+            // Get all fees for the selected class to calculate total
+            let allFees = StorageManager.getFees();
+            if (classId) {
+                const studentIds = students.filter(s => s.classId === parseInt(classId)).map(s => s.id);
+                allFees = allFees.filter(f => studentIds.includes(f.studentId));
+            }
+            
+            totalFees = allFees.reduce((sum, f) => sum + f.finalAmount, 0);
+            collected = allFees.filter(f => f.status === 'paid').reduce((sum, f) => sum + f.finalAmount, 0);
+            due = totalFees - collected;
+            
+            const collectionRate = totalFees > 0 ? ((collected / totalFees) * 100).toFixed(1) : 0;
+            
+            // Update summary cards
+            document.getElementById('report-total-fees').textContent = AdminManager.formatCurrency(totalFees);
+            document.getElementById('report-collected').textContent = AdminManager.formatCurrency(collected);
+            document.getElementById('report-due').textContent = AdminManager.formatCurrency(due);
+            document.getElementById('report-collection-rate').textContent = toBengaliNumber(collectionRate) + '%';
+            
+            // Update chart
+            updateChart(collected, due);
+            
+            // Generate fee type breakdown
+            generateFeeTypeBreakdown(allFees);
+            
+            // Generate daily collection report
+            generateDailyCollectionReport(startDate, endDate);
+            
+            showToast('রিপোর্ট তৈরি হয়েছে', 'success');
+        }
+
+        // Update chart
+        function updateChart(collected, due) {
+            const total = collected + due;
+            const collectedPercent = total > 0 ? (collected / total) * 100 : 0;
+            const duePercent = total > 0 ? (due / total) * 100 : 0;
+            
+            document.getElementById('chart-collected').style.height = collectedPercent + '%';
+            document.getElementById('chart-due').style.height = duePercent + '%';
+        }
+
+        // Generate fee type breakdown
+        function generateFeeTypeBreakdown(fees) {
+            const feeTypes = StorageManager.getFeeTypes();
+            const tbody = document.getElementById('fee-type-body');
+            
+            if (fees.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="5" class="empty-state">কোনো ডেটা নেই</td></tr>';
+                return;
+            }
+            
+            tbody.innerHTML = feeTypes.map(feeType => {
+                const typeFees = fees.filter(f => f.feeTypeId === feeType.id);
+                const typeTotal = typeFees.reduce((sum, f) => sum + f.finalAmount, 0);
+                const typeCollected = typeFees.filter(f => f.status === 'paid').reduce((sum, f) => sum + f.finalAmount, 0);
+                const typeDue = typeTotal - typeCollected;
+                const typeRate = typeTotal > 0 ? ((typeCollected / typeTotal) * 100).toFixed(1) : 0;
+                
+                return `
+                    <tr>
+                        <td>${feeType.name}</td>
+                        <td>${AdminManager.formatCurrency(typeTotal)}</td>
+                        <td class="text-success">${AdminManager.formatCurrency(typeCollected)}</td>
+                        <td class="text-danger">${AdminManager.formatCurrency(typeDue)}</td>
+                        <td>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: ${typeRate}%"></div>
+                            </div>
+                            <span>${typeRate}%</span>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        // Generate daily collection report
+        function generateDailyCollectionReport(startDate, endDate) {
+            const payments = StorageManager.getPayments();
+            const tbody = document.getElementById('daily-collection-body');
+            
+            // Filter payments by date
+            let filteredPayments = payments.filter(p => {
+                if (!startDate || !endDate) return true;
+                const paymentDate = new Date(p.paidAt).toISOString().split('T')[0];
+                return paymentDate >= startDate && paymentDate <= endDate;
+            });
+            
+            // Group by date
+            const dailyData = {};
+            filteredPayments.forEach(payment => {
+                const date = new Date(payment.paidAt).toLocaleDateString('bn-BD');
+                if (!dailyData[date]) {
+                    dailyData[date] = { count: 0, amount: 0, methods: {} };
+                }
+                dailyData[date].count++;
+                dailyData[date].amount += payment.amount;
+                
+                if (!dailyData[date].methods[payment.method]) {
+                    dailyData[date].methods[payment.method] = 0;
+                }
+                dailyData[date].methods[payment.method] += payment.amount;
+            });
+            
+            if (Object.keys(dailyData).length === 0) {
+                tbody.innerHTML = '<tr><td colspan="4" class="empty-state">কোনো লেনেদেন নেই</td></tr>';
+                return;
+            }
+            
+            tbody.innerHTML = Object.entries(dailyData).map(([date, data]) => {
+                const methodText = Object.entries(data.methods).map(([method, amount]) => {
+                    const methodNames = { cash: 'নগদ', bank: 'ব্যাংক', mobile: 'মোবাইল' };
+                    return `${methodNames[method] || method}: ${AdminManager.formatCurrency(amount)}`;
+                }).join(', ');
+                
+                return `
+                    <tr>
+                        <td>${date}</td>
+                        <td>${toBengaliNumber(data.count)}</td>
+                        <td>${AdminManager.formatCurrency(data.amount)}</td>
+                        <td>${methodText}</td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        // Export report
+        function exportReport() {
+            const startDate = document.getElementById('report-start-date').value;
+            const endDate = document.getElementById('report-end-date').value;
+            
+            const payments = StorageManager.getPayments().filter(p => {
+                if (!startDate || !endDate) return true;
+                const paymentDate = new Date(p.paidAt).toISOString().split('T')[0];
+                return paymentDate >= startDate && paymentDate <= endDate;
+            });
+            
+            let csv = 'তারিখ,ট্রানজাকশন আইডি,শিক্ষার্থী আইডি,অর্থ,পদ্ধতি,স্ট্যাটাস\n';
+            
+            payments.forEach(p => {
+                csv += `${new Date(p.paidAt).toLocaleDateString('bn-BD')},${p.transactionId},${p.studentId},${p.amount},${p.method},${p.status}\n`;
+            });
+            
+            const blob = new Blob([csv], { type: 'text/csv' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `fee-report-${startDate}-${endDate}.csv`;
+            a.click();
+            URL.revokeObjectURL(url);
+            showToast('রিপোর্ট ডাউনলোড হয়েছে', 'success');
+        }
+
+        // Open modal function
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.add('active');
+            }
+        }
+    </script>
+    
+    <style>
+        .chart-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            padding: 20px;
+        }
+        
+        .chart-placeholder {
+            display: flex;
+            gap: 20px;
+            width: 100%;
+            max-width: 400px;
+            height: 200px;
+            align-items: flex-end;
+            justify-content: center;
+        }
+        
+        .chart-bar {
+            width: 80px;
+            background: linear-gradient(to top, var(--primary-color), var(--primary-light));
+            border-radius: 8px 8px 0 0;
+            transition: height 0.5s ease;
+            min-height: 20px;
+        }
+        
+        .chart-bar#chart-due {
+            background: linear-gradient(to top, #f59e0b, #fbbf24);
+        }
+        
+        .chart-legend {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .legend-color {
+            width: 16px;
+            height: 16px;
+            border-radius: 4px;
+        }
+        
+        .legend-color.collected {
+            background: var(--primary-color);
+        }
+        
+        .legend-color.due {
+            background: #f59e0b;
+        }
+        
+        .progress-bar {
+            width: 100px;
+            height: 8px;
+            background: #e5e7eb;
+            border-radius: 4px;
+            overflow: hidden;
+            display: inline-block;
+            margin-right: 8px;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: var(--primary-color);
+            border-radius: 4px;
+        }
+    </style>
+</body>
+</html>

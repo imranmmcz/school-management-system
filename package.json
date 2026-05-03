@@ -1,0 +1,19 @@
+{
+  "name": "school-management-system",
+  "version": "1.0.0",
+  "description": "Dynamic School Management System with Node.js and MongoDB",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "node server/index.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^8.0.0",
+    "cors": "^2.8.5",
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^9.0.2",
+    "dotenv": "^16.3.1",
+    "socket.io": "^4.7.2"
+  }
+}

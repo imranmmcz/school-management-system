@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>পাঠশালা ই-ম্যানেজার - স্কুল ম্যানেজমেন্ট সিস্টেম</title>
+    
+    <!-- Google Fonts for Bengali -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Landing Page Styles -->
+    <link rel="stylesheet" href="css/landing.css">
+</head>
+<body>
+    <!-- ==================== NAVBAR ==================== -->
+    <nav class="main-navbar" id="navbar">
+        <div class="navbar-container">
+            <!-- Logo Section -->
+            <a href="#" class="navbar-logo" onclick="scrollToSection('hero'); return false;">
+                <img id="school-logo-img" src="assets/logo.png" alt="স্কুল লোগো" onerror="this.outerHTML='<div class=\'logo-placeholder\'>পা</div>'">
+                <div class="school-name">
+                    <span id="header-school-name">পাঠশালা ই-ম্যানেজার</span>
+                    <span id="header-school-tagline">আমাদের স্কুল, আমাদের গর্ব</span>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation Menu -->
+            <ul class="navbar-menu" id="navbar-menu">
+                <li><a href="#hero" class="navbar-link active" onclick="setActiveLink(this)"><i class="fas fa-home"></i> হোম</a></li>
+                <li><a href="#features" class="navbar-link" onclick="setActiveLink(this)"><i class="fas fa-star"></i> ফিচার্স</a></li>
+                <li><a href="#about" class="navbar-link" onclick="setActiveLink(this)"><i class="fas fa-users"></i> আমাদের সম্পর্কে</a></li>
+                <li><a href="#gallery" class="navbar-link" onclick="setActiveLink(this)"><i class="fas fa-images"></i> গ্যালারি</a></li>
+                <li><a href="#notices" class="navbar-link" onclick="setActiveLink(this)"><i class="fas fa-bullhorn"></i> নোটিশ</a></li>
+                <li><a href="#contact" class="navbar-link" onclick="setActiveLink(this)"><i class="fas fa-envelope"></i> যোগাযোগ</a></li>
+                <li>
+                    <a href="admin/admin-dashboard.html" class="navbar-link navbar-btn-login">
+                        <i class="fas fa-user-shield"></i> অ্যাডমিন লগইন
+                    </a>
+                </li>
+            </ul>
+
+            <!-- Mobile Toggle Button -->
+            <button class="navbar-toggle" id="navbar-toggle" onclick="toggleMobileMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="navbar-overlay" id="navbar-overlay" onclick="toggleMobileMenu()"></div>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu">
+        <div class="mobile-menu-header">
+            <span style="font-weight: 700; font-size: 1.1rem;">মেনু</span>
+            <button class="mobile-menu-close" onclick="toggleMobileMenu()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="mobile-menu-links">
+            <a href="#hero" class="mobile-menu-link active" onclick="toggleMobileMenu(); setActiveLink(this);">
+                <i class="fas fa-home"></i> হোম
+            </a>
+            <a href="#features" class="mobile-menu-link" onclick="toggleMobileMenu(); setActiveLink(this);">
+                <i class="fas fa-star"></i> ফিচার্স
+            </a>
+            <a href="#about" class="mobile-menu-link" onclick="toggleMobileMenu(); setActiveLink(this);">
+                <i class="fas fa-users"></i> আমাদের সম্পর্কে
+            </a>
+            <a href="#gallery" class="mobile-menu-link" onclick="toggleMobileMenu(); setActiveLink(this);">
+                <i class="fas fa-images"></i> গ্যালারি
+            </a>
+            <a href="#notices" class="mobile-menu-link" onclick="toggleMobileMenu(); setActiveLink(this);">
+                <i class="fas fa-bullhorn"></i> নোটিশ
+            </a>
+            <a href="#contact" class="mobile-menu-link" onclick="toggleMobileMenu(); setActiveLink(this);">
+                <i class="fas fa-envelope"></i> যোগাযোগ
+            </a>
+            <a href="admin/admin-dashboard.html" class="mobile-menu-link" style="color: var(--primary-color); font-weight: 600;">
+                <i class="fas fa-user-shield"></i> অ্যাডমিন লগইন
+            </a>
+        </div>
+    </div>
+
+    <!-- ==================== HERO SECTION ==================== -->
+    <section class="hero-section" id="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>বাংলাদেশের নম্বর ১ স্কুল ম্যানেজমেন্ট সিস্টেম</span>
+                </div>
+                <h1 class="hero-title">
+                    আপনার সন্তানের <span>উজ্জ্বল ভবিষ্যত</span> আমাদের হাতে
+                </h1>
+                <p class="hero-subtitle">
+                    পাঠশালা ই-ম্যানেজারে আমরা আধুনিক শিক্ষা প্রযুক্তি ব্যবহার করে শিক্ষার্থীদের সর্বোত্তম শিক্ষা প্রদান করি। আমাদের সাথে শিক্ষার যাত্রা শুরু করুন।
+                </p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn-hero btn-hero-primary">
+                        <i class="fas fa-user-plus"></i>
+                        ভর্তি হোন
+                    </a>
+                    <a href="#about" class="btn-hero btn-hero-secondary">
+                        <i class="fas fa-info-circle"></i>
+                        আরও জানুন
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <p class="hero-stat-number">৫০০০+</p>
+                        <p class="hero-stat-label">মোট শিক্ষার্থী</p>
+                    </div>
+                    <div class="hero-stat">
+                        <p class="hero-stat-number">১৫০+</p>
+                        <p class="hero-stat-label">দক্ষ শিক্ষক</p>
+                    </div>
+                    <div class="hero-stat">
+                        <p class="hero-stat-number">২০+</p>
+                        <p class="hero-stat-label">বছরের অভিজ্ঞতা</p>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-image-wrapper">
+                    <div class="hero-main-image hero-placeholder" id="hero-image">
+                        <i class="fas fa-school"></i>
+                    </div>
+                </div>
+                <div class="hero-floating-card card-1">
+                    <div class="hero-floating-icon green">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <div>
+                        <p class="hero-floating-text">১০০% পাস রেট</p>
+                        <p class="hero-floating-subtext">গত বছরের রেকর্ড</p>
+                    </div>
+                </div>
+                <div class="hero-floating-card card-2">
+                    <div class="hero-floating-icon blue">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div>
+                        <p class="hero-floating-text">৫০০+ ভর্তি</p>
+                        <p class="hero-floating-subtext">এই বছরে</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FEATURES SECTION ==================== -->
+    <section class="features-section" id="features">
+        <div class="section-header">
+            <div class="section-badge">
+                <i class="fas fa-star"></i>
+                <span>কেন আমরা?</span>
+            </div>
+            <h2 class="section-title">আমাদের বিশেষ সুবিধাসমূহ</h2>
+            <p class="section-subtitle">
+                আমরা শিক্ষার্থীদের সর্বোত্তম শিক্ষা প্রদান করতে প্রতিশ্রুতিবদ্ধ। আমাদের আধুনিক সুবিধাগুলো আপনার সন্তানের উন্নয়নে সহায়তা করবে।
+            </p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon primary">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <h3>অভিজ্ঞ শিক্ষকমণ্ডলী</h3>
+                <p>আমাদের দক্ষ এবং অভিজ্ঞ শিক্ষকরা শিক্ষার্থীদের সর্বোত্তম শিক্ষা প্রদান করেন। প্রতিটি শিক্ষক উচ্চ যোগ্যতাসম্পন্ন।</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon secondary">
+                    <i class="fas fa-laptop"></i>
+                </div>
+                <h3>আধুনিক প্রযুক্তি</h3>
+                <p>সর্বোত্তম শিক্ষার জন্য স্মার্ট ক্লাসরুম এবং ডিজিটাল লার্নিং প্ল্যাটফর্ম। প্রতিটি ক্লাসে প্রজেক্টর এবং কম্পিউটার।</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon success">
+                    <i class="fas fa-book"></i>
+                </div>
+                <h3>সমৃদ্ধ লাইব্রেরি</h3>
+                <p>বিশাল গ্রন্থাগারে হাজারো বই এবং ডিজিটাল রিসোর্স। শিক্ষার্থীরা যেকোনো সময় বই পড়তে পারে।</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon info">
+                    <i class="fas fa-futbol"></i>
+                </div>
+                <h3>ক্রীড়া ও সাংস্কৃতিক কার্যক্রম</h3>
+                <p>শারীরিক ও মানসিক বিকাশের জন্য বিভিন্ন ক্রীড়া ও সাংস্কৃতিক কার্যক্রম। বার্ষিক ক্রীড়া প্রতিযোগিতা।</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon primary">
+                    <i class="fas fa-bus"></i>
+                </div>
+                <h3>পরিবহন সেবা</h3>
+                <p>নিরাপদ এবং স্বাচ্ছন্দ্যময় পরিবহন সেবা। শহরের বিভিন্ন এলাকা থেকে শিক্ষার্থীদের আনা-নেওয়া করা হয়।</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon secondary">
+                    <i class="fas fa-utensils"></i>
+                </div>
+                <h3>মানসম্মত ক্যান্টিন</h3>
+                <p>স্বাস্থ্যকর এবং পুষ্টিকর খাবার। শিক্ষার্থীদের জন্য প্রতিদিন তাজা খাবার পরিবেশন করা হয়।</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== ABOUT SECTION ==================== -->
+    <section class="about-section" id="about">
+        <div class="about-container">
+            <div class="about-images">
+                <div class="about-main-image about-placeholder" id="about-image">
+                    <i class="fas fa-users"></i>
+                </div>
+                <div class="about-image-grid">
+                    <div class="about-grid-image gallery-placeholder">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <div class="about-grid-image gallery-placeholder">
+                        <i class="fas fa-flask"></i>
+                    </div>
+                    <div class="about-grid-image gallery-placeholder">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <div class="about-grid-image gallery-placeholder">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="about-content">
+                <div class="section-badge" style="background: rgba(0, 105, 92, 0.1); color: var(--primary-color);">
+                    <i class="fas fa-info-circle"></i>
+                    <span>আমাদের সম্পর্কে</span>
+                </div>
+                <h2>পাঠশালা ই-ম্যানেজারে <span>স্বাগতম</span></h2>
+                <p>
+                    পাঠশালা ই-ম্যানেজার একটি আধুনিক শিক্ষাপ্রতিষ্ঠান যেখানে শিক্ষার্থীরা তাদের সর্বোচ্চ সম্ভাবনা অর্জন করতে পারে। আমরা মনে করি প্রতিটি শিশুর অনন্য প্রতিভা রয়েছে এবং আমাদের লক্ষ্য সেই প্রতিভাকে বিকাশিত করা।
+                </p>
+                <p>
+                    আমাদের শিক্ষা ব্যবস্থা মূলত ছাত্র-কেন্দ্রিক যেখানে প্রতিটি শিক্ষার্থীর ব্যক্তিগত চাহিদা পূরণ করা হয়। আমরা শুধু পাঠ্যবইয়ের জ্ঞানই নয়, বরং জীবনের দক্ষতা শেখাতে বদ্ধপরিকর।
+                </p>
+                <div class="about-features">
+                    <div class="about-feature">
+                        <div class="about-feature-icon">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <span class="about-feature-text">২০+ বছরের অভিজ্ঞতা</span>
+                    </div>
+                    <div class="about-feature">
+                        <div class="about-feature-icon">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <span class="about-feature-text">সুপরিসর ক্যাম্পাস</span>
+                    </div>
+                    <div class="about-feature">
+                        <div class="about-feature-icon">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <span class="about-feature-text">আধুনিক ল্যাব</span>
+                    </div>
+                    <div class="about-feature">
+                        <div class="about-feature-icon">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <span class="about-feature-text">সুশৃঙ্খল শৃঙ্খলা</span>
+                    </div>
+                </div>
+                <a href="#contact" class="about-cta">
+                    আরও জানুন
+                    <i class="fas fa-arrow-left"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== GALLERY SECTION ==================== -->
+    <section class="gallery-section" id="gallery">
+        <div class="section-header">
+            <div class="section-badge">
+                <i class="fas fa-camera"></i>
+                <span>গ্যালারি</span>
+            </div>
+            <h2 class="section-title">আমাদের ক্যাম্পাস লাইফ</h2>
+            <p class="section-subtitle">
+                আমাদের সুন্দর ক্যাম্পাস এবং শিক্ষার্থীদের দৈনন্দিন কার্যক্রমের কিছু মুহূর্ত।
+            </p>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <div class="gallery-placeholder">
+                    <i class="fas fa-school"></i>
+                </div>
+                <div class="gallery-overlay">
+                    <h4>স্কুল ভবন</h4>
+                    <p>আমাদের আধুনিক স্কুল ভবন</p>
+                </div>
+                <div class="gallery-icon">
+                    <i class="fas fa-search-plus"></i>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-placeholder">
+                    <i class="fas fa-book-reader"></i>
+                </div>
+                <div class="gallery-overlay">
+                    <h4>ক্লাসরুম</h4>
+                    <p>স্মার্ট ক্লাসরুম</p>
+                </div>
+                <div class="gallery-icon">
+                    <i class="fas fa-search-plus"></i>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-placeholder">
+                    <i class="fas fa-flask"></i>
+                </div>
+                <div class="gallery-overlay">
+                    <h4>ল্যাব</h4>
+                    <p>বিজ্ঞান ল্যাবরেটরি</p>
+                </div>
+                <div class="gallery-icon">
+                    <i class="fas fa-search-plus"></i>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-placeholder">
+                    <i class="fas fa-futbol"></i>
+                </div>
+                <div class="gallery-overlay">
+                    <h4>মাঠ</h4>
+                    <p>ক্রীড়া মাঠ</p>
+                </div>
+                <div class="gallery-icon">
+                    <i class="fas fa-search-plus"></i>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-placeholder">
+                    <i class="fas fa-music"></i>
+                </div>
+                <div class="gallery-overlay">
+                    <h4>সাংস্কৃতিক</h4>
+                    <p>সাংস্কৃতিক অনুষ্ঠান</p>
+                </div>
+                <div class="gallery-icon">
+                    <i class="fas fa-search-plus"></i>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-placeholder">
+                    <i class="fas fa-users"></i>
+                </div>
+                <div class="gallery-overlay">
+                    <h4>শিক্ষার্থীরা</h4>
+                    <p>আমাদের প্রিয় শিক্ষার্থীরা</p>
+                </div>
+                <div class="gallery-icon">
+                    <i class="fas fa-search-plus"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== NOTICES SECTION ==================== -->
+    <section class="notices-section" id="notices">
+        <div class="section-header">
+            <div class="section-badge">
+                <i class="fas fa-bullhorn"></i>
+                <span>নোটিশ বোর্ড</span>
+            </div>
+            <h2 class="section-title">সাম্প্রতিক নোটিশ</h2>
+            <p class="section-subtitle">
+                স্কুলের সর্বশেষ নোটিশ এবং ঘোষণাগুলো এখানে দেখুন।
+            </p>
+        </div>
+        <div class="notice-container">
+            <div class="notice-board">
+                <div class="notice-header">
+                    <i class="fas fa-bell"></i>
+                    <h3>সাম্প্রতিক নোটিশ</h3>
+                </div>
+                <div class="notice-list" id="notice-list">
+                    <div class="notice-item">
+                        <span class="notice-date"><i class="fas fa-calendar-alt"></i> ১৩ জানুয়ারি, ২০২৫</span>
+                        <h4>জানুয়ারি মাসের মাসিক পরীক্ষার সময়সূচি প্রকাশ</h4>
+                        <p>জানুয়ারি মাসের মাসিক পরীক্ষার সময়সূচি প্রকাশ করা হয়েছে। সকল শিক্ষার্থীদের নির্ধারিত সময়ে পরীক্ষা কেন্দ্রে উপস্থিত থাকতে হবে।</p>
+                    </div>
+                    <div class="notice-item">
+                        <span class="notice-date"><i class="fas fa-calendar-alt"></i> ১২ জানুয়ারি, ২০২৫</span>
+                        <h4>৬ষ্ঠ শ্রেণির ক্লাস রুটিন পরিবর্তন</h4>
+                        <p>৬ষ্ঠ শ্রেণির ক্লাস রুটিনে কিছু পরিবর্তন করা হয়েছে। নতুন রুটিন স্কুল নোটিশ বোর্ডে দেওয়া হয়েছে।</p>
+                    </div>
+                    <div class="notice-item">
+                        <span class="notice-date"><i class="fas fa-calendar-alt"></i> ১১ জানুয়ারি, ২০২৫</span>
+                        <h4>বার্ষিক ক্রীড়া প্রতিযোগিতার তারিখ ঘোষণা</h4>
+                        <p>আগামী ২৫ জানুয়ারি বার্ষিক ক্রীড়া প্রতিযোগিতা অনুষ্ঠিত হবে। সকল শিক্ষার্থীদের অংশগ্রহণের জন্য আমন্ত্রণ জানানো হয়েছে।</p>
+                    </div>
+                    <div class="notice-item">
+                        <span class="notice-date"><i class="fas fa-calendar-alt"></i> ১০ জানুয়ারি, ২০২৫</span>
+                        <h4>ভর্তি বিজ্ঞপ্তি ২০২৫</h4>
+                        <p>২০২৫ শিক্ষাবর্ষে ভর্তি চলছে। আগ্রহী অভিভাবকদের নির্ধারিত তারিখের মধ্যে আবেদন করতে হবে।</p>
+                    </div>
+                </div>
+                <div class="notice-cta">
+                    <a href="#" class="notice-link">
+                        সব নোটিশ দেখুন
+                        <i class="fas fa-arrow-left"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== CTA SECTION ==================== -->
+    <section class="cta-section" id="cta">
+        <div class="cta-container">
+            <div class="cta-content">
+                <h2>আজই আপনার সন্তানের ভর্তি নিশ্চিত করুন</h2>
+                <p>
+                    আপনার সন্তানের উজ্জ্বল ভবিষ্যতের জন্য পাঠশালা ই-ম্যানেজারে ভর্তি হন। আমরা প্রতিশ্রুতি দিচ্ছি সর্বোত্তম শিক্ষা।
+                </p>
+                <div class="cta-buttons">
+                    <a href="#contact" class="btn-cta btn-cta-light">
+                        <i class="fas fa-user-plus"></i>
+                        ভর্তি ফর্ম পূরণ করুন
+                    </a>
+                    <a href="tel:+8801234567890" class="btn-cta btn-cta-outline">
+                        <i class="fas fa-phone"></i>
+                        যোগাযোগ করুন
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== CONTACT SECTION ==================== -->
+    <section class="notices-section" id="contact" style="background: var(--bg-light);">
+        <div class="section-header">
+            <div class="section-badge">
+                <i class="fas fa-envelope"></i>
+                <span>যোগাযোগ</span>
+            </div>
+            <h2 class="section-title">আমাদের সাথে যোগাযোগ করুন</h2>
+            <p class="section-subtitle">
+                যেকোনো প্রশ্ন বা মতামতের জন্য আমাদের সাথে যোগাযোগ করুন। আমরা ২৪ ঘণ্টার মধ্যে উত্তর দেব।
+            </p>
+        </div>
+        <div class="notice-container">
+            <div class="notice-board" style="display: grid; grid-template-columns: 1fr 1fr; gap: 0;">
+                <div style="padding: 40px; background: white;">
+                    <h3 style="margin-bottom: 24px; color: var(--text-dark); font-size: 1.25rem;">
+                        <i class="fas fa-paper-plane" style="color: var(--primary-color); margin-right: 8px;"></i>
+                        মেসেজ পাঠান
+                    </h3>
+                    <form id="contact-form" style="display: flex; flex-direction: column; gap: 16px;">
+                        <div class="form-group">
+                            <label style="display: block; margin-bottom: 6px; font-weight: 600; color: var(--text-medium);">আপনার নাম</label>
+                            <input type="text" placeholder="পূর্ণ নাম" style="width: 100%; padding: 12px 16px; border: 1px solid var(--border-color); border-radius: var(--radius-md); font-size: 1rem;">
+                        </div>
+                        <div class="form-group">
+                            <label style="display: block; margin-bottom: 6px; font-weight: 600; color: var(--text-medium);">ফোন নম্বর</label>
+                            <input type="tel" placeholder="+৮৮০১৭XXXXXXXX" style="width: 100%; padding: 12px 16px; border: 1px solid var(--border-color); border-radius: var(--radius-md); font-size: 1rem;">
+                        </div>
+                        <div class="form-group">
+                            <label style="display: block; margin-bottom: 6px; font-weight: 600; color: var(--text-medium);">মেসেজ</label>
+                            <textarea rows="4" placeholder="আপনার মেসেজ লিখুন..." style="width: 100%; padding: 12px 16px; border: 1px solid var(--border-color); border-radius: var(--radius-md); font-size: 1rem; resize: vertical;"></textarea>
+                        </div>
+                        <button type="submit" style="background: var(--primary-color); color: white; padding: 14px 28px; border-radius: var(--radius-full); font-weight: 600; font-size: 1rem; cursor: pointer; transition: all var(--transition-normal);">
+                            <i class="fas fa-paper-plane"></i> মেসেজ পাঠান
+                        </button>
+                    </form>
+                </div>
+                <div style="padding: 40px; background: linear-gradient(135deg, var(--primary-color), var(--primary-dark)); color: white;">
+                    <h3 style="margin-bottom: 24px; font-size: 1.25rem;">
+                        <i class="fas fa-info-circle" style="margin-right: 8px;"></i>
+                        তথ্য
+                    </h3>
+                    <div style="display: flex; flex-direction: column; gap: 20px;">
+                        <div style="display: flex; align-items: flex-start; gap: 16px;">
+                            <div style="width: 48px; height: 48px; background: rgba(255,255,255,0.2); border-radius: var(--radius-full); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h4 style="font-weight: 600; margin-bottom: 4px;">ঠিকানা</h4>
+                                <p style="opacity: 0.9; font-size: 0.95rem;">১২৩, শিক্ষা রোড, ঢাকা-১০০০</p>
+                            </div>
+                        </div>
+                        <div style="display: flex; align-items: flex-start; gap: 16px;">
+                            <div style="width: 48px; height: 48px; background: rgba(255,255,255,0.2); border-radius: var(--radius-full); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div>
+                                <h4 style="font-weight: 600; margin-bottom: 4px;">ফোন</h4>
+                                <p style="opacity: 0.9; font-size: 0.95rem;">+৮৮০১২৩৪৫৬৭৮৯০</p>
+                            </div>
+                        </div>
+                        <div style="display: flex; align-items: flex-start; gap: 16px;">
+                            <div style="width: 48px; height: 48px; background: rgba(255,255,255,0.2); border-radius: var(--radius-full); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4 style="font-weight: 600; margin-bottom: 4px;">ইমেইল</h4>
+                                <p style="opacity: 0.9; font-size: 0.95rem;">info@pathshala.edu.bd</p>
+                            </div>
+                        </div>
+                        <div style="display: flex; align-items: flex-start; gap: 16px;">
+                            <div style="width: 48px; height: 48px; background: rgba(255,255,255,0.2); border-radius: var(--radius-full); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div>
+                                <h4 style="font-weight: 600; margin-bottom: 4px;">অফিস সময়</h4>
+                                <p style="opacity: 0.9; font-size: 0.95rem;">সকাল ৮টা - বিকেল ৫টা (শুক্রবার বন্ধ)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="main-footer" id="main-footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <div class="footer-logo">
+                    <img src="assets/logo.png" alt="Logo" onerror="this.outerHTML='<div class=\'logo-placeholder\' style=\'background: var(--primary-color); color: white; width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700;\'>পা</div>'">
+                    <span>পাঠশালা ই-ম্যানেজার</span>
+                </div>
+                <p>আমরা শিক্ষার্থীদের উজ্জ্বল ভবিষ্যত গড়তে প্রতিশ্রুতিবদ্ধ। আমাদের সাথে শিক্ষার যাত্রা শুরু করুন এবং আপনার সন্তানের স্বপ্ন পূরণ করুন।</p>
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h4>দ্রুত লিংক</h4>
+                <div class="footer-links">
+                    <a href="#about"><i class="fas fa-chevron-right"></i> আমাদের সম্পর্কে</a>
+                    <a href="#features"><i class="fas fa-chevron-right"></i> ফিচার্স</a>
+                    <a href="#gallery"><i class="fas fa-chevron-right"></i> গ্যালারি</a>
+                    <a href="#notices"><i class="fas fa-chevron-right"></i> নোটিশ বোর্ড</a>
+                    <a href="#contact"><i class="fas fa-chevron-right"></i> যোগাযোগ</a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h4>শিক্ষা কার্যক্রম</h4>
+                <div class="footer-links">
+                    <a href="#"><i class="fas fa-chevron-right"></i> প্রাথমিক শিক্ষা</a>
+                    <a href="#"><i class="fas fa-chevron-right"></i> মাধ্যমিক শিক্ষা</a>
+                    <a href="#"><i class="fas fa-chevron-right"></i> উচ্চ মাধ্যমিক</a>
+                    <a href="#"><i class="fas fa-chevron-right"></i> কোচিং সেন্টার</a>
+                    <a href="#"><i class="fas fa-chevron-right"></i> অনলাইন ক্লাস</a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h4>যোগাযোগ</h4>
+                <div class="footer-contact">
+                    <div class="footer-contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>১২৩, শিক্ষা রোড, ঢাকা-১০০০</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <span>+৮৮০১২৩৪৫৬৭৮৯০</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>info@pathshala.edu.bd</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; ২০২৫ পাঠশালা ই-ম্যানেজার। সর্বস্বত্ব সংরক্ষিত।</p>
+        </div>
+    </footer>
+
+    <!-- ==================== JAVASCRIPT ==================== -->
+    <script>
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const navbarToggle = document.getElementById('navbar-toggle');
+            const overlay = document.getElementById('navbar-overlay');
+            
+            mobileMenu.classList.toggle('active');
+            navbarToggle.classList.toggle('active');
+            overlay.classList.toggle('active');
+            
+            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+        }
+
+        // Set Active Navigation Link
+        function setActiveLink(element) {
+            document.querySelectorAll('.navbar-link, .mobile-menu-link').forEach(link => {
+                link.classList.remove('active');
+            });
+            element.classList.add('active');
+        }
+
+        // Scroll to Section
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Intersection Observer for Animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+
+        // Observe sections for animation
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetSection = document.getElementById(targetId);
+                if (targetSection) {
+                    targetSection.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Contact Form Submit
+        document.getElementById('contact-form')?.addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('ধন্যবাদ! আপনার মেসেজ পাঠানো হয়েছে। আমরা শীঘ্রই যোগাযোগ করব।');
+            this.reset();
+        });
+
+        console.log('পাঠশালা ই-ম্যানেজার লোড হয়েছে!');
+    </script>
+</body>
+</html>

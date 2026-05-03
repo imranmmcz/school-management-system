@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>একাডেমিক্স - পাঠশালা ই-ম্যানেজার</title>
+    
+    <!-- Google Fonts for Bengali -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Main Styles -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- ==================== HEADER ==================== -->
+    <header id="main-header">
+        <div class="header-container">
+            <div class="logo-section">
+                <a href="index.html">
+                    <img id="school-logo" src="assets/logo.png" alt="স্কুল লোগো">
+                </a>
+                <div class="school-name">
+                    <h1 id="header-school-name">পাঠশালা ই-ম্যানেজার</h1>
+                    <span id="header-school-tagline">আমাদের স্কুল, আমাদের গর্ব</span>
+                </div>
+            </div>
+            <nav class="main-nav">
+                <ul id="nav-menu">
+                    <li><a href="index.html">হোম</a></li>
+                    <li><a href="amra-somproshe.html">আমাদের সম্পর্কে</a></li>
+                    <li><a href="academics.html" class="active">একাডেমিক্স</a></li>
+                    <li><a href="admissions.html">ভর্তি</a></li>
+                    <li><a href="notices.html">নোটিশ</a></li>
+                    <li><a href="contact.html">যোগাযোগ</a></li>
+                    <li><a href="admin-dashboard.html" class="btn-login"><i class="fas fa-user-shield"></i> অ্যাডমিন</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation -->
+    <div id="mobile-nav" class="mobile-nav">
+        <ul id="mobile-nav-menu">
+            <li><a href="index.html">হোম</a></li>
+            <li><a href="amra-somproshe.html">আমাদের সম্পর্কে</a></li>
+            <li><a href="academics.html">একাডেমিক্স</a></li>
+            <li><a href="admissions.html">ভর্তি</a></li>
+            <li><a href="notices.html">নোটিশ</a></li>
+            <li><a href="contact.html">যোগাযোগ</a></li>
+            <li><a href="admin-dashboard.html">অ্যাডমিন প্যানেল</a></li>
+        </ul>
+    </div>
+
+    <!-- ==================== PAGE CONTENT ==================== -->
+    <main class="page-content">
+        <!-- Page Banner -->
+        <section class="page-banner">
+            <div class="banner-content">
+                <h1><i class="fas fa-graduation-cap"></i> একাডেমিক্স</h1>
+                <p>শিক্ষার্থীদের জন্য সম্পূর্ণ একাডেমিক তথ্য</p>
+            </div>
+        </section>
+
+        <!-- Breadcrumb -->
+        <div class="breadcrumb-nav">
+            <a href="index.html">হোম</a>
+            <span><i class="fas fa-chevron-left"></i></span>
+            <span>একাডেমিক্স</span>
+        </div>
+
+        <!-- Academic Content -->
+        <section class="academics-section">
+            <div class="container">
+                <!-- Class Routine -->
+                <div class="content-block">
+                    <h2><i class="fas fa-calendar-alt"></i> ক্লাস রুটিন</h2>
+                    <div class="routine-tabs">
+                        <button class="routine-tab active" onclick="showRoutine('class6')">৬ষ্ঠ শ্রেণি</button>
+                        <button class="routine-tab" onclick="showRoutine('class7')">৭ম শ্রেণি</button>
+                        <button class="routine-tab" onclick="showRoutine('class8')">৮ম শ্রেণি</button>
+                        <button class="routine-tab" onclick="showRoutine('class9')">৯ম শ্রেণি</button>
+                        <button class="routine-tab" onclick="showRoutine('class10')">১০ম শ্রেণি</button>
+                    </div>
+                    <div class="routine-content">
+                        <div id="routine-class6" class="routine-table active">
+                            <table class="routine-table">
+                                <thead>
+                                    <tr>
+                                        <th>দিন</th>
+                                        <th>১ম পিরিয়ড</th>
+                                        <th>২য় পিরিয়ড</th>
+                                        <th>৩য় পিরিয়ড</th>
+                                        <th>৪র্থ পিরিয়ড</th>
+                                        <th>৫ম পিরিয়ড</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>রবিবার</td>
+                                        <td>বাংলা</td>
+                                        <td>ইংরেজি</td>
+                                        <td>গণিত</td>
+                                        <td>বিজ্ঞান</td>
+                                        <td>সামাজিক</td>
+                                    </tr>
+                                    <tr>
+                                        <td>সোমবার</td>
+                                        <td>গণিত</td>
+                                        <td>বাংলা</td>
+                                        <td>ইংরেজি</td>
+                                        <td>ধর্ম</td>
+                                        <td>বিজ্ঞান</td>
+                                    </tr>
+                                    <tr>
+                                        <td>মঙ্গলবার</td>
+                                        <td>ইংরেজি</td>
+                                        <td>গণিত</td>
+                                        <td>বাংলা</td>
+                                        <td>সামাজিক</td>
+                                        <td>বিজ্ঞান</td>
+                                    </tr>
+                                    <tr>
+                                        <td>বুধবার</td>
+                                        <td>বিজ্ঞান</td>
+                                        <td>সামাজিক</td>
+                                        <td>গণিত</td>
+                                        <td>বাংলা</td>
+                                        <td>ইংরেজি</td>
+                                    </tr>
+                                    <tr>
+                                        <td>বৃহস্পতিবার</td>
+                                        <td>সামাজিক</td>
+                                        <td>বিজ্ঞান</td>
+                                        <td>ধর্ম</td>
+                                        <td>ইংরেজি</td>
+                                        <td>গণিত</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="download-btn">
+                                <a href="#" class="btn-primary"><i class="fas fa-download"></i> ডাউনলোড পিডিএফ</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Syllabus -->
+                <div class="content-block">
+                    <h2><i class="fas fa-book-open"></i> সিলেবাস</h2>
+                    <div class="syllabus-grid">
+                        <div class="syllabus-card">
+                            <div class="syllabus-icon">
+                                <i class="fas fa-book"></i>
+                            </div>
+                            <h3>৬ষ্ঠ - ৮ম শ্রেণি</h3>
+                            <p>জাতীয় পাঠ্যক্রম অনুযায়ী</p>
+                            <a href="#" class="btn-secondary"><i class="fas fa-download"></i> ডাউনলোড</a>
+                        </div>
+                        <div class="syllabus-card">
+                            <div class="syllabus-icon">
+                                <i class="fas fa-book"></i>
+                            </div>
+                            <h3>৯ম - ১০ম শ্রেণি</h3>
+                            <p>জাতীয় পাঠ্যক্রম অনুযায়ী</p>
+                            <a href="#" class="btn-secondary"><i class="fas fa-download"></i> ডাউনলোড</a>
+                        </div>
+                        <div class="syllabus-card">
+                            <div class="syllabus-icon">
+                                <i class="fas fa-clipboard-list"></i>
+                            </div>
+                            <h3>পরীক্ষার সিলেবাস</h3>
+                            <p>মাসিক ও সাময়িক পরীক্ষা</p>
+                            <a href="#" class="btn-secondary"><i class="fas fa-download"></i> ডাউনলোড</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Academic Calendar -->
+                <div class="content-block">
+                    <h2><i class="fas fa-calendar-check"></i> একাডেমিক ক্যালেন্ডার ২০২৫</h2>
+                    <div class="calendar-events">
+                        <div class="event-item">
+                            <div class="event-date">
+                                <span class="month">জানুয়ারি</span>
+                                <span class="day">০১</span>
+                            </div>
+                            <div class="event-details">
+                                <h4>২০২৫ শিক্ষাবর্ষ শুরু</h4>
+                                <p>নতুন শিক্ষাবর্ষের ক্লাস শুরু</p>
+                            </div>
+                        </div>
+                        <div class="event-item">
+                            <div class="event-date">
+                                <span class="month">ফেব্রুয়ারি</span>
+                                <span class="day">১৫</span>
+                            </div>
+                            <div class="event-details">
+                                <h4>প্রথম সাময়িক পরীক্ষা</h4>
+                                <p>সকল শ্রেণির প্রথম সাময়িক পরীক্ষা শুরু</p>
+                            </div>
+                        </div>
+                        <div class="event-item">
+                            <div class="event-date">
+                                <span class="month">মার্চ</span>
+                                <span class="day">২৬</span>
+                            </div>
+                            <div class="event-details">
+                                <h4>স্বাধীনতা দিবস</h4>
+                                <p>জাতীয় অনুষ্ঠান</p>
+                            </div>
+                        </div>
+                        <div class="event-item">
+                            <div class="event-date">
+                                <span class="month">এপ্রিল</span>
+                                <span class="day">১৪</span>
+                            </div>
+                            <div class="event-details">
+                                <h4>বাংলা নববর্ষ</h4>
+                                <p>পহেলা বৈশাখ উদযাপন</p>
+                            </div>
+                        </div>
+                        <div class="event-item">
+                            <div class="event-date">
+                                <span class="month">মে</span>
+                                <span class="day">০১</span>
+                            </div>
+                            <div class="event-details">
+                                <h4>মে দিবস</h4>
+                                <p>শ্রমিক দিবস উদযাপন</p>
+                            </div>
+                        </div>
+                        <div class="event-item">
+                            <div class="event-date">
+                                <span class="month">জুন</span>
+                                <span class="day">১৫</span>
+                            </div>
+                            <div class="event-details">
+                                <h4>বার্ষিক পরীক্ষা</h4>
+                                <p>বার্ষিক পরীক্ষা শুরু</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Subjects -->
+                <div class="content-block">
+                    <h2><i class="fas fa Subjects</h2>
+                    <div class="subjects-grid">
+                        <div class="subject-card">
+                            <div class="subject-icon" style="background: #00695C;">
+                                <i class="fas fa-language"></i>
+                            </div>
+                            <h4>বাংলা</h4>
+                            <p>ভাষা ও সাহিত্য</p>
+                        </div>
+                        <div class="subject-card">
+                            <div class="subject-icon" style="background: #1976D2;">
+                                <i class="fas fa-language"></i>
+                            </div>
+                            <h4>ইংরেজি</h4>
+                            <p>ইংরেজি ভাষা ও সাহিত্য</p>
+                        </div>
+                        <div class="subject-card">
+                            <div class="subject-icon" style="background: #F57C00;">
+                                <i class="fas fa-calculator"></i>
+                            </div>
+                            <h4>গণিত</h4>
+                            <p>গাণিতিক বিষয়াবলি</p>
+                        </div>
+                        <div class="subject-card">
+                            <div class="subject-icon" style="background: #388E3C;">
+                                <i class="fas fa-flask"></i>
+                            </div>
+                            <h4>বিজ্ঞান</h4>
+                            <p>পদার্থ, রসায়ন, জীববিজ্ঞান</p>
+                        </div>
+                        <div class="subject-card">
+                            <div class="subject-icon" style="background: #7B1FA2;">
+                                <i class="fas fa-globe"></i>
+                            </div>
+                            <h4>সামাজিক বিজ্ঞান</h4>
+                            <p>ইতিহাস, ভূগোল, নাগরিকতা</p>
+                        </div>
+                        <div class="subject-card">
+                            <div class="subject-icon" style="background: #E64A19;">
+                                <i class="fas fa-mosque"></i>
+                            </div>
+                            <h4>ধর্ম</h4>
+                            <p>ইসলাম ধর্ম শিক্ষা</p>
+                        </div>
+                        <div class="subject-card">
+                            <div class="subject-icon" style="background: #C2185B;">
+                                <i class="fas fa-palette"></i>
+                            </div>
+                            <h4>চারুকলা</h4>
+                            <p>শিল্প ও কারুশিল্প</p>
+                        </div>
+                        <div class="subject-card">
+                            <div class="subject-icon" style="background: #00796B;">
+                                <i class="fas fa-running"></i>
+                            </div>
+                            <h4>শারীরিক শিক্ষা</h4>
+                            <p>ক্রীড়া ও শারীরিক ফিটনেস</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Uniform -->
+                <div class="content-block uniform-section">
+                    <h2><i class="fas fa-tshirt"></i> ইউনিফর্ম</h2>
+                    <div class="uniform-info">
+                        <div class="uniform-item">
+                            <div class="uniform-details">
+                                <h4>সাধারণ দিন</h4>
+                                <ul>
+                                    <li>সাদা প্যান্ট/স্কার্ট</li>
+                                    <li>সাদা শার্ট</li>
+                                    <li>সবুজ বেল্ট</li>
+                                    <li>কালো জুতা</li>
+                                    <li>সবুজ ব্লেজার (শীতে)</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="uniform-item">
+                            <div class="uniform-details">
+                                <h4>পোশাক ও গহনা</h4>
+                                <ul>
+                                    <li>ছেলেদের ক্ষেত্রে: ট্রাউজার এবং শার্টের সাথে সাদা জুতা</li>
+                                    <li>মেয়েদের ক্ষেত্রে: স্কার্ট/সালোয়ার কামিজ এবং সাদা জুতা</li>
+                                    <li>চুল সংক্ষিপ্ত বা বেঁধে রাখতে হবে</li>
+                                    <li>কোনো দামী গহনা পরা যাবে না</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Rules -->
+                <div class="content-block">
+                    <h2><i class="fas fa-rules"></i> বিদ্যালয়ের নিয়মাবলী</h2>
+                    <div class="rules-list">
+                        <div class="rule-item">
+                            <i class="fas fa-clock"></i>
+                            <div class="rule-content">
+                                <h4>সময়ানুবর্তিতা</h4>
+                                <p>সকাল ৭:৫০ এর মধ্যে বিদ্যালয়ে আসতে হবে। বিলম্বে আসলে উপস্থিতি রেজিস্টারে লেখা হবে।</p>
+                            </div>
+                        </div>
+                        <div class="rule-item">
+                            <i class="fas fa-id-card"></i>
+                            <div class="rule-content">
+                                <h4>আইডি কার্ড</h4>
+                                <p>প্রতিদিন বিদ্যালয়ে আসার সময় আইডি কার্ড পরে আসতে হবে।</p>
+                            </div>
+                        </div>
+                        <div class="rule-item">
+                            <i class="fas fa-book"></i>
+                            <div class="rule-content">
+                                <h4>পাঠ্যপুস্তক</h4>
+                                <p>নির্ধারিত পাঠ্যপুস্তক এবং খাতা সবসময় সাথে রাখতে হবে।</p>
+                            </div>
+                        </div>
+                        <div class="rule-item">
+                            <i class="fas fa-mobile-alt"></i>
+                            <div class="rule-content">
+                                <h4>মোবাইল ফোন</h4>
+                                <p>বিদ্যালয়ে মোবাইল ফোন আনা নিষেধ।</p>
+                            </div>
+                        </div>
+                        <div class="rule-item">
+                            <i class="fas fa-hand-paper"></i>
+                            <div class="rule-content">
+                                <h4>শৃঙ্খলা</h4>
+                                <p>শিক্ষকদের সাথে শ্রদ্ধাপূর্ণ আচরণ করতে হবে।</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer id="main-footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>পাঠশালা ই-ম্যানেজার</h3>
+                <p>আমরা শিক্ষার্থীদের উজ্জ্বল ভবিষ্যত গড়তে প্রতিশ্রুতিবদ্ধ।</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>দ্রুত লিংক</h3>
+                <ul>
+                    <li><a href="amra-somproshe.html">আমাদের সম্পর্কে</a></li>
+                    <li><a href="academics.html">একাডেমিক্স</a></li>
+                    <li><a href="admissions.html">ভর্তি তথ্য</a></li>
+                    <li><a href="notices.html">নোটিশ বোর্ড</a></li>
+                    <li><a href="contact.html">যোগাযোগ</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>গুরুত্বপূর্ণ লিংক</h3>
+                <ul>
+                    <li><a href="#">শিক্ষার্থী পোর্টাল</a></li>
+                    <li><a href="#">অভিভাবক পোর্টাল</a></li>
+                    <li><a href="#">অনলাইন ফলাফল</a></li>
+                    <li><a href="#">ডাউনলোড</a></li>
+                    <li><a href="admin-dashboard.html">অ্যাডমিন লগইন</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>যোগাযোগ</h3>
+                <p><i class="fas fa-map-marker-alt"></i> <span id="footer-address">১২৩, শিক্ষা রোড, ঢাকা-১০০০</span></p>
+                <p><i class="fas fa-phone"></i> <span id="footer-phone">+৮৮০১২৩৪৫৬৭৮৯০</span></p>
+                <p><i class="fas fa-envelope"></i> <span id="footer-email">info@pathshala.edu.bd</span></p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; ২০২৫ পাঠশালা ই-ম্যানেজার। সর্বস্বত্ব সংরক্ষিত।</p>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div id="toast-container"></div>
+
+    <!-- Scripts -->
+    <script src="js/storage.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+        // Routine tab functionality
+        function showRoutine(classId) {
+            const tabs = document.querySelectorAll('.routine-tab');
+            const contents = document.querySelectorAll('.routine-table');
+            
+            tabs.forEach(tab => tab.classList.remove('active'));
+            contents.forEach(content => content.classList.remove('active'));
+            
+            event.target.classList.add('active');
+            document.getElementById('routine-' + classId).classList.add('active');
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            StorageManager.init();
+            AppManager.initShared();
+        });
+    </script>
+</body>
+</html>

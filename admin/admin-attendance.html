@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>উপস্থিতি ব্যবস্থাপনা - পাঠশালা ই-ম্যানেজার</title>
+    
+    <!-- Google Fonts for Bengali -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Main Styles -->
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+    <!-- ==================== ADMIN PANEL ==================== -->
+    <div class="admin-layout">
+        <!-- Admin Sidebar -->
+        <aside class="admin-sidebar">
+            <div class="sidebar-header">
+                <a href="admin-dashboard.html">
+                    <img src="../assets/logo.png" alt="Logo">
+                </a>
+                <div class="sidebar-title">
+                    <h3>অ্যাডমিন প্যানেল</h3>
+                    <p>পাঠশালা ই-ম্যানেজার</p>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li>
+                        <a href="admin-dashboard.html">
+                            <i class="fas fa-tachometer-alt"></i>
+                            <span>ড্যাশবোর্ড</span>
+                        </a>
+                    </li>
+                    <li class="has-dropdown">
+                        <div class="dropdown-toggle" onclick="toggleDropdown(this)">
+                            <i class="fas fa-user-graduate"></i>
+                            <span>শিক্ষার্থী</span>
+                            <i class="fas fa-chevron-down arrow"></i>
+                        </div>
+                        <ul class="submenu">
+                            <li><a href="admin-students.html"><i class="fas fa-list"></i> সকল শিক্ষার্থী</a></li>
+                            <li><a href="#" onclick="openModal('add-student-modal'); return false;"><i class="fas fa-plus"></i> নতুন যোগ করুন</a></li>
+                            <li><a href="admin-student-attendance.html"><i class="fas fa-calendar-check"></i> উপস্থিতি</a></li>
+                            <li><a href="admin-student-fees.html"><i class="fas fa-money-bill-wave"></i> ফি তালিকা</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-dropdown">
+                        <div class="dropdown-toggle" onclick="toggleDropdown(this)">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                            <span>শিক্ষক</span>
+                            <i class="fas fa-chevron-down arrow"></i>
+                        </div>
+                        <ul class="submenu">
+                            <li><a href="admin-teachers.html"><i class="fas fa-list"></i> সকল শিক্ষক</a></li>
+                            <li><a href="#" onclick="openModal('add-teacher-modal'); return false;"><i class="fas fa-plus"></i> নতুন যোগ করুন</a></li>
+                        </ul>
+                    </li>
+                    <li class="active">
+                        <a href="admin-attendance.html">
+                            <i class="fas fa-calendar-check"></i>
+                            <span>উপস্থিতি</span>
+                        </a>
+                    </li>
+                    <li class="has-dropdown">
+                        <div class="dropdown-toggle" onclick="toggleDropdown(this)">
+                            <i class="fas fa-money-bill-wave"></i>
+                            <span>ফি ম্যানেজমেন্ট</span>
+                            <i class="fas fa-chevron-down arrow"></i>
+                        </div>
+                        <ul class="submenu">
+                            <li><a href="admin-fees.html"><i class="fas fa-list"></i> ফি তালিকা</a></li>
+                            <li><a href="admin-fee-collection.html"><i class="fas fa-coins"></i> ফি সংগ্রহ</a></li>
+                            <li><a href="admin-fee-report.html"><i class="fas fa-chart-bar"></i> ফি রিপোর্ট</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-dropdown">
+                        <div class="dropdown-toggle" onclick="toggleDropdown(this)">
+                            <i class="fas fa-clipboard-list"></i>
+                            <span>পরীক্ষা</span>
+                            <i class="fas fa-chevron-down arrow"></i>
+                        </div>
+                        <ul class="submenu">
+                            <li><a href="admin-exams.html"><i class="fas fa-list"></i> পরীক্ষার তালিকা</a></li>
+                            <li><a href="admin-exam-routine.html"><i class="fas fa-calendar"></i> পরীক্ষার রুটিন</a></li>
+                            <li><a href="admin-results.html"><i class="fas fa-chart-line"></i> ফলাফল</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="admin-payments.html">
+                            <i class="fas fa-credit-card"></i>
+                            <span>পেমেন্ট</span>
+                        </a>
+                    </li>
+                    <li class="has-dropdown">
+                        <div class="dropdown-toggle" onclick="toggleDropdown(this)">
+                            <i class="fas fa-book"></i>
+                            <span>একাডেমিক</span>
+                            <i class="fas fa-chevron-down arrow"></i>
+                        </div>
+                        <ul class="submenu">
+                            <li><a href="admin-classes.html"><i class="fas fa-list"></i> শ্রেণি তালিকা</a></li>
+                            <li><a href="admin-sections.html"><i class="fas fa-layer-group"></i> শাখা/সেকশন</a></li>
+                            <li><a href="admin-subjects.html"><i class="fas fa-book-open"></i> বিষয় তালিকা</a></li>
+                            <li><a href="admin-syllabus.html"><i class="fas fa-scroll"></i> সিলেবাস</a></li>
+                            <li><a href="admin-class-routine.html"><i class="fas fa-calendar-alt"></i> ক্লাস রুটিন</a></li>
+                            <li><a href="admin-academic-calendar.html"><i class="fas fa-calendar-week"></i> একাডেমিক ক্যালেন্ডার</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="admin-notifications.html">
+                            <i class="fas fa-bell"></i>
+                            <span>নোটিফিকেশন</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="admin-settings.html">
+                            <i class="fas fa-cogs"></i>
+                            <span>সেটিংস</span>
+                        </a>
+                    </li>
+                    <li class="logout-item">
+                        <a href="../index.html">
+                            <i class="fas fa-sign-out-alt"></i>
+                            <span>লগআউট</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Sidebar Overlay for Mobile -->
+        <div class="sidebar-overlay" onclick="toggleSidebar()"></div>
+
+        <!-- Admin Main Content -->
+        <main class="admin-main">
+            <!-- Top Bar -->
+            <div class="admin-topbar">
+                <button class="sidebar-toggle" onclick="toggleSidebar()">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="breadcrumb">
+                    <a href="../index.html">সাইট দেখুন</a>
+                    <span><i class="fas fa-chevron-left"></i></span>
+                    <span>অ্যাডমিন প্যানেল</span>
+                    <span><i class="fas fa-chevron-left"></i></span>
+                    <span>উপস্থিতি</span>
+                </div>
+                <div class="admin-actions">
+                    <button class="notification-btn">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-count">৩</span>
+                    </button>
+                    <div class="admin-profile">
+                        <img src="../assets/logo.png" alt="Admin">
+                        <span>অ্যাডমিন</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Attendance Content -->
+            <div class="module-content">
+                <!-- Page Header -->
+                <div class="page-header">
+                    <div class="page-title">
+                        <h2><i class="fas fa-calendar-check"></i> উপস্থিতি ব্যবস্থাপনা</h2>
+                        <p>শিক্ষার্থী এবং শিক্ষকদের উপস্থিতি রেকর্ড করুন</p>
+                    </div>
+                </div>
+
+                <!-- Attendance Controls -->
+                <div class="attendance-controls">
+                    <div class="control-group">
+                        <label>উপস্থিতির ধরন</label>
+                        <select id="attendance-type" onchange="changeAttendanceType()">
+                            <option value="student">শিক্ষার্থী উপস্থিতি</option>
+                            <option value="teacher">শিক্ষক উপস্থিতি</option>
+                        </select>
+                    </div>
+                    <div class="control-group">
+                        <label>তারিখ</label>
+                        <input type="date" id="attendance-date" onchange="loadAttendanceData()">
+                    </div>
+                    <div class="control-group" id="class-select-group">
+                        <label>শ্রেণি নির্বাচন করুন</label>
+                        <select id="attendance-class" onchange="loadAttendanceData()">
+                            <option value="৬ষ্ঠ">৬ষ্ঠ শ্রেণি</option>
+                            <option value="৭ম">৭ম শ্রেণি</option>
+                            <option value="৮ম">৮ম শ্রেণি</option>
+                            <option value="৯ম">৯ম শ্রেণি</option>
+                            <option value="১০ম">১০ম শ্রেণি</option>
+                        </select>
+                    </div>
+                    <button class="btn-success" onclick="saveAttendance()">
+                        <i class="fas fa-save"></i> উপস্থিতি সেভ করুন
+                    </button>
+                </div>
+
+                <!-- Attendance List -->
+                <div class="attendance-list" id="attendance-list">
+                    <div class="empty-state">
+                        <i class="fas fa-clipboard-check"></i>
+                        <p>তারিখ এবং শ্রেণি নির্বাচন করে উপস্থিতি এন্ট্রি করুন</p>
+                    </div>
+                </div>
+
+                <!-- Attendance Report Section -->
+                <div class="attendance-report-section">
+                    <h3><i class="fas fa-chart-bar"></i> উপস্থিতি রিপোর্ট</h3>
+                    <div class="report-controls">
+                        <select id="report-type" onchange="generateAttendanceReport()">
+                            <option value="daily">দৈনিক রিপোর্ট</option>
+                            <option value="monthly">মাসিক রিপোর্ট</option>
+                        </select>
+                        <select id="report-class" onchange="generateAttendanceReport()">
+                            <option value="">সব শ্রেণি</option>
+                            <option value="৬ষ্ঠ">৬ষ্ঠ শ্রেণি</option>
+                            <option value="৭ম">৭ম শ্রেণি</option>
+                            <option value="৮ম">৮ম শ্রেণি</option>
+                            <option value="৯ম">৯ম শ্রেণি</option>
+                            <option value="১০ম">১০ম শ্রেণি</option>
+                        </select>
+                    </div>
+                    <div id="attendance-report-content" class="report-content">
+                        <p class="empty-state">তারিখ এবং শ্রেণি নির্বাচন করে রিপোর্ট দেখুন</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast-container"></div>
+
+    <!-- Scripts -->
+    <script src="../js/storage.js"></script>
+    <script src="../js/app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set today's date
+            document.getElementById('attendance-date').valueAsDate = new Date();
+            
+            // Check URL parameters
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('type') === 'teacher') {
+                document.getElementById('attendance-type').value = 'teacher';
+                document.getElementById('class-select-group').style.display = 'none';
+            }
+            if (urlParams.get('report') === 'true') {
+                generateAttendanceReport();
+            }
+        });
+
+        function changeAttendanceType() {
+            const type = document.getElementById('attendance-type').value;
+            const classSelect = document.getElementById('class-select-group');
+            
+            if (type === 'teacher') {
+                classSelect.style.display = 'none';
+            } else {
+                classSelect.style.display = 'block';
+            }
+            
+            loadAttendanceData();
+        }
+
+        function loadAttendanceData() {
+            const type = document.getElementById('attendance-type').value;
+            const date = document.getElementById('attendance-date').value;
+            const className = document.getElementById('attendance-class').value;
+            const listContainer = document.getElementById('attendance-list');
+            
+            if (type === 'student') {
+                const students = StorageManager.getStudentsByClass(className);
+                
+                if (students.length === 0) {
+                    listContainer.innerHTML = `
+                        <div class="empty-state">
+                            <i class="fas fa-users"></i>
+                            <p>এই শ্রেণিতে কোনো শিক্ষার্থী নেই</p>
+                        </div>
+                    `;
+                    return;
+                }
+                
+                listContainer.innerHTML = `
+                    <div class="attendance-table">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>রোল</th>
+                                    <th>নাম</th>
+                                    <th>শ্রেণি</th>
+                                    <th>উপস্থিতি</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                ${students.map(student => `
+                                    <tr>
+                                        <td>${student.rollNumber}</td>
+                                        <td>${student.banglaName || student.firstName + ' ' + student.lastName}</td>
+                                        <td>${className}</td>
+                                        <td>
+                                            <div class="attendance-buttons">
+                                                <button class="attendance-btn present active" onclick="markAttendance(this, 'present')">উপস্থিত</button>
+                                                <button class="attendance-btn absent" onclick="markAttendance(this, 'absent')">অনুপস্থিত</button>
+                                                <button class="attendance-btn late" onclick="markAttendance(this, 'late')">বিলম্ব</button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                `).join('')}
+                            </tbody>
+                        </table>
+                    </div>
+                `;
+            } else {
+                const teachers = StorageManager.getTeachers();
+                
+                if (teachers.length === 0) {
+                    listContainer.innerHTML = `
+                        <div class="empty-state">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                            <p>কোনো শিক্ষক নেই</p>
+                        </div>
+                    `;
+                    return;
+                }
+                
+                listContainer.innerHTML = `
+                    <div class="attendance-table">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>নাম</th>
+                                    <th>বিষয়</th>
+                                    <th>উপস্থিতি</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                ${teachers.map(teacher => `
+                                    <tr>
+                                        <td>${teacher.name}</td>
+                                        <td>${teacher.subject}</td>
+                                        <td>
+                                            <div class="attendance-buttons">
+                                                <button class="attendance-btn present active" onclick="markAttendance(this, 'present')">উপস্থিত</button>
+                                                <button class="attendance-btn absent" onclick="markAttendance(this, 'absent')">অনুপস্থিত</button>
+                                                <button class="attendance-btn leave" onclick="markAttendance(this, 'leave')">ছুটি</button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                `).join('')}
+                            </tbody>
+                        </table>
+                    </div>
+                `;
+            }
+        }
+
+        function markAttendance(button, status) {
+            const parent = button.parentElement;
+            const buttons = parent.querySelectorAll('.attendance-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+        }
+
+        function saveAttendance() {
+            const type = document.getElementById('attendance-type').value;
+            const date = document.getElementById('attendance-date').value;
+            
+            showToast('উপস্থিতি সেভ করা হয়েছে', 'success');
+        }
+
+        function generateAttendanceReport() {
+            const reportContent = document.getElementById('attendance-report-content');
+            reportContent.innerHTML = `
+                <div class="report-summary">
+                    <div class="summary-card">
+                        <h4>মোট উপস্থিতি</h4>
+                        <p class="percentage">৮৫%</p>
+                    </div>
+                    <div class="summary-card">
+                        <h4>মোট অনুপস্থিতি</h4>
+                        <p class="count">১৫%</p>
+                    </div>
+                    <div class="summary-card">
+                        <h4>আজ উপস্থিত</h4>
+                        <p class="count">৪২৫ জন</p>
+                    </div>
+                </div>
+            `;
+        }
+
+        function toggleSidebar() {
+            const sidebar = document.querySelector('.admin-sidebar');
+            const overlay = document.querySelector('.sidebar-overlay');
+            sidebar.classList.toggle('active');
+            if (overlay) {
+                overlay.classList.toggle('active');
+            }
+        }
+    </script>
+</body>
+</html>

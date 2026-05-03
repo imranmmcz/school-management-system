@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ভর্তি তথ্য - পাঠশালা ই-ম্যানেজার</title>
+    
+    <!-- Google Fonts for Bengali -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Main Styles -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- ==================== HEADER ==================== -->
+    <header id="main-header">
+        <div class="header-container">
+            <div class="logo-section">
+                <a href="index.html">
+                    <img id="school-logo" src="assets/logo.png" alt="স্কুল লোগো">
+                </a>
+                <div class="school-name">
+                    <h1 id="header-school-name">পাঠশালা ই-ম্যানেজার</h1>
+                    <span id="header-school-tagline">আমাদের স্কুল, আমাদের গর্ব</span>
+                </div>
+            </div>
+            <nav class="main-nav">
+                <ul id="nav-menu">
+                    <li><a href="index.html">হোম</a></li>
+                    <li><a href="amra-somproshe.html">আমাদের সম্পর্কে</a></li>
+                    <li><a href="academics.html">একাডেমিক্স</a></li>
+                    <li><a href="admissions.html" class="active">ভর্তি</a></li>
+                    <li><a href="notices.html">নোটিশ</a></li>
+                    <li><a href="contact.html">যোগাযোগ</a></li>
+                    <li><a href="admin-dashboard.html" class="btn-login"><i class="fas fa-user-shield"></i> অ্যাডমিন</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation -->
+    <div id="mobile-nav" class="mobile-nav">
+        <ul id="mobile-nav-menu">
+            <li><a href="index.html">হোম</a></li>
+            <li><a href="amra-somproshe.html">আমাদের সম্পর্কে</a></li>
+            <li><a href="academics.html">একাডেমিক্স</a></li>
+            <li><a href="admissions.html">ভর্তি</a></li>
+            <li><a href="notices.html">নোটিশ</a></li>
+            <li><a href="contact.html">যোগাযোগ</a></li>
+            <li><a href="admin-dashboard.html">অ্যাডমিন প্যানেল</a></li>
+        </ul>
+    </div>
+
+    <!-- ==================== PAGE CONTENT ==================== -->
+    <main class="page-content">
+        <!-- Page Banner -->
+        <section class="page-banner admission-banner">
+            <div class="banner-content">
+                <h1><i class="fas fa-user-plus"></i> ভর্তি তথ্য</h1>
+                <p>আপনার সন্তানের উজ্জ্বল ভবিষ্যতের জন্য আজই ভর্তি হোন</p>
+                <a href="#admission-form" class="btn-primary"><i class="fas fa-clipboard-check"></i> অনলাইন ভর্তি ফর্ম</a>
+            </div>
+        </section>
+
+        <!-- Breadcrumb -->
+        <div class="breadcrumb-nav">
+            <a href="index.html">হোম</a>
+            <span><i class="fas fa-chevron-left"></i></span>
+            <span>ভর্তি তথ্য</span>
+        </div>
+
+        <!-- Admission Content -->
+        <section class="admission-section">
+            <div class="container">
+                <!-- Admission Notice -->
+                <div class="admission-notice">
+                    <div class="notice-header">
+                        <i class="fas fa-bullhorn"></i>
+                        <h2>ভর্তি বিজ্ঞপ্তি ২০২৫</h2>
+                    </div>
+                    <div class="notice-content">
+                        <p>পাঠশালা ই-ম্যানেজারে ২০২৫ শিক্ষাবর্ষে ৬ষ্ঠ থেকে ১০ম শ্রেণিতে নতুন শিক্ষার্থী ভর্তি চলছে। আগ্রহী অভিভাবকদের নির্ধারিত তারিখের মধ্যে আবেদন করতে হবে।</p>
+                        <div class="notice-dates">
+                            <div class="date-item">
+                                <i class="fas fa-calendar-start"></i>
+                                <span>ভর্তি শুরু: ১ জানুয়ারি ২০২৫</span>
+                            </div>
+                            <div class="date-item">
+                                <i class="fas fa-calendar-end"></i>
+                                <span>ভর্তি শেষ: ৩১ মার্চ ২০২৫</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Admission Process -->
+                <div class="content-block">
+                    <h2><i class="fas fa-list-ol"></i> ভর্তি প্রক্রিয়া</h2>
+                    <div class="process-steps">
+                        <div class="step">
+                            <div class="step-number">১</div>
+                            <div class="step-content">
+                                <h4>অনলাইন আবেদন</h4>
+                                <p>অনলাইন ভর্তি ফর্ম পূরণ করুন</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">২</div>
+                            <div class="step-content">
+                                <h4>ডকুমেন্ট জমা</h4>
+                                <p>প্রয়োজনীয় কাগজপত্র জমা দিন</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">৩</div>
+                            <div class="step-content">
+                                <h4>ভর্তি পরীক্ষা</h4>
+                                <p>নির্ধারিত তারিখে পরীক্ষা দিন</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">৪</div>
+                            <div class="step-content">
+                                <h4>ফি পরিশোধ</h4>
+                                <p>ভর্তি ফি পরিশোধ করুন</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">৫</div>
+                            <div class="step-content">
+                                <h4>ভর্তি নিশ্চিত</h4>
+                                <p>ভর্তি সম্পন্ন হলো</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Seat Information -->
+                <div class="content-block">
+                    <h2><i class="fas fa-chair"></i> আসন সংখ্যা</h2>
+                    <div class="seat-grid">
+                        <div class="seat-card">
+                            <div class="seat-class">৬ষ্ঠ শ্রেণি</div>
+                            <div class="seat-info">
+                                <div class="seat-available">
+                                    <span class="seat-number">৪০</span>
+                                    <span class="seat-label">মোট আসন</span>
+                                </div>
+                                <div class="seat-bar">
+                                    <div class="seat-fill" style="width: 65%;"></div>
+                                </div>
+                                <p class="seat-status">২৬টি আসন পূর্ণ</p>
+                            </div>
+                        </div>
+                        <div class="seat-card">
+                            <div class="seat-class">৭ম শ্রেণি</div>
+                            <div class="seat-info">
+                                <div class="seat-available">
+                                    <span class="seat-number">৪০</span>
+                                    <span class="seat-label">মোট আসন</span>
+                                </div>
+                                <div class="seat-bar">
+                                    <div class="seat-fill" style="width: 50%;"></div>
+                                </div>
+                                <p class="seat-status">২০টি আসন পূর্ণ</p>
+                            </div>
+                        </div>
+                        <div class="seat-card">
+                            <div class="seat-class">৮ম শ্রেণি</div>
+                            <div class="seat-info">
+                                <div class="seat-available">
+                                    <span class="seat-number">৪০</span>
+                                    <span class="seat-label">মোট আসন</span>
+                                </div>
+                                <div class="seat-bar">
+                                    <div class="seat-fill" style="width: 75%;"></div>
+                                </div>
+                                <p class="seat-status">৩০টি আসন পূর্ণ</p>
+                            </div>
+                        </div>
+                        <div class="seat-card">
+                            <div class="seat-class">৯ম শ্রেণি</div>
+                            <div class="seat-info">
+                                <div class="seat-available">
+                                    <span class="seat-number">৩৫</span>
+                                    <span class="seat-label">মোট আসন</span>
+                                </div>
+                                <div class="seat-bar">
+                                    <div class="seat-fill" style="width: 80%;"></div>
+                                </div>
+                                <p class="seat-status">২৮টি আসন পূর্ণ</p>
+                            </div>
+                        </div>
+                        <div class="seat-card">
+                            <div class="seat-class">১০ম শ্রেণি</div>
+                            <div class="seat-info">
+                                <div class="seat-available">
+                                    <span class="seat-number">৩৫</span>
+                                    <span class="seat-label">মোট আসন</span>
+                                </div>
+                                <div class="seat-bar">
+                                    <div class="seat-fill" style="width: 90%;"></div>
+                                </div>
+                                <p class="seat-status">৩২টি আসন পূর্ণ</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fee Structure -->
+                <div class="content-block">
+                    <h2><i class="fas fa-money-bill-wave"></i> ফি কাঠামো</h2>
+                    <div class="fee-table-container">
+                        <table class="fee-table">
+                            <thead>
+                                <tr>
+                                    <th>শ্রেণি</th>
+                                    <th>ভর্তি ফি</th>
+                                    <th>মাসিক বেতন</th>
+                                    <th>বার্ষিক ফি</th>
+                                    <th>সর্বমোট (প্রথম মাস)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>৬ষ্ঠ - ৮ম শ্রেণি</td>
+                                    <td>৳২,০০০</td>
+                                    <td>৳৫০০</td>
+                                    <td>৳৩,০০০</td>
+                                    <td>৳৫,৫০০</td>
+                                </tr>
+                                <tr>
+                                    <td>৯ম - ১০ম শ্রেণি</td>
+                                    <td>৳২,০০০</td>
+                                    <td>৳৬০০</td>
+                                    <td>৳৩,০০০</td>
+                                    <td>৳৫,৬০০</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="fee-note">
+                        <p><i class="fas fa-info-circle"></i> উপরের ফি এর মধ্যে লাইব্রেরি ফি, স্পোর্টস ফি এবং ল্যাব ফি অন্তর্ভুক্ত রয়েছে।</p>
+                    </div>
+                </div>
+
+                <!-- Requirements -->
+                <div class="content-block">
+                    <h2><i class="fas fa-clipboard-check"></i> প্রয়োজনীয় কাগজপত্র</h2>
+                    <div class="requirements-grid">
+                        <div class="requirement-item">
+                            <i class="fas fa-file-alt"></i>
+                            <h4>জন্ম নিবন্ধন সনদ</h4>
+                            <p>আবেদনকারীর জন্ম নিবন্ধন সনদের কপি</p>
+                        </div>
+                        <div class="requirement-item">
+                            <i class="fas fa-graduation-cap"></i>
+                            <h4>প্রত্যয়নপত্র</h4>
+                            <p>পূর্ববর্তী বিদ্যালয়ের টিসি/প্রত্যয়নপত্র</p>
+                        </div>
+                        <div class="requirement-item">
+                            <i class="fas fa-image"></i>
+                            <h4>ছবি</h4>
+                            <p>পাসপোর্ট সাইজ ছবি ৪ কপি</p>
+                        </div>
+                        <div class="requirement-item">
+                            <i class="fas fa-id-card"></i>
+                            <h4>অভিভাবকের আইডি</h4>
+                            <p>অভিভাবকের জাতীয় পরিচয়পত্রের কপি</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Online Admission Form -->
+                <div class="content-block" id="admission-form">
+                    <h2><i class="fas fa-edit"></i> অনলাইন ভর্তি ফর্ম</h2>
+                    <form id="admission-form" class="admission-form">
+                        <div class="form-section">
+                            <h3>শিক্ষার্থীর তথ্য</h3>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>শিক্ষার্থীর নাম *</label>
+                                    <input type="text" id="student-name" required placeholder="বাংলায় পূর্ণ নাম">
+                                </div>
+                                <div class="form-group">
+                                    <label>জন্ম তারিখ *</label>
+                                    <input type="date" id="student-dob" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>লিঙ্গ *</label>
+                                    <select id="student-gender" required>
+                                        <option value="">নির্বাচন করুন</option>
+                                        <option value="male">ছেলে</option>
+                                        <option value="female">মেয়ে</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>ধর্ম *</label>
+                                    <select id="student-religion" required>
+                                        <option value="">নির্বাচন করুন</option>
+                                        <option value="islam">ইসলাম</option>
+                                        <option value="hindu">হিন্দু</option>
+                                        <option value="christian">খ্রিস্টান</option>
+                                        <option value="buddhist">বৌদ্ধ</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>ভর্তি শ্রেণি *</label>
+                                    <select id="admission-class" required>
+                                        <option value="">নির্বাচন করুন</option>
+                                        <option value="6">৬ষ্ঠ শ্রেণি</option>
+                                        <option value="7">৭ম শ্রেণি</option>
+                                        <option value="8">৮ম শ্রেণি</option>
+                                        <option value="9">৯ম শ্রেণি</option>
+                                        <option value="10">১০ম শ্রেণি</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>শাখা</label>
+                                    <select id="admission-section">
+                                        <option value="ক">ক</option>
+                                        <option value="খ">খ</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-section">
+                            <h3>অভিভাবকের তথ্য</h3>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>বাবার নাম *</label>
+                                    <input type="text" id="father-name" required placeholder="বাবার নাম">
+                                </div>
+                                <div class="form-group">
+                                    <label>বাবার ফোন *</label>
+                                    <input type="tel" id="father-phone" required placeholder="+৮৮০১৭XXXXXXXX">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>মায়ের নাম *</label>
+                                    <input type="text" id="mother-name" required placeholder="মায়ের নাম">
+                                </div>
+                                <div class="form-group">
+                                    <label>মায়ের ফোন</label>
+                                    <input type="tel" id="mother-phone" placeholder="+৮৮০১৭XXXXXXXX">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>বর্তমান ঠিকানা *</label>
+                                <textarea id="student-address" rows="2" required placeholder="সম্পূর্ণ ঠিকানা"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-section">
+                            <h3>পূর্ববর্তী শিক্ষা প্রতিষ্ঠান</h3>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>বিদ্যালয়ের নাম</label>
+                                    <input type="text" id="previous-school" placeholder="পূর্ববর্তী বিদ্যালয়ের নাম">
+                                </div>
+                                <div class="form-group">
+                                    <label>শেষ পরীক্ষায় পাস</label>
+                                    <input type="text" id="last-exam" placeholder="যেমন: ৫ম শ্রেণি">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <label class="checkbox-label">
+                                <input type="checkbox" required>
+                                <span>আমি নিশ্চিত করছি যে উপরের সমস্ত তথ্য সঠিক।</span>
+                            </label>
+                        </div>
+
+                        <button type="submit" class="btn-primary btn-large">
+                            <i class="fas fa-paper-plane"></i> আবেদন জমা দিন
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Contact for Admission -->
+                <div class="content-block admission-contact">
+                    <h2><i class="fas fa-headset"></i> ভর্তি সংক্রান্ত যোগাযোগ</h2>
+                    <div class="contact-grid">
+                        <div class="contact-card">
+                            <i class="fas fa-phone-alt"></i>
+                            <h4>ফোন</h4>
+                            <p>+৮৮০১২৩৪৫৬৭৮৯০</p>
+                            <p>+৮৮০১২৩৪৫৬৭৮৯১</p>
+                        </div>
+                        <div class="contact-card">
+                            <i class="fas fa-envelope"></i>
+                            <h4>ইমেইল</h4>
+                            <p>admission@pathshala.edu.bd</p>
+                        </div>
+                        <div class="contact-card">
+                            <i class="fas fa-clock"></i>
+                            <h4>অফিস সময়</h4>
+                            <p>সকাল ৯টা - বিকাল ৪টা</p>
+                            <p>শুক্রবার বন্ধ</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer id="main-footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>পাঠশালা ই-ম্যানেজার</h3>
+                <p>আমরা শিক্ষার্থীদের উজ্জ্বল ভবিষ্যত গড়তে প্রতিশ্রুতিবদ্ধ।</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>দ্রুত লিংক</h3>
+                <ul>
+                    <li><a href="amra-somproshe.html">আমাদের সম্পর্কে</a></li>
+                    <li><a href="academics.html">একাডেমিক্স</a></li>
+                    <li><a href="admissions.html">ভর্তি তথ্য</a></li>
+                    <li><a href="notices.html">নোটিশ বোর্ড</a></li>
+                    <li><a href="contact.html">যোগাযোগ</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>গুরুত্বপূর্ণ লিংক</h3>
+                <ul>
+                    <li><a href="#">শিক্ষার্থী পোর্টাল</a></li>
+                    <li><a href="#">অভিভাবক পোর্টাল</a></li>
+                    <li><a href="#">অনলাইন ফলাফল</a></li>
+                    <li><a href="#">ডাউনলোড</a></li>
+                    <li><a href="admin-dashboard.html">অ্যাডমিন লগইন</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>যোগাযোগ</h3>
+                <p><i class="fas fa-map-marker-alt"></i> <span id="footer-address">১২৩, শিক্ষা রোড, ঢাকা-১০০০</span></p>
+                <p><i class="fas fa-phone"></i> <span id="footer-phone">+৮৮০১২৩৪৫৬৭৮৯০</span></p>
+                <p><i class="fas fa-envelope"></i> <span id="footer-email">info@pathshala.edu.bd</span></p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; ২০২৫ পাঠশালা ই-ম্যানেজার। সর্বস্বত্ব সংরক্ষিত।</p>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div id="toast-container"></div>
+
+    <!-- Scripts -->
+    <script src="js/storage.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+        // Admission form submission
+        document.getElementById('admission-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            showToast('আপনার আবেদন গৃহীত হয়েছে। শীঘ্রই যোগাযোগ করা হবে।', 'success');
+        });
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            StorageManager.init();
+            AppManager.initShared();
+        });
+    </script>
+</body>
+</html>

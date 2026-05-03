@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>শিক্ষার্থী ব্যবস্থাপনা - পাঠশালা ই-ম্যানেজার</title>
+    
+    <!-- Google Fonts for Bengali -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Main Styles -->
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+    <!-- ==================== ADMIN PANEL ==================== -->
+    <div class="admin-layout">
+        <!-- Admin Sidebar -->
+        <aside class="admin-sidebar">
+            <div class="sidebar-header">
+                <a href="admin-dashboard.html">
+                    <img src="../assets/logo.png" alt="Logo">
+                </a>
+                <div class="sidebar-title">
+                    <h3>অ্যাডমিন প্যানেল</h3>
+                    <p>পাঠশালা ই-ম্যানেজার</p>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li>
+                        <a href="admin-dashboard.html">
+                            <i class="fas fa-tachometer-alt"></i>
+                            <span>ড্যাশবোর্ড</span>
+                        </a>
+                    </li>
+                    <li class="has-dropdown active">
+                        <div class="dropdown-toggle" onclick="toggleDropdown(this)">
+                            <i class="fas fa-user-graduate"></i>
+                            <span>শিক্ষার্থী</span>
+                            <i class="fas fa-chevron-down arrow"></i>
+                        </div>
+                        <ul class="submenu">
+                            <li><a href="admin-students.html"><i class="fas fa-list"></i> সকল শিক্ষার্থী</a></li>
+                            <li><a href="#" onclick="openModal('add-student-modal'); return false;"><i class="fas fa-plus"></i> নতুন যোগ করুন</a></li>
+                            <li><a href="admin-student-attendance.html"><i class="fas fa-calendar-check"></i> উপস্থিতি</a></li>
+                            <li><a href="admin-student-fees.html"><i class="fas fa-money-bill-wave"></i> ফি তালিকা</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-dropdown">
+                        <div class="dropdown-toggle" onclick="toggleDropdown(this)">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                            <span>শিক্ষক</span>
+                            <i class="fas fa-chevron-down arrow"></i>
+                        </div>
+                        <ul class="submenu">
+                            <li><a href="admin-teachers.html"><i class="fas fa-list"></i> সকল শিক্ষক</a></li>
+                            <li><a href="#" onclick="openModal('add-teacher-modal'); return false;"><i class="fas fa-plus"></i> নতুন যোগ করুন</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="admin-attendance.html">
+                            <i class="fas fa-calendar-check"></i>
+                            <span>উপস্থিতি</span>
+                        </a>
+                    </li>
+                    <li class="has-dropdown">
+                        <div class="dropdown-toggle" onclick="toggleDropdown(this)">
+                            <i class="fas fa-money-bill-wave"></i>
+                            <span>ফি ম্যানেজমেন্ট</span>
+                            <i class="fas fa-chevron-down arrow"></i>
+                        </div>
+                        <ul class="submenu">
+                            <li><a href="admin-fees.html"><i class="fas fa-list"></i> ফি তালিকা</a></li>
+                            <li><a href="admin-fee-collection.html"><i class="fas fa-coins"></i> ফি সংগ্রহ</a></li>
+                            <li><a href="admin-fee-report.html"><i class="fas fa-chart-bar"></i> ফি রিপোর্ট</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-dropdown">
+                        <div class="dropdown-toggle" onclick="toggleDropdown(this)">
+                            <i class="fas fa-clipboard-list"></i>
+                            <span>পরীক্ষা</span>
+                            <i class="fas fa-chevron-down arrow"></i>
+                        </div>
+                        <ul class="submenu">
+                            <li><a href="admin-exams.html"><i class="fas fa-list"></i> পরীক্ষার তালিকা</a></li>
+                            <li><a href="admin-exam-routine.html"><i class="fas fa-calendar"></i> পরীক্ষার রুটিন</a></li>
+                            <li><a href="admin-results.html"><i class="fas fa-chart-line"></i> ফলাফল</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="admin-payments.html">
+                            <i class="fas fa-credit-card"></i>
+                            <span>পেমেন্ট</span>
+                        </a>
+                    </li>
+                    <li class="has-dropdown">
+                        <div class="dropdown-toggle" onclick="toggleDropdown(this)">
+                            <i class="fas fa-book"></i>
+                            <span>একাডেমিক</span>
+                            <i class="fas fa-chevron-down arrow"></i>
+                        </div>
+                        <ul class="submenu">
+                            <li><a href="admin-classes.html"><i class="fas fa-school"></i> ক্লাস</a></li>
+                            <li><a href="admin-sections.html"><i class="fas fa-layer-group"></i> সেকশন</a></li>
+                            <li><a href="admin-subjects.html"><i class="fas fa-book-open"></i> বিষয়</a></li>
+                            <li><a href="admin-class-routine.html"><i class="fas fa-calendar-alt"></i> ক্লাস রুটিন</a></li>
+                            <li><a href="admin-syllabus.html"><i class="fas fa-list-ol"></i> সিলেবাস</a></li>
+                            <li><a href="admin-academic-calendar.html"><i class="fas fa-calendar"></i> একাডেমিক ক্যালেন্ডার</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="admin-notifications.html">
+                            <i class="fas fa-bell"></i>
+                            <span>নোটিফিকেশন</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="admin-settings.html">
+                            <i class="fas fa-cog"></i>
+                            <span>সেটিংস</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="../index.html">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>লগআউট</span>
+                </a>
+            </div>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="admin-main">
+            <!-- Header -->
+            <header class="admin-header">
+                <div class="header-title">
+                    <h1>শিক্ষার্থী ব্যবস্থাপনা</h1>
+                    <p>সকল শিক্ষার্থীর তালিকা এবং ব্যবস্থাপনা</p>
+                </div>
+                <div class="header-actions">
+                    <button class="btn btn-primary" onclick="openModal('add-student-modal')">
+                        <i class="fas fa-plus"></i> নতুন শিক্ষার্থী যোগ করুন
+                    </button>
+                </div>
+            </header>
+            
+            <!-- Content -->
+            <div class="admin-content">
+                <!-- Search and Filter -->
+                <div class="data-controls">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="student-search" placeholder="শিক্ষার্থী খুঁজুন..." onkeyup="searchStudents()">
+                    </div>
+                    <div class="filter-box">
+                        <select id="class-filter" onchange="filterByClass()">
+                            <option value="">সকল শ্রেণি</option>
+                            <option value="1">৬ষ্ঠ শ্রেণি</option>
+                            <option value="2">৭ম শ্রেণি</option>
+                            <option value="3">৮ম শ্রেণি</option>
+                            <option value="4">৯ম শ্রেণি</option>
+                            <option value="5">১০ম শ্রেণি</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- Students Table -->
+                <div class="data-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ছবি</th>
+                                <th>আইডি</th>
+                                <th>নাম</th>
+                                <th>শ্রেণি</th>
+                                <th>রোল</th>
+                                <th>মোবাইল</th>
+                                <th>অভিভাবক</th>
+                                <th>স্ট্যাটাস</th>
+                                <th>অ্যাকশন</th>
+                            </tr>
+                        </thead>
+                        <tbody id="students-table-body">
+                            <!-- Students will be rendered here -->
+                        </tbody>
+                    </table>
+                </div>
+                
+                <!-- Pagination -->
+                <div class="pagination">
+                    <button class="btn btn-secondary" onclick="prevPage()">
+                        <i class="fas fa-chevron-right"></i> পূর্ববর্তী
+                    </button>
+                    <span id="page-info">পৃষ্ঠা ১ / ১</span>
+                    <button class="btn btn-secondary" onclick="nextPage()">
+                        পরবর্তী <i class="fas fa-chevron-left"></i>
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <!-- ==================== ADD STUDENT MODAL ==================== -->
+    <div class="modal" id="add-student-modal">
+        <div class="modal-content large">
+            <div class="modal-header">
+                <h2>নতুন শিক্ষার্থী যোগ করুন</h2>
+                <button class="modal-close" onclick="closeModal('add-student-modal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="add-student-form">
+                    <div class="form-section">
+                        <h3>ব্যক্তিগত তথ্য</h3>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="student-name">শিক্ষার্থীর নাম <span class="required">*</span></label>
+                                <input type="text" id="student-name" required placeholder="পূর্ণ নাম লিখুন">
+                            </div>
+                            <div class="form-group">
+                                <label for="student-gender">লিঙ্গ <span class="required">*</span></label>
+                                <select id="student-gender" required>
+                                    <option value="">নির্বাচন করুন</option>
+                                    <option value="male">ছেলে</option>
+                                    <option value="female">মেয়ে</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="student-dob">জন্ম তারিখ <span class="required">*</span></label>
+                                <input type="date" id="student-dob" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="student-religion">ধর্ম <span class="required">*</span></label>
+                                <select id="student-religion" required>
+                                    <option value="">নির্বাচন করুন</option>
+                                    <option value="ইসলাম">ইসলাম</option>
+                                    <option value="হিন্দু">হিন্দু</option>
+                                    <option value="খ্রিস্টান">খ্রিস্টান</option>
+                                    <option value="বৌদ্ধ">বৌদ্ধ</option>
+                                    <option value="অন্যান্য">অন্যান্য</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="student-blood">রক্তের গ্রুপ</label>
+                                <select id="student-blood">
+                                    <option value="">জানা নেই</option>
+                                    <option value="A+">A+</option>
+                                    <option value="A-">A-</option>
+                                    <option value="B+">B+</option>
+                                    <option value="B-">B-</option>
+                                    <option value="O+">O+</option>
+                                    <option value="O-">O-</option>
+                                    <option value="AB+">AB+</option>
+                                    <option value="AB-">AB-</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="student-phone">মোবাইল নম্বর</label>
+                                <input type="tel" id="student-phone" placeholder="+৮৮০XXXXXXXXX">
+                            </div>
+                            <div class="form-group">
+                                <label for="student-email">ইমেইল</label>
+                                <input type="email" id="student-email" placeholder="email@example.com">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-section">
+                        <h3>একাডেমিক তথ্য</h3>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="student-class">শ্রেণি <span class="required">*</span></label>
+                                <select id="student-class" required>
+                                    <option value="">নির্বাচন করুন</option>
+                                    <option value="1">৬ষ্ঠ শ্রেণি</option>
+                                    <option value="2">৭ম শ্রেণি</option>
+                                    <option value="3">৮ম শ্রেণি</option>
+                                    <option value="4">৯ম শ্রেণি</option>
+                                    <option value="5">১০ম শ্রেণি</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="student-section">সেকশন <span class="required">*</span></label>
+                                <select id="student-section" required>
+                                    <option value="">নির্বাচন করুন</option>
+                                    <option value="ক">ক</option>
+                                    <option value="খ">খ</option>
+                                    <option value="গ">গ</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="student-roll">রোল নম্বর</label>
+                                <input type="number" id="student-roll" placeholder="রোল নম্বর">
+                            </div>
+                            <div class="form-group">
+                                <label for="admission-date">ভর্তির তারিখ <span class="required">*</span></label>
+                                <input type="date" id="admission-date" required>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-section">
+                        <h3>অভিভাবকের তথ্য</h3>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="father-name">বাবার নাম <span class="required">*</span></label>
+                                <input type="text" id="father-name" required placeholder="বাবার নাম">
+                            </div>
+                            <div class="form-group">
+                                <label for="father-phone">বাবার ফোন <span class="required">*</span></label>
+                                <input type="tel" id="father-phone" required placeholder="+৮৮০XXXXXXXXX">
+                            </div>
+                            <div class="form-group">
+                                <label for="mother-name">মায়ের নাম</label>
+                                <input type="text" id="mother-name" placeholder="মায়ের নাম">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-section">
+                        <h3>ঠিকানা</h3>
+                        <div class="form-group full-width">
+                            <label for="student-address">পূর্ণ ঠিকানা</label>
+                            <textarea id="student-address" rows="3" placeholder="পূর্ণ ঠিকানা লিখুন"></textarea>
+                        </div>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary" onclick="closeModal('add-student-modal')">বাতিল</button>
+                        <button type="submit" class="btn btn-primary">শিক্ষার্থী যোগ করুন</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <!-- ==================== VIEW STUDENT MODAL ==================== -->
+    <div class="modal" id="view-student-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>শিক্ষার্থীর বিবরণ</h2>
+                <button class="modal-close" onclick="closeModal('view-student-modal')">&times;</button>
+            </div>
+            <div class="modal-body" id="student-details">
+                <!-- Student details will be rendered here -->
+            </div>
+        </div>
+    </div>
+    
+    <!-- ==================== TOAST NOTIFICATION ==================== -->
+    <div class="toast-container" id="toast-container"></div>
+    
+    <!-- ==================== SCRIPTS ==================== -->
+    <!-- Storage Manager (Legacy Support) -->
+    <script src="../js/storage.js"></script>
+    
+    <!-- API Client (নতুন ডাইনামিক সিস্টেম) -->
+    <script src="../js/api.js"></script>
+    <script src="../js/data-manager.js"></script>
+    
+    <!-- Admin Functions -->
+    <script src="../js/admin.js"></script>
+    
+    <script>
+        // পেজ ভেরিয়েবল
+        let currentPage = 1;
+        const itemsPerPage = 10;
+        let allStudents = [];
+        let filteredStudents = [];
+        let classesCache = [];
+        
+        // ==================== ডেটা ম্যানেজার ইনিশিয়ালাইজেশন ====================
+        
+        document.addEventListener('DOMContentLoaded', async function() {
+            // ডেটা ম্যানেজার ইনিশিয়ালাইজ করুন (API বা Storage মোড)
+            await DataManager.init({
+                mode: 'hybrid',
+                useAPIFirst: true
+            });
+            
+            console.log('বর্তমান মোড:', DataManager.mode);
+            
+            // ক্লাস ডেটা লোড করুন
+            await loadClasses();
+            
+            // শিক্ষার্থী ডেটা লোড করুন
+            await loadStudents();
+        });
+        
+        // ==================== ক্লাস লোডিং ====================
+        
+        async function loadClasses() {
+            try {
+                classesCache = await DataManager.get('classes');
+                updateClassFilter();
+            } catch (error) {
+                console.error('ক্লাস লোড ব্যর্থ:', error);
+                // ফলব্যাক: লোকাল স্টোরেজ থেকে ক্লাস নিন
+                if (typeof StorageManager !== 'undefined') {
+                    classesCache = StorageManager.getClasses();
+                    updateClassFilter();
+                }
+            }
+        }
+        
+        function updateClassFilter() {
+            const select = document.getElementById('class-filter');
+            const classSelect = document.getElementById('student-class');
+            
+            // ক্লাস ফিল্টার আপডেট
+            select.innerHTML = '<option value="">সকল শ্রেণি</option>' +
+                classesCache.map(c => `<option value="${c.id}">${c.name} - ${c.section}</option>`).join('');
+            
+            // ফর্মের ক্লাস সিলেক্ট আপডেট
+            classSelect.innerHTML = '<option value="">নির্বাচন করুন</option>' +
+                classesCache.map(c => `<option value="${c.id}">${c.name} - ${c.section}</option>`).join('');
+        }
+        
+        // ==================== শিক্ষার্থী লোডিং (API সিস্টেম) ====================
+        
+        async function loadStudents() {
+            try {
+                showLoader();
+                
+                // এপিআই থেকে শিক্ষার্থী ডেটা নিন
+                allStudents = await DataManager.get('students');
+                
+                // যদি খালি হয়, ডিফল্ট ডেটা যোগ করুন (শুধু স্টোরেজ মোডে)
+                if (allStudents.length === 0 && DataManager.mode === 'storage') {
+                    // ডিফল্ট স্টুডেন্ট ডেটা ইতিমধ্যে StorageManager এ আছে
+                    allStudents = StorageManager.getStudents();
+                }
+                
+                filteredStudents = [...allStudents];
+                renderStudents();
+                updatePagination();
+                
+            } catch (error) {
+                console.error('শিক্ষার্থী লোড ব্যর্থ:', error);
+                showToast('শিক্ষার্থী ডেটা লোড ব্যর্থ হয়েছে', 'error');
+                
+                // ফলব্যাক: স্টোরেজ থেকে লোড করুন
+                if (typeof StorageManager !== 'undefined') {
+                    allStudents = StorageManager.getStudents();
+                    filteredStudents = [...allStudents];
+                    renderStudents();
+                }
+            } finally {
+                hideLoader();
+            }
+        }
+        
+        // ==================== রেন্ডার ফাংশন ====================
+        
+        async function renderStudents() {
+            const startIndex = (currentPage - 1) * itemsPerPage;
+            const endIndex = startIndex + itemsPerPage;
+            const pageStudents = filteredStudents.slice(startIndex, endIndex);
+            
+            const tbody = document.getElementById('students-table-body');
+            
+            if (pageStudents.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="9" class="empty-state">কোনো শিক্ষার্থী পাওয়া যায়নি</td></tr>';
+                return;
+            }
+            
+            // ক্লাস নেম ম্যাপিং
+            const classMap = {};
+            classesCache.forEach(c => {
+                classMap[c.id] = c;
+            });
+            
+            tbody.innerHTML = await Promise.all(pageStudents.map(async student => {
+                const classObj = classMap[student.classId];
+                const studentId = student._id || student.id || student.studentId;
+                
+                return `
+                    <tr>
+                        <td>
+                            <img src="${student.image || '../assets/logo.png'}" alt="${student.banglaName}" class="student-thumbnail" 
+                                onerror="this.src='../assets/logo.png'">
+                        </td>
+                        <td>${student.studentId || '-'}</td>
+                        <td>${student.banglaName || student.firstName + ' ' + student.lastName}</td>
+                        <td>${classObj ? classObj.name : '-'}</td>
+                        <td>${student.rollNumber || '-'}</td>
+                        <td>${student.phone || '-'}</td>
+                        <td>${student.fatherName || '-'}</td>
+                        <td>
+                            <span class="status-badge ${student.status === 'active' ? 'status-active' : 'status-inactive'}">
+                                ${student.status === 'active' ? 'সক্রিয়' : 'নিষ্ক্রিয়'}
+                            </span>
+                        </td>
+                        <td>
+                            <div class="action-buttons">
+                                <button class="btn-icon" title="দেখুন" onclick="viewStudent('${studentId}')">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <button class="btn-icon" title="সম্পাদনা" onclick="editStudent('${studentId}')">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button class="btn-icon" title="আইডি কার্ড" onclick="viewIDCard('${studentId}')">
+                                    <i class="fas fa-id-card"></i>
+                                </button>
+                                <button class="btn-icon danger" title="মুছুন" onclick="deleteStudent('${studentId}')">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+            })).then(rows => rows.join(''));
+        }
+        
+        // ==================== শিক্ষার্থী দেখুন ====================
+        
+        async function viewStudent(id) {
+            try {
+                // এপিআই থেকে শিক্ষার্থী ডেটা নিন
+                let student = await DataManager.getById('students', id);
+                
+                // যদি স্টোরেজ মোড হয়
+                if (!student && DataManager.mode === 'storage') {
+                    student = StorageManager.getStudentById(id);
+                }
+                
+                if (!student) {
+                    showToast('শিক্ষার্থী পাওয়া যায়নি', 'error');
+                    return;
+                }
+                
+                // ক্লাস অবজেক্ট
+                const classObj = classesCache.find(c => c.id === student.classId);
+                
+                // ফি সারসংক্ষেপ (শুধু API মোডে)
+                let feeSummary = { total: 0, paid: 0, due: 0 };
+                if (DataManager.mode === 'api') {
+                    try {
+                        feeSummary = await API.fees.getSummary(id);
+                    } catch (e) {
+                        console.log('ফি সারসংক্ষেপ পাওয়া যায়নি');
+                    }
+                } else if (typeof StorageManager !== 'undefined') {
+                    feeSummary = StorageManager.getStudentFeeSummary(id);
+                }
+                
+                document.getElementById('student-details').innerHTML = `
+                    <div class="student-profile">
+                        <img src="${student.image || '../assets/logo.png'}" alt="${student.banglaName}" class="profile-image-large"
+                            onerror="this.src='../assets/logo.png'">
+                        <h3>${student.banglaName || student.firstName + ' ' + student.lastName}</h3>
+                        <p>আইডি: ${student.studentId || '-'}</p>
+                        <span class="status-badge ${student.status === 'active' ? 'status-active' : 'status-inactive'}">
+                            ${student.status === 'active' ? 'সক্রিয়' : 'নিষ্ক্রিয়'}
+                        </span>
+                    </div>
+                    <div class="profile-details">
+                        <div class="detail-row">
+                            <span class="label">শ্রেণি:</span>
+                            <span class="value">${classObj ? classObj.name + ' - ' + classObj.section : '-'}</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="label">রোল:</span>
+                            <span class="value">${student.rollNumber || '-'}</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="label">জন্ম তারিখ:</span>
+                            <span class="value">${student.dateOfBirth || '-'}</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="label">ধর্ম:</span>
+                            <span class="value">${student.religion || '-'}</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="label">মোবাইল:</span>
+                            <span class="value">${student.phone || '-'}</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="label">বাবার নাম:</span>
+                            <span class="value">${student.fatherName || '-'}</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="label">বাবার ফোন:</span>
+                            <span class="value">${student.fatherPhone || '-'}</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="label">ঠিকানা:</span>
+                            <span class="value">${student.address || '-'}</span>
+                        </div>
+                        <div class="fee-summary-box">
+                            <h4>ফি সারসংক্ষেপ</h4>
+                            <p>মোট: ${AdminManager.formatCurrency(feeSummary.total)}</p>
+                            <p>পরিশোধিত: ${AdminManager.formatCurrency(feeSummary.paid)}</p>
+                            <p>বকেয়া: ${AdminManager.formatCurrency(feeSummary.due)}</p>
+                        </div>
+                    </div>
+                `;
+                
+                openModal('view-student-modal');
+                
+            } catch (error) {
+                console.error('শিক্ষার্থী দেখতে এরর:', error);
+                showToast('শিক্ষার্থীর তথ্য লোড ব্যর্থ', 'error');
+            }
+        }
+        
+        // ==================== শিক্ষার্থী সম্পাদনা ====================
+        
+        async function editStudent(id) {
+            showToast('সম্পাদনা ফিচার শীঘ্রই আসছে', 'info');
+        }
+        
+        // ==================== শিক্ষার্থী মুছুন ====================
+        
+        async function deleteStudent(id) {
+            if (!confirm('এই শিক্ষার্থী মুছে ফেলতে চান?')) {
+                return;
+            }
+            
+            try {
+                showLoader();
+                
+                // এপিআই বা স্টোরেজ থেকে মুছুন
+                await DataManager.delete('students', id);
+                
+                showToast('শিক্ষার্থী মুছে ফেলা হয়েছে', 'success');
+                
+                // লিস্ট রিফ্রেশ
+                await loadStudents();
+                
+            } catch (error) {
+                console.error('মুছতে এরর:', error);
+                showToast('শিক্ষার্থী মুছতে ব্যর্থ', 'error');
+            } finally {
+                hideLoader();
+            }
+        }
+        
+        // ==================== আইডি কার্ড দেখুন ====================
+        
+        async function viewIDCard(id) {
+            try {
+                let student = await DataManager.getById('students', id);
+                
+                if (!student && DataManager.mode === 'storage') {
+                    student = StorageManager.getStudentById(id);
+                }
+                
+                if (!student) {
+                    showToast('শিক্ষার্থী পাওয়া যায়নি', 'error');
+                    return;
+                }
+                
+                const classObj = classesCache.find(c => c.id === student.classId);
+                
+                const printWindow = window.open('', '_blank');
+                printWindow.document.write(`
+                    <html>
+                    <head>
+                        <title>আইডি কার্ড - ${student.banglaName || student.firstName}</title>
+                        <style>
+                            * { margin: 0; padding: 0; box-sizing: border-box; }
+                            body { font-family: 'Hind Siliguri', sans-serif; padding: 20px; background: #f0f0f0; }
+                            .id-card {
+                                width: 350px;
+                                background: white;
+                                border-radius: 15px;
+                                overflow: hidden;
+                                box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+                                margin: 0 auto 20px;
+                            }
+                            .card-header {
+                                background: linear-gradient(135deg, #00695C, #004D40);
+                                color: white;
+                                padding: 20px;
+                                text-align: center;
+                            }
+                            .card-header img { width: 60px; height: 60px; border-radius: 50%; background: white; padding: 5px; margin-bottom: 10px; }
+                            .card-header h2 { font-size: 1.2rem; margin-bottom: 5px; }
+                            .card-header p { font-size: 0.8rem; opacity: 0.9; }
+                            .card-body { padding: 20px; text-align: center; }
+                            .card-body img { width: 100px; height: 100px; border-radius: 10px; object-fit: cover; border: 3px solid #00695C; margin-bottom: 15px; }
+                            .card-body h3 { margin-bottom: 5px; color: #1a1a2e; }
+                            .card-info { text-align: right; font-size: 0.85rem; color: #4b5563; }
+                            .card-info p { padding: 5px 0; border-bottom: 1px dashed #e5e7eb; }
+                            .card-footer { background: #00695C; color: white; padding: 10px; text-align: center; font-size: 0.7rem; }
+                            @media print {
+                                body { background: white; }
+                                .id-card { box-shadow: none; border: 2px solid #00695C; }
+                            }
+                        </style>
+                    </head>
+                    <body>
+                        <div class="id-card">
+                            <div class="card-header">
+                                <img src="../assets/logo.png" alt="Logo">
+                                <h2>পাঠশালা ই-ম্যানেজার</h2>
+                                <p>ছাত্র/ছাত্রী পরিচয়পত্র</p>
+                            </div>
+                            <div class="card-body">
+                                <img src="${student.image || '../assets/logo.png'}" alt="${student.banglaName || student.firstName}"
+                                    onerror="this.src='../assets/logo.png'">
+                                <h3>${student.banglaName || student.firstName + ' ' + student.lastName}</h3>
+                                <div class="card-info">
+                                    <p>আইডি: ${student.studentId || '-'}</p>
+                                    <p>শ্রেণি: ${classObj ? classObj.name + ' - ' + classObj.section : '-'}</p>
+                                    <p>রোল: ${student.rollNumber || '-'}</p>
+                                    <p>ফোন: ${student.phone || '-'}</p>
+                                    <p>অভিভাবক: ${student.fatherName || '-'}</p>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                ১২৩, শিক্ষা রোড, ঢাকা-১০০০ | ফোন: +৮৮০১২৩৪৫৬৭৮৯০
+                            </div>
+                        </div>
+                        <script>window.print();<\/script>
+                    </body>
+                    </html>
+                `);
+                
+            } catch (error) {
+                console.error('আইডি কার্ড এরর:', error);
+                showToast('আইডি কার্ড তৈরি ব্যর্থ', 'error');
+            }
+        }
+        
+        // ==================== সার্চ ফাংশন ====================
+        
+        async function searchStudents() {
+            const query = document.getElementById('student-search').value.toLowerCase().trim();
+            
+            if (!query) {
+                filteredStudents = [...allStudents];
+            } else {
+                // API সার্চ বা লোকাল সার্চ
+                if (DataManager.mode === 'api') {
+                    try {
+                        filteredStudents = await API.students.search(query);
+                    } catch (error) {
+                        // ফলব্যাক: লোকাল ফিল্টার
+                        filteredStudents = allStudents.filter(s => 
+                            (s.banglaName || '').toLowerCase().includes(query) ||
+                            (s.studentId || '').toLowerCase().includes(query) ||
+                            (s.fatherName || '').toLowerCase().includes(query)
+                        );
+                    }
+                } else {
+                    filteredStudents = allStudents.filter(s => 
+                        (s.banglaName || '').toLowerCase().includes(query) ||
+                        (s.studentId || '').toLowerCase().includes(query) ||
+                        (s.fatherName || '').toLowerCase().includes(query)
+                    );
+                }
+            }
+            
+            currentPage = 1;
+            renderStudents();
+            updatePagination();
+        }
+        
+        // ==================== ক্লাস অনুযায়ী ফিল্টার ====================
+        
+        async function filterByClass() {
+            const classId = document.getElementById('class-filter').value;
+            
+            if (!classId) {
+                filteredStudents = [...allStudents];
+            } else {
+                if (DataManager.mode === 'api') {
+                    try {
+                        filteredStudents = await API.students.getByClass(classId);
+                    } catch (error) {
+                        filteredStudents = allStudents.filter(s => s.classId === parseInt(classId));
+                    }
+                } else {
+                    filteredStudents = allStudents.filter(s => s.classId === parseInt(classId));
+                }
+            }
+            
+            currentPage = 1;
+            renderStudents();
+            updatePagination();
+        }
+        
+        // ==================== পেজিনেশন ====================
+        
+        function updatePagination() {
+            const totalPages = Math.ceil(filteredStudents.length / itemsPerPage);
+            document.getElementById('page-info').textContent = `পৃষ্ঠা ${currentPage} / ${totalPages || 1}`;
+        }
+        
+        function prevPage() {
+            if (currentPage > 1) {
+                currentPage--;
+                renderStudents();
+                updatePagination();
+            }
+        }
+        
+        function nextPage() {
+            const totalPages = Math.ceil(filteredStudents.length / itemsPerPage);
+            if (currentPage < totalPages) {
+                currentPage++;
+                renderStudents();
+                updatePagination();
+            }
+        }
+        
+        // ==================== ফর্ম সাবমিশন (নতুন শিক্ষার্থী যোগ) ====================
+        
+        document.getElementById('add-student-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            try {
+                showLoader();
+                
+                // স্টুডেন্ট আইডি জেনারেট
+                const currentYear = new Date().getFullYear();
+                const nextId = allStudents.length + 1;
+                const studentId = `STU-${currentYear}-${String(nextId).padStart(3, '0')}`;
+                
+                const studentData = {
+                    studentId: studentId,
+                    firstName: document.getElementById('student-name').value.split(' ')[0],
+                    lastName: document.getElementById('student-name').value.split(' ').slice(1).join(' ') || '',
+                    banglaName: document.getElementById('student-name').value,
+                    gender: document.getElementById('student-gender').value,
+                    dateOfBirth: document.getElementById('student-dob').value,
+                    religion: document.getElementById('student-religion').value,
+                    bloodGroup: document.getElementById('student-blood').value,
+                    phone: document.getElementById('student-phone').value,
+                    email: document.getElementById('student-email').value,
+                    classId: parseInt(document.getElementById('student-class').value),
+                    section: document.getElementById('student-section').value,
+                    rollNumber: parseInt(document.getElementById('student-roll').value) || 0,
+                    admissionDate: document.getElementById('admission-date').value,
+                    image: '',
+                    status: 'active',
+                    fatherName: document.getElementById('father-name').value,
+                    fatherPhone: document.getElementById('father-phone').value,
+                    motherName: document.getElementById('mother-name').value,
+                    address: document.getElementById('student-address').value
+                };
+                
+                // এপিআই বা স্টোরেজে সেভ করুন
+                await DataManager.create('students', studentData);
+                
+                showToast('শিক্ষার্থী যোগ করা হয়েছে', 'success');
+                
+                // মডাল বন্ধ করুন এবং ফর্ম রিসেট করুন
+                closeModal('add-student-modal');
+                this.reset();
+                
+                // ডেটা রিফ্রেশ
+                await loadStudents();
+                
+            } catch (error) {
+                console.error('শিক্ষার্থী যোগ এরর:', error);
+                showToast('শিক্ষার্থী যোগ ব্যর্থ হয়েছে', 'error');
+            } finally {
+                hideLoader();
+            }
+        });
+        
+    </script>
+</body>
+</html>

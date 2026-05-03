@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>একাডেমিক ক্যালেন্ডার - স্কুল ম্যানেজমেন্ট সিস্টেম</title>
+    <link rel="stylesheet" href="../css/admin.css">
+    <style>
+        .calendar-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 20px;
+        }
+        
+        .calendar-view {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .calendar-header h3 {
+            font-size: 1.2rem;
+            color: #333;
+        }
+        
+        .calendar-nav {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .calendar-nav button {
+            padding: 8px 15px;
+            border: none;
+            background: #4CAF50;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+        }
+        
+        .calendar-day-header {
+            text-align: center;
+            padding: 10px;
+            font-weight: bold;
+            color: #666;
+            background: #f5f5f5;
+            border-radius: 4px;
+        }
+        
+        .calendar-day {
+            text-align: center;
+            padding: 15px 5px;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            min-height: 80px;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+        }
+        
+        .calendar-day:hover {
+            background: #f0f0f0;
+        }
+        
+        .calendar-day.other-month {
+            color: #ccc;
+            background: #fafafa;
+        }
+        
+        .calendar-day.today {
+            background: #e8f5e9;
+            border-color: #4CAF50;
+        }
+        
+        .calendar-day .day-number {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .event-indicator {
+            font-size: 0.7rem;
+            padding: 2px 4px;
+            background: #2196F3;
+            color: white;
+            border-radius: 3px;
+            margin-top: 2px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .event-indicator.holiday {
+            background: #f44336;
+        }
+        
+        .event-indicator.exam {
+            background: #ff9800;
+        }
+        
+        .event-indicator.important {
+            background: #9c27b0;
+        }
+        
+        .upcoming-events {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .upcoming-events h3 {
+            margin-bottom: 15px;
+            color: #333;
+            border-bottom: 2px solid #4CAF50;
+            padding-bottom: 10px;
+        }
+        
+        .event-list {
+            max-height: 500px;
+            overflow-y: auto;
+        }
+        
+        .event-item {
+            padding: 12px;
+            border-left: 4px solid #4CAF50;
+            background: #f9f9f9;
+            margin-bottom: 10px;
+            border-radius: 4px;
+        }
+        
+        .event-item.holiday {
+            border-left-color: #f44336;
+        }
+        
+        .event-item.exam {
+            border-left-color: #ff9800;
+        }
+        
+        .event-item.important {
+            border-left-color: #9c27b0;
+        }
+        
+        .event-item .event-date {
+            font-size: 0.85rem;
+            color: #666;
+            margin-bottom: 5px;
+        }
+        
+        .event-item .event-title {
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .event-item .event-description {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 5px;
+        }
+        
+        /* Event Types Legend */
+        .event-legend {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.85rem;
+        }
+        
+        .legend-color {
+            width: 15px;
+            height: 15px;
+            border-radius: 3px;
+        }
+        
+        .legend-color.academic { background: #4CAF50; }
+        .legend-color.holiday { background: #f44336; }
+        .legend-color.exam { background: #ff9800; }
+        .legend-color.important { background: #9c27b0; }
+    </style>
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>স্কুল ম্যানেজমেন্ট</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="admin-dashboard.html">ড্যাশবোর্ড</a></li>
+                    <li><a href="admin-students.html">শিক্ষার্থী</a></li>
+                    <li><a href="admin-teachers.html">শিক্ষক</a></li>
+                    <li><a href="admin-parents.html">অভিভাবক</a></li>
+                    <li><a href="admin-attendance.html">উপস্থিতি</a></li>
+                    <li><a href="admin-exam.html">পরীক্ষা</a></li>
+                    <li><a href="admin-results.html">ফলাফল</a></li>
+                    <li><a href="admin-fee-collection.html">ফি সংগ্রহ</a></li>
+                    <li><a href="admin-notice.html">নোটিশ</a></li>
+                    <li><a href="admin-settings.html">সেটিংস</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle">একাডেমিক ▾</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="admin-classes.html">ক্লাস লিস্ট</a></li>
+                            <li><a href="admin-sections.html">সেকশন</a></li>
+                            <li><a href="admin-subjects.html">সাবজেক্ট লিস্ট</a></li>
+                            <li><a href="admin-syllabus.html">সিলেবাস</a></li>
+                            <li><a href="admin-class-routine.html">ক্লাস রুটিন</a></li>
+                            <li><a href="admin-academic-calendar.html" class="active">একাডেমিক ক্যালেন্ডার</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="main-header">
+                <button class="sidebar-toggle">☰</button>
+                <h1>একাডেমিক ক্যালেন্ডার</h1>
+                <div class="user-info">
+                    <span>অ্যাডমিন</span>
+                    <button class="logout-btn">লগআউট</button>
+                </div>
+            </header>
+
+            <div class="content-area">
+                <div class="calendar-container">
+                    <!-- Calendar View -->
+                    <div class="calendar-view">
+                        <div class="calendar-header">
+                            <h3 id="currentMonth">জানুয়ারি ২০২৫</h3>
+                            <div class="calendar-nav">
+                                <button onclick="changeMonth(-1)">◀ পূর্ববর্তী</button>
+                                <button onclick="goToToday()">আজ</button>
+                                <button onclick="changeMonth(1)">পরবর্তী ▶</button>
+                            </div>
+                        </div>
+                        <div class="calendar-grid" id="calendarGrid">
+                            <!-- Calendar will be rendered here -->
+                        </div>
+                        <div class="event-legend">
+                            <div class="legend-item">
+                                <div class="legend-color academic"></div>
+                                <span>একাডেমিক কার্যক্রম</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-color holiday"></div>
+                                <span>ছুটি</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-color exam"></div>
+                                <span>পরীক্ষা</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-color important"></div>
+                                <span>গুরুত্বপূর্ণ</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Upcoming Events -->
+                    <div class="upcoming-events">
+                        <h3>আসন্ন ইভেন্ট</h3>
+                        <div class="event-actions" style="margin-bottom: 15px;">
+                            <button class="btn btn-primary" onclick="openAddEventModal()">নতুন ইভেন্ট যোগ করুন</button>
+                        </div>
+                        <div class="event-list" id="upcomingEvents">
+                            <!-- Events will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- All Events Table -->
+                <div class="card" style="margin-top: 20px;">
+                    <div class="card-header">
+                        <h3>সকল ইভেন্ট</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table id="eventsTable">
+                                <thead>
+                                    <tr>
+                                        <th>ক্রমিক</th>
+                                        <th>তারিখ</th>
+                                        <th>শিরোনাম</th>
+                                        <th>ধরন</th>
+                                        <th>বিবরণ</th>
+                                        <th>অ্যাকশন</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="eventsTableBody">
+                                    <!-- Data will be loaded here -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Add Event Modal -->
+    <div id="addEventModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>নতুন ইভেন্ট যোগ করুন</h3>
+                <button class="close-btn" onclick="closeAddEventModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="addEventForm">
+                    <div class="form-group">
+                        <label for="eventTitle">শিরোনাম</label>
+                        <input type="text" id="eventTitle" placeholder="ইভেন্ট শিরোনাম" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="eventDate">তারিখ</label>
+                        <input type="date" id="eventDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="eventType">ধরন</label>
+                        <select id="eventType" required>
+                            <option value="academic">একাডেমিক কার্যক্রম</option>
+                            <option value="holiday">ছুটি</option>
+                            <option value="exam">পরীক্ষা</option>
+                            <option value="important">গুরুত্বপূর্ণ</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="eventDescription">বিবরণ</label>
+                        <textarea id="eventDescription" rows="3" placeholder="ইভেন্টের বিবরণ"></textarea>
+                    </div>
+                    <div class="modal-actions">
+                        <button type="submit" class="btn btn-primary">ইভেন্ট যোগ করুন</button>
+                        <button type="button" class="btn btn-secondary" onclick="closeAddEventModal()">বাতিল</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Event Modal -->
+    <div id="editEventModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>ইভেন্ট সম্পাদনা করুন</h3>
+                <button class="close-btn" onclick="closeEditEventModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="editEventForm">
+                    <input type="hidden" id="editEventId">
+                    <div class="form-group">
+                        <label for="editEventTitle">শিরোনাম</label>
+                        <input type="text" id="editEventTitle" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editEventDate">তারিখ</label>
+                        <input type="date" id="editEventDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editEventType">ধরন</label>
+                        <select id="editEventType" required>
+                            <option value="academic">একাডেমিক কার্যক্রম</option>
+                            <option value="holiday">ছুটি</option>
+                            <option value="exam">পরীক্ষা</option>
+                            <option value="important">গুরুত্বপূর্ণ</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="editEventDescription">বিবরণ</label>
+                        <textarea id="editEventDescription" rows="3"></textarea>
+                    </div>
+                    <div class="modal-actions">
+                        <button type="submit" class="btn btn-primary">আপডেট করুন</button>
+                        <button type="button" class="btn btn-secondary" onclick="closeEditEventModal()">বাতিল</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete Confirmation Modal -->
+    <div id="deleteEventModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>ডিলিট নিশ্চিতকরণ</h3>
+                <button class="close-btn" onclick="closeDeleteEventModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>আপনি কি নিশ্চিত যে আপনি এই ইভেন্টটি ডিলিট করতে চান?</p>
+                <input type="hidden" id="deleteEventId">
+                <div class="modal-actions">
+                    <button class="btn btn-danger" onclick="confirmDeleteEvent()">হ্যাঁ, ডিলিট করুন</button>
+                    <button class="btn btn-secondary" onclick="closeDeleteEventModal()">না, বাতিল করুন</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <script src="../js/app.js"></script>
+    <script>
+        // Initialize StorageManager
+        const calendarStorage = new StorageManager('academicCalendar');
+        const eventsStorage = new StorageManager('calendarEvents');
+        
+        let currentDate = new Date();
+        
+        // Bengali day names
+        const banglaDays = ['রবি', 'সোম', 'মঙ্গল', 'বুধ', 'বৃহ', 'শুক্র', 'শনি'];
+        const banglaMonths = ['জানুয়ারি', 'ফেব্রুয়ারি', 'মার্চ', 'এপ্রিল', 'মে', 'জুন', 'জুলাই', 'আগস্ট', 'সেপ্টেম্বর', 'অক্টোবর', 'নভেম্বর', 'ডিসেম্বর'];
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            renderCalendar();
+            renderUpcomingEvents();
+            renderEventsTable();
+            initEventListeners();
+            addSampleEvents();
+        });
+
+        function initEventListeners() {
+            document.getElementById('addEventForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                addEvent();
+            });
+            
+            document.getElementById('editEventForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                updateEvent();
+            });
+        }
+
+        function addSampleEvents() {
+            const existingEvents = eventsStorage.getAll();
+            if (existingEvents.length === 0) {
+                const sampleEvents = [
+                    {
+                        title: 'নবীন বরণ',
+                        date: '2025-01-15',
+                        type: 'academic',
+                        description: 'নতুন শিক্ষার্থীদের বরণ অনুষ্ঠান'
+                    },
+                    {
+                        title: 'মাসিক পরীক্ষা শুরু',
+                        date: '2025-01-20',
+                        type: 'exam',
+                        description: 'জানুয়ারি মাসের মাসিক পরীক্ষা শুরু'
+                    },
+                    {
+                        title: 'শীতের ছুটি',
+                        date: '2025-01-25',
+                        type: 'holiday',
+                        description: 'শীতের ছুটি উদযাপন'
+                    },
+                    {
+                        title: 'প্রতিযোগিতামূলক পরীক্ষা',
+                        date: '2025-02-01',
+                        type: 'important',
+                        description: 'বার্ষিক প্রতিযোগিতামূলক পরীক্ষা'
+                    }
+                ];
+                
+                sampleEvents.forEach(event => {
+                    eventsStorage.add(event);
+                });
+            }
+        }
+
+        function renderCalendar() {
+            const grid = document.getElementById('calendarGrid');
+            grid.innerHTML = '';
+            
+            // Add day headers
+            banglaDays.forEach(day => {
+                const header = document.createElement('div');
+                header.className = 'calendar-day-header';
+                header.textContent = day;
+                grid.appendChild(header);
+            });
+            
+            const year = currentDate.getFullYear();
+            const month = currentDate.getMonth();
+            
+            document.getElementById('currentMonth').textContent = `${banglaMonths[month]} ${year}`;
+            
+            const firstDay = new Date(year, month, 1);
+            const lastDay = new Date(year, month + 1, 0);
+            const startingDay = firstDay.getDay();
+            const totalDays = lastDay.getDate();
+            
+            const events = eventsStorage.getAll();
+            
+            // Previous month days
+            const prevMonthLastDay = new Date(year, month, 0).getDate();
+            for (let i = startingDay - 1; i >= 0; i--) {
+                const day = prevMonthLastDay - i;
+                const dayEl = createCalendarDay(day, true, []);
+                grid.appendChild(dayEl);
+            }
+            
+            // Current month days
+            const today = new Date();
+            for (let day = 1; day <= totalDays; day++) {
+                const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+                const dayEvents = events.filter(e => e.date === dateStr);
+                const isToday = today.getDate() === day && today.getMonth() === month && today.getFullYear() === year;
+                
+                const dayEl = createCalendarDay(day, false, dayEvents, isToday);
+                grid.appendChild(dayEl);
+            }
+            
+            // Next month days
+            const remainingDays = 42 - (startingDay + totalDays);
+            for (let day = 1; day <= remainingDays; day++) {
+                const dayEl = createCalendarDay(day, true, []);
+                grid.appendChild(dayEl);
+            }
+        }
+
+        function createCalendarDay(day, isOtherMonth, events, isToday = false) {
+            const dayEl = document.createElement('div');
+            dayEl.className = 'calendar-day';
+            if (isOtherMonth) dayEl.classList.add('other-month');
+            if (isToday) dayEl.classList.add('today');
+            
+            const dayNumber = document.createElement('div');
+            dayNumber.className = 'day-number';
+            dayNumber.textContent = day;
+            dayEl.appendChild(dayNumber);
+            
+            events.slice(0, 2).forEach(event => {
+                const indicator = document.createElement('div');
+                indicator.className = `event-indicator ${event.type}`;
+                indicator.textContent = event.title;
+                dayEl.appendChild(indicator);
+            });
+            
+            if (events.length > 2) {
+                const more = document.createElement('div');
+                more.className = 'event-indicator';
+                more.textContent = `+${events.length - 2} আরও`;
+                dayEl.appendChild(more);
+            }
+            
+            dayEl.onclick = () => {
+                if (events.length > 0) {
+                    showDayEvents(events);
+                } else if (!isOtherMonth) {
+                    openAddEventModal(day);
+                }
+            };
+            
+            return dayEl;
+        }
+
+        function showDayEvents(events) {
+            const list = document.getElementById('upcomingEvents');
+            list.innerHTML = events.map(event => `
+                <div class="event-item ${event.type}">
+                    <div class="event-date">${formatDate(event.date)}</div>
+                    <div class="event-title">${event.title}</div>
+                    <div class="event-description">${event.description || ''}</div>
+                </div>
+            `).join('');
+        }
+
+        function changeMonth(delta) {
+            currentDate.setMonth(currentDate.getMonth() + delta);
+            renderCalendar();
+        }
+
+        function goToToday() {
+            currentDate = new Date();
+            renderCalendar();
+        }
+
+        function renderUpcomingEvents() {
+            const events = eventsStorage.getAll();
+            const today = new Date().toISOString().split('T')[0];
+            const upcoming = events
+                .filter(e => e.date >= today)
+                .sort((a, b) => new Date(a.date) - new Date(b.date))
+                .slice(0, 10);
+            
+            const list = document.getElementById('upcomingEvents');
+            if (upcoming.length === 0) {
+                list.innerHTML = '<p style="text-align: center; color: #666;">কোনো আসন্ন ইভেন্ট নেই</p>';
+                return;
+            }
+            
+            list.innerHTML = upcoming.map(event => `
+                <div class="event-item ${event.type}">
+                    <div class="event-date">${formatDate(event.date)}</div>
+                    <div class="event-title">${event.title}</div>
+                    <div class="event-description">${event.description || ''}</div>
+                </div>
+            `).join('');
+        }
+
+        function renderEventsTable() {
+            const events = eventsStorage.getAll();
+            const tbody = document.getElementById('eventsTableBody');
+            tbody.innerHTML = '';
+            
+            if (events.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="6" style="text-align: center; padding: 20px;">কোনো ইভেন্ট পাওয়া যায়নি</td></tr>';
+                return;
+            }
+            
+            events.sort((a, b) => new Date(a.date) - new Date(b.date)).forEach((event, index) => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${index + 1}</td>
+                    <td>${formatDate(event.date)}</td>
+                    <td>${event.title}</td>
+                    <td><span class="event-indicator ${event.type}">${getEventTypeLabel(event.type)}</span></td>
+                    <td>${event.description || '-'}</td>
+                    <td class="action-buttons">
+                        <button class="btn btn-edit" onclick="openEditEventModal('${event.id}')">সম্পাদনা</button>
+                        <button class="btn btn-delete" onclick="openDeleteEventModal('${event.id}')">ডিলিট</button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function getEventTypeLabel(type) {
+            const labels = {
+                academic: 'একাডেমিক',
+                holiday: 'ছুটি',
+                exam: 'পরীক্ষা',
+                important: 'গুরুত্বপূর্ণ'
+            };
+            return labels[type] || type;
+        }
+
+        function formatDate(dateStr) {
+            const date = new Date(dateStr);
+            const day = date.getDate();
+            const month = banglaMonths[date.getMonth()];
+            const year = date.getFullYear();
+            return `${day} ${month} ${year}`;
+        }
+
+        function openAddEventModal(date = null) {
+            document.getElementById('addEventForm').reset();
+            if (date) {
+                document.getElementById('eventDate').value = date;
+            }
+            document.getElementById('addEventModal').style.display = 'flex';
+        }
+
+        function closeAddEventModal() {
+            document.getElementById('addEventModal').style.display = 'none';
+        }
+
+        function addEvent() {
+            const event = {
+                title: document.getElementById('eventTitle').value,
+                date: document.getElementById('eventDate').value,
+                type: document.getElementById('eventType').value,
+                description: document.getElementById('eventDescription').value,
+                createdAt: new Date().toISOString()
+            };
+            
+            eventsStorage.add(event);
+            showToast('ইভেন্ট সফলভাবে যোগ করা হয়েছে!');
+            closeAddEventModal();
+            renderCalendar();
+            renderUpcomingEvents();
+            renderEventsTable();
+        }
+
+        function openEditEventModal(id) {
+            const event = eventsStorage.getById(id);
+            if (event) {
+                document.getElementById('editEventId').value = event.id;
+                document.getElementById('editEventTitle').value = event.title;
+                document.getElementById('editEventDate').value = event.date;
+                document.getElementById('editEventType').value = event.type;
+                document.getElementById('editEventDescription').value = event.description || '';
+                document.getElementById('editEventModal').style.display = 'flex';
+            }
+        }
+
+        function closeEditEventModal() {
+            document.getElementById('editEventModal').style.display = 'none';
+        }
+
+        function updateEvent() {
+            const id = document.getElementById('editEventId').value;
+            const eventData = {
+                title: document.getElementById('editEventTitle').value,
+                date: document.getElementById('editEventDate').value,
+                type: document.getElementById('editEventType').value,
+                description: document.getElementById('editEventDescription').value,
+                updatedAt: new Date().toISOString()
+            };
+            
+            eventsStorage.update(id, eventData);
+            showToast('ইভেন্ট সফলভাবে আপডেট হয়েছে!');
+            closeEditEventModal();
+            renderCalendar();
+            renderUpcomingEvents();
+            renderEventsTable();
+        }
+
+        function openDeleteEventModal(id) {
+            document.getElementById('deleteEventId').value = id;
+            document.getElementById('deleteEventModal').style.display = 'flex';
+        }
+
+        function closeDeleteEventModal() {
+            document.getElementById('deleteEventModal').style.display = 'none';
+        }
+
+        function confirmDeleteEvent() {
+            const id = document.getElementById('deleteEventId').value;
+            eventsStorage.delete(id);
+            showToast('ইভেন্ট সফলভাবে ডিলিট হয়েছে!');
+            closeDeleteEventModal();
+            renderCalendar();
+            renderUpcomingEvents();
+            renderEventsTable();
+        }
+
+        // Close modals when clicking outside
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>

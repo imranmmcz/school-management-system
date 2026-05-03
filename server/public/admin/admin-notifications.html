@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>নোটিফিকেশন - পাঠশালা ই-ম্যানেজার</title>
+    
+    <!-- Google Fonts for Bengali -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Main Styles -->
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+    <!-- ==================== ADMIN PANEL ==================== -->
+    <div class="admin-layout">
+        <!-- Admin Sidebar -->
+        <aside class="admin-sidebar">
+            <div class="sidebar-header">
+                <a href="admin-dashboard.html">
+                    <img src="../assets/logo.png" alt="Logo">
+                </a>
+                <div class="sidebar-title">
+                    <h3>অ্যাডমিন প্যানেল</h3>
+                    <p>পাঠশালা ই-ম্যানেজার</p>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li>
+                        <a href="admin-dashboard.html">
+                            <i class="fas fa-tachometer-alt"></i>
+                            <span>ড্যাশবোর্ড</span>
+                        </a>
+                    </li>
+                    <li class="has-dropdown">
+                        <div class="dropdown-toggle" onclick="toggleDropdown(this)">
+                            <i class="fas fa-user-graduate"></i>
+                            <span>শিক্ষার্থী</span>
+                            <i class="fas fa-chevron-down arrow"></i>
+                        </div>
+                        <ul class="submenu">
+                            <li><a href="admin-students.html"><i class="fas fa-list"></i> সকল শিক্ষার্থী</a></li>
+                            <li><a href="#" onclick="openModal('add-student-modal'); return false;"><i class="fas fa-plus"></i> নতুন যোগ করুন</a></li>
+                            <li><a href="admin-student-attendance.html"><i class="fas fa-calendar-check"></i> উপস্থিতি</a></li>
+                            <li><a href="admin-student-fees.html"><i class="fas fa-money-bill-wave"></i> ফি তালিকা</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-dropdown">
+                        <div class="dropdown-toggle" onclick="toggleDropdown(this)">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                            <span>শিক্ষক</span>
+                            <i class="fas fa-chevron-down arrow"></i>
+                        </div>
+                        <ul class="submenu">
+                            <li><a href="admin-teachers.html"><i class="fas fa-list"></i> সকল শিক্ষক</a></li>
+                            <li><a href="#" onclick="openModal('add-teacher-modal'); return false;"><i class="fas fa-plus"></i> নতুন যোগ করুন</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="admin-attendance.html">
+                            <i class="fas fa-calendar-check"></i>
+                            <span>উপস্থিতি</span>
+                        </a>
+                    </li>
+                    <li class="has-dropdown">
+                        <div class="dropdown-toggle" onclick="toggleDropdown(this)">
+                            <i class="fas fa-money-bill-wave"></i>
+                            <span>ফি ম্যানেজমেন্ট</span>
+                            <i class="fas fa-chevron-down arrow"></i>
+                        </div>
+                        <ul class="submenu">
+                            <li><a href="admin-fees.html"><i class="fas fa-list"></i> ফি তালিকা</a></li>
+                            <li><a href="admin-fee-collection.html"><i class="fas fa-coins"></i> ফি সংগ্রহ</a></li>
+                            <li><a href="admin-fee-report.html"><i class="fas fa-chart-bar"></i> ফি রিপোর্ট</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-dropdown">
+                        <div class="dropdown-toggle" onclick="toggleDropdown(this)">
+                            <i class="fas fa-clipboard-list"></i>
+                            <span>পরীক্ষা</span>
+                            <i class="fas fa-chevron-down arrow"></i>
+                        </div>
+                        <ul class="submenu">
+                            <li><a href="admin-exams.html"><i class="fas fa-list"></i> পরীক্ষার তালিকা</a></li>
+                            <li><a href="admin-exam-routine.html"><i class="fas fa-calendar"></i> পরীক্ষার রুটিন</a></li>
+                            <li><a href="admin-results.html"><i class="fas fa-chart-line"></i> ফলাফল</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="admin-payments.html">
+                            <i class="fas fa-credit-card"></i>
+                            <span>পেমেন্ট</span>
+                        </a>
+                    </li>
+                    <li class="has-dropdown">
+                        <div class="dropdown-toggle" onclick="toggleDropdown(this)">
+                            <i class="fas fa-book"></i>
+                            <span>একাডেমিক</span>
+                            <i class="fas fa-chevron-down arrow"></i>
+                        </div>
+                        <ul class="submenu">
+                            <li><a href="admin-classes.html"><i class="fas fa-list"></i> শ্রেণি তালিকা</a></li>
+                            <li><a href="admin-sections.html"><i class="fas fa-layer-group"></i> শাখা/সেকশন</a></li>
+                            <li><a href="admin-subjects.html"><i class="fas fa-book-open"></i> বিষয় তালিকা</a></li>
+                            <li><a href="admin-syllabus.html"><i class="fas fa-scroll"></i> সিলেবাস</a></li>
+                            <li><a href="admin-class-routine.html"><i class="fas fa-calendar-alt"></i> ক্লাস রুটিন</a></li>
+                            <li><a href="admin-academic-calendar.html"><i class="fas fa-calendar-week"></i> একাডেমিক ক্যালেন্ডার</a></li>
+                        </ul>
+                    </li>
+                    <li class="active">
+                        <a href="admin-notifications.html">
+                            <i class="fas fa-bell"></i>
+                            <span>নোটিফিকেশন</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="admin-settings.html">
+                            <i class="fas fa-cogs"></i>
+                            <span>সেটিংস</span>
+                        </a>
+                    </li>
+                    <li class="logout-item">
+                        <a href="../index.html">
+                            <i class="fas fa-sign-out-alt"></i>
+                            <span>লগআউট</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Sidebar Overlay for Mobile -->
+        <div class="sidebar-overlay" onclick="toggleSidebar()"></div>
+
+        <!-- Admin Main Content -->
+        <main class="admin-main">
+            <!-- Top Bar -->
+            <div class="admin-topbar">
+                <button class="sidebar-toggle" onclick="toggleSidebar()">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="breadcrumb">
+                    <a href="../index.html">সাইট দেখুন</a>
+                    <span><i class="fas fa-chevron-left"></i></span>
+                    <span>অ্যাডমিন প্যানেল</span>
+                    <span><i class="fas fa-chevron-left"></i></span>
+                    <span>নোটিফিকেশন</span>
+                </div>
+                <div class="admin-actions">
+                    <button class="notification-btn">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-count">৩</span>
+                    </button>
+                    <div class="admin-profile">
+                        <img src="../assets/logo.png" alt="Admin">
+                        <span>অ্যাডমিন</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Notifications Content -->
+            <div class="module-content">
+                <!-- Page Header -->
+                <div class="page-header">
+                    <div class="page-title">
+                        <h2><i class="fas fa-bell"></i> নোটিফিকেশন</h2>
+                        <p>SMS, Email এবং WhatsApp নোটিফিকেশন পাঠান</p>
+                    </div>
+                </div>
+
+                <!-- Notification Composer -->
+                <div class="notification-composer">
+                    <h3>নোটিফিকেশন কম্পোজার</h3>
+                    <form id="notification-form">
+                        <div class="form-group">
+                            <label>রিসিভার নির্বাচন করুন</label>
+                            <div class="receiver-options">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="notify-all-students" onchange="updateRecipientCount()">
+                                    সব শিক্ষার্থী
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="notify-all-teachers" onchange="updateRecipientCount()">
+                                    সব শিক্ষক
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="notify-specific-class" onchange="updateRecipientCount()">
+                                    নির্দিষ্ট শ্রেণি
+                                </label>
+                            </div>
+                            <select id="notify-class-select" style="margin-top: 10px; display: none;">
+                                <option value="৬ষ্ঠ">৬ষ্ঠ শ্রেণি</option>
+                                <option value="৭ম">৭ম শ্রেণি</option>
+                                <option value="৮ম">৮ম শ্রেণি</option>
+                                <option value="৯ম">৯ম শ্রেণি</option>
+                                <option value="১০ম">১০ম শ্রেণি</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>মেসেজ টাইপ</label>
+                            <div class="message-type-options">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="msg-sms" checked>
+                                    <i class="fas fa-sms"></i> SMS
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="msg-email" checked>
+                                    <i class="fas fa-envelope"></i> Email
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="msg-whatsapp" checked>
+                                    <i class="fab fa-whatsapp"></i> WhatsApp
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>মেসেজ</label>
+                            <textarea id="notification-message" rows="5" placeholder="আপনার মেসেজ লিখুন..."></textarea>
+                            <p class="char-count">বর্ণ: <span id="char-count">০</span></p>
+                        </div>
+                        
+                        <div class="recipient-count">
+                            <p>মোট রিসিভার: <span id="total-recipients">০</span> জন</p>
+                        </div>
+                        
+                        <button type="submit" class="btn-primary">
+                            <i class="fas fa-paper-plane"></i> নোটিফিকেশন পাঠান
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Notification History -->
+                <div class="notification-history">
+                    <h3>নোটিফিকেশন ইতিহাস</h3>
+                    <div id="notification-history-list">
+                        <div class="empty-state">
+                            <i class="fas fa-history"></i>
+                            <p>কোনো নোটিফিকেশন পাঠানো হয়নি</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Notification Templates -->
+                <div class="notification-templates">
+                    <h3>টেমপ্লেট</h3>
+                    <div class="template-list">
+                        <div class="template-item" onclick="useTemplate('exam')">
+                            <i class="fas fa-clipboard-list"></i>
+                            <span>পরীক্ষার নোটিফিকেশন</span>
+                        </div>
+                        <div class="template-item" onclick="useTemplate('fee')">
+                            <i class="fas fa-money-bill-alt"></i>
+                            <span>ফি নোটিফিকেশন</span>
+                        </div>
+                        <div class="template-item" onclick="useTemplate('event')">
+                            <i class="fas fa-calendar-star"></i>
+                            <span>ইভেন্ট নোটিফিকেশন</span>
+                        </div>
+                        <div class="template-item" onclick="useTemplate('result')">
+                            <i class="fas fa-graduation-cap"></i>
+                            <span>ফলাফল নোটিফিকেশন</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast-container"></div>
+
+    <!-- Scripts -->
+    <script src="../js/storage.js"></script>
+    <script src="../js/app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check URL parameters
+            const urlParams = new URLSearchParams(window.location.search);
+            const tab = urlParams.get('tab');
+            if (tab) {
+                // Handle tab switching if needed
+            }
+        });
+
+        function updateRecipientCount() {
+            const studentsCheckbox = document.getElementById('notify-all-students');
+            const teachersCheckbox = document.getElementById('notify-all-teachers');
+            const classSelect = document.getElementById('notify-class-select');
+            
+            if (studentsCheckbox.checked || teachersCheckbox.checked) {
+                classSelect.style.display = 'none';
+            } else if (document.getElementById('notify-specific-class').checked) {
+                classSelect.style.display = 'block';
+            } else {
+                classSelect.style.display = 'none';
+            }
+            
+            document.getElementById('total-recipients').textContent = '০';
+        }
+
+        function useTemplate(type) {
+            const templates = {
+                exam: 'পরীক্ষার বিজ্ঞপ্তি: আগামীকাল থেকে মাসিক পরীক্ষা শুরু হবে। সকল শিক্ষার্থীদের নির্দিষ্ট সময়ে উপস্থিত থাকতে হবে।',
+                fee: 'ফি সংক্রান্ত বিজ্ঞপ্তি: মাসিক ফি জমা দেওয়ার শেষ তারিখ নিকটবর্তী। দেরিতে ফি জমা দেওয়ার ক্ষেত্রে জরিমানা প্রযোজ্য হবে।',
+                event: 'ইভেন্ট বিজ্ঞপ্তি: আগামী শুক্রবার বার্ষিক ক্রীড়া প্রতিযোগিতা অনুষ্ঠিত হবে। সকল শিক্ষার্থীদের অংশগ্রহণ করতে আমন্ত্রণ।',
+                result: 'ফলাফল প্রকাশ: মাসিক পরীক্ষার ফলাফল প্রকাশিত হয়েছে। অভিভাবকগণ তাদের সন্তানের ফলাফল অ্যাপে দেখতে পারবেন।'
+            };
+            
+            document.getElementById('notification-message').value = templates[type] || '';
+            showToast('টেমপ্লেট লোড হয়েছে', 'info');
+        }
+
+        function toggleSidebar() {
+            const sidebar = document.querySelector('.admin-sidebar');
+            const overlay = document.querySelector('.sidebar-overlay');
+            sidebar.classList.toggle('active');
+            if (overlay) {
+                overlay.classList.toggle('active');
+            }
+        }
+    </script>
+</body>
+</html>

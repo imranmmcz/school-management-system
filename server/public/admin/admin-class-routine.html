@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ক্লাস রুটিন - স্কুল ম্যানেজমেন্ট সিস্টেম</title>
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>স্কুল ম্যানেজমেন্ট</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="admin-dashboard.html">ড্যাশবোর্ড</a></li>
+                    <li><a href="admin-students.html">শিক্ষার্থী</a></li>
+                    <li><a href="admin-teachers.html">শিক্ষক</a></li>
+                    <li><a href="admin-parents.html">অভিভাবক</a></li>
+                    <li><a href="admin-attendance.html">উপস্থিতি</a></li>
+                    <li><a href="admin-exam.html">পরীক্ষা</a></li>
+                    <li><a href="admin-results.html">ফলাফল</a></li>
+                    <li><a href="admin-fee-collection.html">ফি সংগ্রহ</a></li>
+                    <li><a href="admin-notice.html">নোটিশ</a></li>
+                    <li><a href="admin-settings.html">সেটিংস</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle">একাডেমিক ▾</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="admin-classes.html">ক্লাস লিস্ট</a></li>
+                            <li><a href="admin-sections.html">সেকশন</a></li>
+                            <li><a href="admin-subjects.html">সাবজেক্ট লিস্ট</a></li>
+                            <li><a href="admin-syllabus.html">সিলেবাস</a></li>
+                            <li><a href="admin-class-routine.html" class="active">ক্লাস রুটিন</a></li>
+                            <li><a href="admin-academic-calendar.html">একাডেমিক ক্যালেন্ডার</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="main-header">
+                <button class="sidebar-toggle">☰</button>
+                <h1>ক্লাস রুটিন</h1>
+                <div class="user-info">
+                    <span>অ্যাডমিন</span>
+                    <button class="logout-btn">লগআউট</button>
+                </div>
+            </header>
+
+            <div class="content-area">
+                <!-- Class Routine Form -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>নতুন রুটিন যোগ করুন</h3>
+                    </div>
+                    <div class="card-body">
+                        <form id="classRoutineForm">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="routineClass">ক্লাস নির্বাচন করুন</label>
+                                    <select id="routineClass" required>
+                                        <option value="">-- ক্লাস নির্বাচন --</option>
+                                        <option value="প্রথম">প্রথম শ্রেণি</option>
+                                        <option value="দ্বিতীয়">দ্বিতীয় শ্রেণি</option>
+                                        <option value="তৃতীয়">তৃতীয় শ্রেণি</option>
+                                        <option value="চতুর্থ">চতুর্থ শ্রেণি</option>
+                                        <option value="পঞ্চম">পঞ্চম শ্রেণি</option>
+                                        <option value="ষষ্ঠ">ষষ্ঠ শ্রেণি</option>
+                                        <option value="সপ্তম">সপ্তম শ্রেণি</option>
+                                        <option value="অষ্টম">অষ্টম শ্রেণি</option>
+                                        <option value="নবম">নবম শ্রেণি</option>
+                                        <option value="দশম">দশম শ্রেণি</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="routineSection">সেকশন নির্বাচন করুন</label>
+                                    <select id="routineSection" required>
+                                        <option value="">-- সেকশন নির্বাচন --</option>
+                                        <option value="ক">ক</option>
+                                        <option value="খ">খ</option>
+                                        <option value="গ">গ</option>
+                                        <option value="ঘ">ঘ</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="routineDay">দিন নির্বাচন করুন</label>
+                                    <select id="routineDay" required>
+                                        <option value="">-- দিন নির্বাচন --</option>
+                                        <option value="শনিবার">শনিবার</option>
+                                        <option value="রবিবার">রবিবার</option>
+                                        <option value="সোমবার">সোমবার</option>
+                                        <option value="মঙ্গলবার">মঙ্গলবার</option>
+                                        <option value="বুধবার">বুধবার</option>
+                                        <option value="বৃহস্পতিবার">বৃহস্পতিবার</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="routineSubject">বিষয় নির্বাচন করুন</label>
+                                    <select id="routineSubject" required>
+                                        <option value="">-- বিষয় নির্বাচন --</option>
+                                        <option value="বাংলা">বাংলা</option>
+                                        <option value="ইংরেজি">ইংরেজি</option>
+                                        <option value="গণিত">গণিত</option>
+                                        <option value="বিজ্ঞান">বিজ্ঞান</option>
+                                        <option value="সামাজিক বিজ্ঞান">সামাজিক বিজ্ঞান</option>
+                                        <option value="ইসলাম শিক্ষা">ইসলাম শিক্ষা</option>
+                                        <option value="হিন্দু ধর্ম">হিন্দু ধর্ম</option>
+                                        <option value="কৃষি শিক্ষা">কৃষি শিক্ষা</option>
+                                        <option value="চারু ও কারুকলা">চারু ও কারুকলা</option>
+                                        <option value="শারীরিক শিক্ষা">শারীরিক শিক্ষা</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="routineTeacher">শিক্ষক নির্বাচন করুন</label>
+                                    <select id="routineTeacher" required>
+                                        <option value="">-- শিক্ষক নির্বাচন --</option>
+                                        <option value="জনাব আব্দুল করিম">জনাব আব্দুল করিম</option>
+                                        <option value="জনাব মোহাম্মদ আলী">জনাব মোহাম্মদ আলী</option>
+                                        <option value="জনাব সুমন আহমেদ">জনাব সুমন আহমেদ</option>
+                                        <option value="জনাব রফিকুল ইসলাম">জনাব রফিকুল ইসলাম</option>
+                                        <option value="জনাব মেহেরপুর">জনাব মেহেরপুর</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="routineTime">সময়</label>
+                                    <input type="text" id="routineTime" placeholder="উদা: ৯:০০ - ৯:৪৫" required>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-primary">রুটিন যোগ করুন</button>
+                                <button type="reset" class="btn btn-secondary">রিসেট</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Class Routine Table -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>সকল ক্লাস রুটিন</h3>
+                        <button class="btn btn-success" onclick="exportRoutine()">এক্সপোর্ট করুন</button>
+                    </div>
+                    <div class="card-body">
+                        <div class="filter-section">
+                            <div class="filter-group">
+                                <label>ক্লাস:</label>
+                                <select id="filterClass" onchange="filterRoutine()">
+                                    <option value="">সকল ক্লাস</option>
+                                    <option value="প্রথম">প্রথম শ্রেণি</option>
+                                    <option value="দ্বিতীয়">দ্বিতীয় শ্রেণি</option>
+                                    <option value="তৃতীয়">তৃতীয় শ্রেণি</option>
+                                    <option value="চতুর্থ">চতুর্থ শ্রেণি</option>
+                                    <option value="পঞ্চম">পঞ্চম শ্রেণি</option>
+                                    <option value="ষষ্ঠ">ষষ্ঠ শ্রেণি</option>
+                                    <option value="সপ্তম">সপ্তম শ্রেণি</option>
+                                    <option value="অষ্টম">অষ্টম শ্রেণি</option>
+                                    <option value="নবম">নবম শ্রেণি</option>
+                                    <option value="দশম">দশম শ্রেণি</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="table-responsive">
+                            <table id="routineTable">
+                                <thead>
+                                    <tr>
+                                        <th>ক্রমিক</th>
+                                        <th>ক্লাস</th>
+                                        <th>সেকশন</th>
+                                        <th>দিন</th>
+                                        <th>সময়</th>
+                                        <th>বিষয়</th>
+                                        <th>শিক্ষক</th>
+                                        <th>অ্যাকশন</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="routineTableBody">
+                                    <!-- Data will be loaded here -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Edit Modal -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>রুটিন সম্পাদনা করুন</h3>
+                <button class="close-btn" onclick="closeEditModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="editRoutineForm">
+                    <input type="hidden" id="editRoutineId">
+                    <div class="form-group">
+                        <label for="editRoutineClass">ক্লাস</label>
+                        <select id="editRoutineClass" required>
+                            <option value="প্রথম">প্রথম শ্রেণি</option>
+                            <option value="দ্বিতীয়">দ্বিতীয় শ্রেণি</option>
+                            <option value="তৃতীয়">তৃতীয় শ্রেণি</option>
+                            <option value="চতুর্থ">চতুর্থ শ্রেণি</option>
+                            <option value="পঞ্চম">পঞ্চম শ্রেণি</option>
+                            <option value="ষষ্ঠ">ষষ্ঠ শ্রেণি</option>
+                            <option value="সপ্তম">সপ্তম শ্রেণি</option>
+                            <option value="অষ্টম">অষ্টম শ্রেণি</option>
+                            <option value="নবম">নবম শ্রেণি</option>
+                            <option value="দশম">দশম শ্রেণি</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="editRoutineSection">সেকশন</label>
+                        <select id="editRoutineSection" required>
+                            <option value="ক">ক</option>
+                            <option value="খ">খ</option>
+                            <option value="গ">গ</option>
+                            <option value="ঘ">ঘ</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="editRoutineDay">দিন</label>
+                        <select id="editRoutineDay" required>
+                            <option value="শনিবার">শনিবার</option>
+                            <option value="রবিবার">রবিবার</option>
+                            <option value="সোমবার">সোমবার</option>
+                            <option value="মঙ্গলবার">মঙ্গলবার</option>
+                            <option value="বুধবার">বুধবার</option>
+                            <option value="বৃহস্পতিবার">বৃহস্পতিবার</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="editRoutineSubject">বিষয়</label>
+                        <select id="editRoutineSubject" required>
+                            <option value="বাংলা">বাংলা</option>
+                            <option value="ইংরেজি">ইংরেজি</option>
+                            <option value="গণিত">গণিত</option>
+                            <option value="বিজ্ঞান">বিজ্ঞান</option>
+                            <option value="সামাজিক বিজ্ঞান">সামাজিক বিজ্ঞান</option>
+                            <option value="ইসলাম শিক্ষা">ইসলাম শিক্ষা</option>
+                            <option value="হিন্দু ধর্ম">হিন্দু ধর্ম</option>
+                            <option value="কৃষি শিক্ষা">কৃষি শিক্ষা</option>
+                            <option value="চারু ও কারুকলা">চারু ও কারুকলা</option>
+                            <option value="শারীরিক শিক্ষা">শারীরিক শিক্ষা</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="editRoutineTeacher">শিক্ষক</label>
+                        <select id="editRoutineTeacher" required>
+                            <option value="জনাব আব্দুল করিম">জনাব আব্দুল করিম</option>
+                            <option value="জনাব মোহাম্মদ আলী">জনাব মোহাম্মদ আলী</option>
+                            <option value="জনাব সুমন আহমেদ">জনাব সুমন আহমেদ</option>
+                            <option value="জনাব রফিকুল ইসলাম">জনাব রফিকুল ইসলাম</option>
+                            <option value="জনাব মেহেরপুর">জনাব মেহেরপুর</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="editRoutineTime">সময়</label>
+                        <input type="text" id="editRoutineTime" placeholder="উদা: ৯:০০ - ৯:৪৫" required>
+                    </div>
+                    <div class="modal-actions">
+                        <button type="submit" class="btn btn-primary">আপডেট করুন</button>
+                        <button type="button" class="btn btn-secondary" onclick="closeEditModal()">বাতিল</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete Confirmation Modal -->
+    <div id="deleteModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>ডিলিট নিশ্চিতকরণ</h3>
+                <button class="close-btn" onclick="closeDeleteModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>আপনি কি নিশ্চিত যে আপনি এই রুটিনটি ডিলিট করতে চান?</p>
+                <input type="hidden" id="deleteRoutineId">
+                <div class="modal-actions">
+                    <button class="btn btn-danger" onclick="confirmDelete()">হ্যাঁ, ডিলিট করুন</button>
+                    <button class="btn btn-secondary" onclick="closeDeleteModal()">না, বাতিল করুন</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <script src="../js/app.js"></script>
+    <script>
+        // Initialize StorageManager
+        const storageManager = new StorageManager('classRoutines');
+        
+        // Load routines on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            renderRoutineTable();
+            initEventListeners();
+        });
+
+        function initEventListeners() {
+            // Form submission
+            document.getElementById('classRoutineForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                addRoutine();
+            });
+
+            // Edit form submission
+            document.getElementById('editRoutineForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                updateRoutine();
+            });
+        }
+
+        function addRoutine() {
+            const routine = {
+                class: document.getElementById('routineClass').value,
+                section: document.getElementById('routineSection').value,
+                day: document.getElementById('routineDay').value,
+                subject: document.getElementById('routineSubject').value,
+                teacher: document.getElementById('routineTeacher').value,
+                time: document.getElementById('routineTime').value,
+                createdAt: new Date().toISOString()
+            };
+
+            storageManager.add(routine);
+            showToast('রুটিন সফলভাবে যোগ করা হয়েছে!');
+            document.getElementById('classRoutineForm').reset();
+            renderRoutineTable();
+        }
+
+        function renderRoutineTable() {
+            const routines = storageManager.getAll();
+            const tbody = document.getElementById('routineTableBody');
+            tbody.innerHTML = '';
+
+            if (routines.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="8" style="text-align: center; padding: 20px;">কোনো রুটিন পাওয়া যায়নি</td></tr>';
+                return;
+            }
+
+            routines.forEach((routine, index) => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${index + 1}</td>
+                    <td>${routine.class}</td>
+                    <td>${routine.section}</td>
+                    <td>${routine.day}</td>
+                    <td>${routine.time}</td>
+                    <td>${routine.subject}</td>
+                    <td>${routine.teacher}</td>
+                    <td class="action-buttons">
+                        <button class="btn btn-edit" onclick="openEditModal('${routine.id}')">সম্পাদনা</button>
+                        <button class="btn btn-delete" onclick="openDeleteModal('${routine.id}')">ডিলিট</button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function filterRoutine() {
+            const filterClass = document.getElementById('filterClass').value;
+            const routines = storageManager.getAll();
+            const tbody = document.getElementById('routineTableBody');
+            tbody.innerHTML = '';
+
+            const filteredRoutines = filterClass ? 
+                routines.filter(r => r.class === filterClass) : routines;
+
+            if (filteredRoutines.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="8" style="text-align: center; padding: 20px;">কোনো রুটিন পাওয়া যায়নি</td></tr>';
+                return;
+            }
+
+            filteredRoutines.forEach((routine, index) => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${index + 1}</td>
+                    <td>${routine.class}</td>
+                    <td>${routine.section}</td>
+                    <td>${routine.day}</td>
+                    <td>${routine.time}</td>
+                    <td>${routine.subject}</td>
+                    <td>${routine.teacher}</td>
+                    <td class="action-buttons">
+                        <button class="btn btn-edit" onclick="openEditModal('${routine.id}')">সম্পাদনা</button>
+                        <button class="btn btn-delete" onclick="openDeleteModal('${routine.id}')">ডিলিট</button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function openEditModal(id) {
+            const routine = storageManager.getById(id);
+            if (routine) {
+                document.getElementById('editRoutineId').value = routine.id;
+                document.getElementById('editRoutineClass').value = routine.class;
+                document.getElementById('editRoutineSection').value = routine.section;
+                document.getElementById('editRoutineDay').value = routine.day;
+                document.getElementById('editRoutineSubject').value = routine.subject;
+                document.getElementById('editRoutineTeacher').value = routine.teacher;
+                document.getElementById('editRoutineTime').value = routine.time;
+                document.getElementById('editModal').style.display = 'flex';
+            }
+        }
+
+        function closeEditModal() {
+            document.getElementById('editModal').style.display = 'none';
+        }
+
+        function updateRoutine() {
+            const id = document.getElementById('editRoutineId').value;
+            const routineData = {
+                class: document.getElementById('editRoutineClass').value,
+                section: document.getElementById('editRoutineSection').value,
+                day: document.getElementById('editRoutineDay').value,
+                subject: document.getElementById('editRoutineSubject').value,
+                teacher: document.getElementById('editRoutineTeacher').value,
+                time: document.getElementById('editRoutineTime').value,
+                updatedAt: new Date().toISOString()
+            };
+
+            storageManager.update(id, routineData);
+            showToast('রুটিন সফলভাবে আপডেট হয়েছে!');
+            closeEditModal();
+            renderRoutineTable();
+        }
+
+        function openDeleteModal(id) {
+            document.getElementById('deleteRoutineId').value = id;
+            document.getElementById('deleteModal').style.display = 'flex';
+        }
+
+        function closeDeleteModal() {
+            document.getElementById('deleteModal').style.display = 'none';
+        }
+
+        function confirmDelete() {
+            const id = document.getElementById('deleteRoutineId').value;
+            storageManager.delete(id);
+            showToast('রুটিন সফলভাবে ডিলিট হয়েছে!');
+            closeDeleteModal();
+            renderRoutineTable();
+        }
+
+        function exportRoutine() {
+            const routines = storageManager.getAll();
+            let csvContent = "data:text/csv;charset=utf-8,";
+            csvContent += "ক্রমিক,ক্লাস,সেকশন,দিন,সময়,বিষয়,শিক্ষক\n";
+            
+            routines.forEach((routine, index) => {
+                csvContent += `${index + 1},${routine.class},${routine.section},${routine.day},${routine.time},${routine.subject},${routine.teacher}\n`;
+            });
+
+            const encodedUri = encodeURI(csvContent);
+            const link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", "class_routine.csv");
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        // Close modals when clicking outside
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>

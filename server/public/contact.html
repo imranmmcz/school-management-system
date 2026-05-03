@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>যোগাযোগ - পাঠশালা ই-ম্যানেজার</title>
+    
+    <!-- Google Fonts for Bengali -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Main Styles -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- ==================== HEADER ==================== -->
+    <header id="main-header">
+        <div class="header-container">
+            <div class="logo-section">
+                <a href="index.html">
+                    <img id="school-logo" src="assets/logo.png" alt="স্কুল লোগো">
+                </a>
+                <div class="school-name">
+                    <h1 id="header-school-name">পাঠশালা ই-ম্যানেজার</h1>
+                    <span id="header-school-tagline">আমাদের স্কুল, আমাদের গর্ব</span>
+                </div>
+            </div>
+            <nav class="main-nav">
+                <ul id="nav-menu">
+                    <li><a href="index.html">হোম</a></li>
+                    <li><a href="amra-somproshe.html">আমাদের সম্পর্কে</a></li>
+                    <li><a href="academics.html">একাডেমিক্স</a></li>
+                    <li><a href="admissions.html">ভর্তি</a></li>
+                    <li><a href="notices.html">নোটিশ</a></li>
+                    <li><a href="contact.html" class="active">যোগাযোগ</a></li>
+                    <li><a href="admin-dashboard.html" class="btn-login"><i class="fas fa-user-shield"></i> অ্যাডমিন</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation -->
+    <div id="mobile-nav" class="mobile-nav">
+        <ul id="mobile-nav-menu">
+            <li><a href="index.html">হোম</a></li>
+            <li><a href="amra-somproshe.html">আমাদের সম্পর্কে</a></li>
+            <li><a href="academics.html">একাডেমিক্স</a></li>
+            <li><a href="admissions.html">ভর্তি</a></li>
+            <li><a href="notices.html">নোটিশ</a></li>
+            <li><a href="contact.html">যোগাযোগ</a></li>
+            <li><a href="admin-dashboard.html">অ্যাডমিন প্যানেল</a></li>
+        </ul>
+    </div>
+
+    <!-- ==================== PAGE CONTENT ==================== -->
+    <main class="page-content">
+        <!-- Page Banner -->
+        <section class="page-banner contact-banner">
+            <div class="banner-content">
+                <h1><i class="fas fa-address-book"></i> যোগাযোগ</h1>
+                <p>যেকোনো প্রয়োজনে আমাদের সাথে যোগাযোগ করুন</p>
+            </div>
+        </section>
+
+        <!-- Breadcrumb -->
+        <div class="breadcrumb-nav">
+            <a href="index.html">হোম</a>
+            <span><i class="fas fa-chevron-left"></i></span>
+            <span>যোগাযোগ</span>
+        </div>
+
+        <!-- Contact Content -->
+        <section class="contact-section">
+            <div class="container">
+                <div class="contact-grid">
+                    <!-- Contact Info -->
+                    <div class="contact-info">
+                        <div class="info-header">
+                            <h2>যোগাযোগ তথ্য</h2>
+                            <p>যেকোনো প্রশ্ন বা মতামতের জন্য আমাদের সাথে যোগাযোগ করুন</p>
+                        </div>
+                        
+                        <div class="info-items">
+                            <div class="info-item">
+                                <div class="info-icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div class="info-content">
+                                    <h4>ঠিকানা</h4>
+                                    <p>১২৩, শিক্ষা রোড, ঢাকা-১০০০</p>
+                                </div>
+                            </div>
+                            
+                            <div class="info-item">
+                                <div class="info-icon">
+                                    <i class="fas fa-phone-alt"></i>
+                                </div>
+                                <div class="info-content">
+                                    <h4>ফোন</h4>
+                                    <p>+৮৮০১২৩৪৫৬৭৮৯০</p>
+                                    <p>+৮৮০১২৩৪৫৬৭৮৯১</p>
+                                </div>
+                            </div>
+                            
+                            <div class="info-item">
+                                <div class="info-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div class="info-content">
+                                    <h4>ইমেইল</h4>
+                                    <p>info@pathshala.edu.bd</p>
+                                    <p>admin@pathshala.edu.bd</p>
+                                </div>
+                            </div>
+                            
+                            <div class="info-item">
+                                <div class="info-icon">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <div class="info-content">
+                                    <h4>অফিস সময়</h4>
+                                    <p>রবিবার - বৃহস্পতিবার</p>
+                                    <p>সকাল ৯:০০ - বিকাল ৪:০০</p>
+                                    <p>শুক্রবার: বন্ধ</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="social-connect">
+                            <h4>সোশ্যাল মিডিয়া</h4>
+                            <div class="social-links-large">
+                                <a href="#" class="social-btn facebook">
+                                    <i class="fab fa-facebook-f"></i>
+                                    <span>Facebook</span>
+                                </a>
+                                <a href="#" class="social-btn youtube">
+                                    <i class="fab fa-youtube"></i>
+                                    <span>YouTube</span>
+                                </a>
+                                <a href="#" class="social-btn twitter">
+                                    <i class="fab fa-twitter"></i>
+                                    <span>Twitter</span>
+                                </a>
+                                <a href="#" class="social-btn instagram">
+                                    <i class="fab fa-instagram"></i>
+                                    <span>Instagram</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Form -->
+                    <div class="contact-form-container">
+                        <div class="form-header">
+                            <h2>মেসেজ পাঠান</h2>
+                            <p>নিচের ফর্ম পূরণ করে মেসেজ পাঠান</p>
+                        </div>
+                        
+                        <form id="contact-form" class="contact-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>আপনার নাম *</label>
+                                    <input type="text" id="contact-name" required placeholder="আপনার নাম">
+                                </div>
+                                <div class="form-group">
+                                    <label>ইমেইল *</label>
+                                    <input type="email" id="contact-email" required placeholder="আপনার ইমেইল">
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>ফোন নম্বর</label>
+                                    <input type="tel" id="contact-phone" placeholder="আপনার ফোন নম্বর">
+                                </div>
+                                <div class="form-group">
+                                    <label>বিষয় *</label>
+                                    <select id="contact-subject" required>
+                                        <option value="">বিষয় নির্বাচন করুন</option>
+                                        <option value="admission">ভর্তি সংক্রান্ত</option>
+                                        <option value="academic">একাডেমিক সংক্রান্ত</option>
+                                        <option value="fee">ফি সংক্রান্ত</option>
+                                        <option value="complaint">অভিযোগ</option>
+                                        <option value="suggestion">মতামত</option>
+                                        <option value="other">অন্যান্য</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>মেসেজ *</label>
+                                <textarea id="contact-message" rows="5" required placeholder="আপনার মেসেজ লিখুন..."></textarea>
+                            </div>
+                            
+                            <button type="submit" class="btn-primary btn-large">
+                                <i class="fas fa-paper-plane"></i> মেসেজ পাঠান
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Map Section -->
+                <div class="map-section">
+                    <h2><i class="fas fa-map"></i> আমাদের অবস্থান</h2>
+                    <div class="map-container">
+                        <div class="map-placeholder">
+                            <i class="fas fa-map-marked-alt"></i>
+                            <p>মানচিত্র এখানে প্রদর্শিত হবে</p>
+                            <small>Google Maps Embed যোগ করতে এখানে API Key দিন</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Contact Cards -->
+                <div class="quick-contacts">
+                    <h2>দ্রুত যোগাযোগ</h2>
+                    <div class="quick-cards">
+                        <div class="quick-card">
+                            <div class="quick-icon">
+                                <i class="fas fa-user-tie"></i>
+                            </div>
+                            <h4>প্রধান শিক্ষক</h4>
+                            <p>ফোন: +৮৮০১২৩৪৫৬৭৮৯০</p>
+                            <p>ইমেইল: principal@pathshala.edu.bd</p>
+                        </div>
+                        <div class="quick-card">
+                            <div class="quick-icon">
+                                <i class="fas fa-phone-volume"></i>
+                            </div>
+                            <h4>অ্যাডমিশন অফিস</h4>
+                            <p>ফোন: +৮৮০১২৩৪৫৬৭৮৯১</p>
+                            <p>ইমেইল: admission@pathshala.edu.bd</p>
+                        </div>
+                        <div class="quick-card">
+                            <div class="quick-icon">
+                                <i class="fas fa-envelope-open-text"></i>
+                            </div>
+                            <h4>অভিভাবক সেবা</h4>
+                            <p>ফোন: +৮৮০১২৩৪৫৬৭৮৯২</p>
+                            <p>ইমেইল: parent@pathshala.edu.bd</p>
+                        </div>
+                        <div class="quick-card">
+                            <div class="quick-icon">
+                                <i class="fas fa-tools"></i>
+                            </div>
+                            <h4>অফিস সাপোর্ট</h4>
+                            <p>ফোন: +৮৮০১২৩৪৫৬৭৮৯৩</p>
+                            <p>ইমেইল: support@pathshala.edu.bd</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer id="main-footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>পাঠশালা ই-ম্যানেজার</h3>
+                <p>আমরা শিক্ষার্থীদের উজ্জ্বল ভবিষ্যত গড়তে প্রতিশ্রুতিবদ্ধ।</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>দ্রুত লিংক</h3>
+                <ul>
+                    <li><a href="amra-somproshe.html">আমাদের সম্পর্কে</a></li>
+                    <li><a href="academics.html">একাডেমিক্স</a></li>
+                    <li><a href="admissions.html">ভর্তি তথ্য</a></li>
+                    <li><a href="notices.html">নোটিশ বোর্ড</a></li>
+                    <li><a href="contact.html">যোগাযোগ</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>গুরুত্বপূর্ণ লিংক</h3>
+                <ul>
+                    <li><a href="#">শিক্ষার্থী পোর্টাল</a></li>
+                    <li><a href="#">অভিভাবক পোর্টাল</a></li>
+                    <li><a href="#">অনলাইন ফলাফল</a></li>
+                    <li><a href="#">ডাউনলোড</a></li>
+                    <li><a href="admin-dashboard.html">অ্যাডমিন লগইন</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>যোগাযোগ</h3>
+                <p><i class="fas fa-map-marker-alt"></i> <span id="footer-address">১২৩, শিক্ষা রোড, ঢাকা-১০০০</span></p>
+                <p><i class="fas fa-phone"></i> <span id="footer-phone">+৮৮০১২৩৪৫৬৭৮৯০</span></p>
+                <p><i class="fas fa-envelope"></i> <span id="footer-email">info@pathshala.edu.bd</span></p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; ২০২৫ পাঠশালা ই-ম্যানেজার। সর্বস্বত্ব সংরক্ষিত।</p>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div id="toast-container"></div>
+
+    <!-- Scripts -->
+    <script src="js/storage.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+        // Contact form submission
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            showToast('আপনার মেসেজ পাঠানো হয়েছে। শীঘ্রই যোগাযোগ করা হবে।', 'success');
+            this.reset();
+        });
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            StorageManager.init();
+            AppManager.initShared();
+        });
+    </script>
+</body>
+</html>

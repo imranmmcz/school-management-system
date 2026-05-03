@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>এপিআই ইন্টিগ্রেশন ডেমো - পাঠশালা ই-ম্যানেজার</title>
+    
+    <!-- Google Fonts for Bengali -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Hind Siliguri', sans-serif;
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .demo-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .demo-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+        
+        .demo-header h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        
+        .demo-header p {
+            opacity: 0.9;
+        }
+        
+        .demo-card {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .demo-card h2 {
+            color: #667eea;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        .code-block {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        
+        .code-block .comment {
+            color: #68d391;
+        }
+        
+        .code-block .keyword {
+            color: #f6ad55;
+        }
+        
+        .code-block .string {
+            color: #fbd38d;
+        }
+        
+        .code-block .function {
+            color: #63b3ed;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: 'Hind Siliguri', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            margin: 5px;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        .btn-success {
+            background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+            color: white;
+        }
+        
+        .btn-warning {
+            background: linear-gradient(135deg, #ed8936 0%, #dd6b20 100%);
+            color: white;
+        }
+        
+        .btn-danger {
+            background: linear-gradient(135deg, #fc8181 0%, #e53e3e 100%);
+            color: white;
+        }
+        
+        .output-area {
+            background: #f7fafc;
+            border: 2px dashed #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 15px;
+            min-height: 100px;
+        }
+        
+        .output-area pre {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        
+        .status-badge {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+        
+        .status-online {
+            background: #c6f6d5;
+            color: #276749;
+        }
+        
+        .status-offline {
+            background: #fed7d7;
+            color: #c53030;
+        }
+        
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .feature-list li {
+            padding: 10px 15px;
+            border-left: 4px solid #667eea;
+            margin: 10px 0;
+            background: #f7fafc;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        .comparison-table th,
+        .comparison-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .comparison-table th {
+            background: #667eea;
+            color: white;
+        }
+        
+        .comparison-table tr:hover {
+            background: #f7fafc;
+        }
+        
+        .section-note {
+            background: #ebf8ff;
+            border-left: 4px solid #4299e1;
+            padding: 15px;
+            border-radius: 0 8px 8px 0;
+            margin: 15px 0;
+        }
+        
+        .section-warning {
+            background: #fffaf0;
+            border-left: 4px solid #ed8936;
+            padding: 15px;
+            border-radius: 0 8px 8px 0;
+            margin: 15px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <!-- Header -->
+        <div class="demo-header">
+            <h1><i class="fas fa-code"></i> এপিআই ইন্টিগ্রেশন ডেমো</h1>
+            <p>পাঠশালা ই-ম্যানেজার - নতুন REST API ক্লায়েন্ট ব্যবহারের গাইড</p>
+            <p style="margin-top: 10px;">
+                সার্ভার স্ট্যাটাস: 
+                <span id="apiStatus" class="status-badge">চেক করা হচ্ছে...</span>
+            </p>
+        </div>
+        
+        <!-- পুরাতন বনাম নতুন পদ্ধতি -->
+        <div class="demo-card">
+            <h2><i class="fas fa-exchange-alt"></i> পুরাতন বনাম নতুন পদ্ধতির তুলনা</h2>
+            
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>ফিচার</th>
+                        <th>পুরাতন (StorageManager)</th>
+                        <th>নতুন (API)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>ডেটা সোর্স</td>
+                        <td>localStorage</td>
+                        <td>REST API সার্ভার</td>
+                    </tr>
+                    <tr>
+                        <td>অনলাইন সিঙ্ক</td>
+                        <td>সাপোর্ট করে না</td>
+                        <td>অটোমেটিক সিঙ্ক</td>
+                    </tr>
+                    <tr>
+                        <td>অফলাইন মোড</td>
+                        <td>সবসময় অফলাইন</td>
+                        <td>অটো ফলব্যাক</td>
+                    </tr>
+                    <tr>
+                        <td>ডেটা ভ্যালিডেশন</td>
+                        <td>লিমিটেড</td>
+                        <td>সার্ভার-সাইড</td>
+                    </tr>
+                    <tr>
+                        <td>স্কেলেবিলিটি</td>
+                        <td>লিমিটেড (ব্রাউজার)</td>
+                        <td>আনলিমিটেড</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <!-- কোড উদাহরণ -->
+        <div class="demo-card">
+            <h2><i class="fas fa-code"></i> কোড উদাহরণ: শিক্ষার্থী তালিকা</h2>
+            
+            <div class="section-note">
+                <strong>পুরাতন পদ্ধতি (StorageManager):</strong>
+            </div>
+            
+            <div class="code-block">
+<span class="comment">// পুরাতন পদ্ধতি - লোকাল স্টোরেজ থেকে ডেটা নেওয়া</span>
+
+<span class="comment">// সকল শিক্ষার্থী পড়ুন</span>
+<span class="keyword">const</span> students = StorageManager.getStudents();
+<span class="function">console</span>.log(students);
+
+<span class="comment">// আইডি দিয়ে শিক্ষার্থী খুঁজুন</span>
+<span class="keyword">const</span> student = StorageManager.getStudentById(<span class="string">1</span>);
+
+<span class="comment">// নতুন শিক্ষার্থী যোগ করুন</span>
+<span class="keyword">const</span> newStudent = StorageManager.addStudent({
+    firstName: <span class="string">'আব্দুল'</span>,
+    lastName: <span class="string">'রহমান'</span>,
+    classId: <span class="string">1</span>
+});
+
+<span class="comment">// শিক্ষার্থী আপডেট করুন</span>
+StorageManager.updateStudent(<span class="string">1</span>, { status: <span class="string">'active'</span> });
+
+<span class="comment">// শিক্ষার্থী মুছুন</span>
+StorageManager.deleteStudent(<span class="string">1</span>);
+            </div>
+            
+            <div class="section-note">
+                <strong>নতুন পদ্ধতি (API) - অ্যাসিঙ্ক/অয়েট সাপোর্ট:</strong>
+            </div>
+            
+            <div class="code-block">
+<span class="comment">// নতুন পদ্ধতি - REST API থেকে ডেটা নেওয়া</span>
+
+<span class="comment">// সকল শিক্ষার্থী পড়ুন (অ্যাসিঙ্ক)</span>
+<span class="keyword">async function</span> <span class="function">loadStudents</span>() {
+    <span class="keyword">try</span> {
+        <span class="keyword">const</span> students = <span class="keyword">await</span> API.students.getAll();
+        <span class="function">console</span>.log(students);
+        <span class="keyword">return</span> students;
+    } <span class="keyword">catch</span> (error) {
+        <span class="function">console</span>.error(<span class="string">'এরর:'</span>, error);
+    }
+}
+
+<span class="comment">// আইডি দিয়ে শিক্ষার্থী খুঁজুন</span>
+<span class="keyword">async function</span> <span class="function">getStudent</span>(id) {
+    <span class="keyword">const</span> student = <span class="keyword">await</span> API.students.getById(id);
+    <span class="keyword">return</span> student;
+}
+
+<span class="comment">// নতুন শিক্ষার্থী যোগ করুন</span>
+<span class="keyword">async function</span> <span class="function">createStudent</span>(data) {
+    <span class="keyword">const</span> newStudent = <span class="keyword">await</span> API.students.create(data);
+    <span class="function">console</span>.log(<span class="string">'শিক্ষার্থী যোগ হয়েছে:'</span>, newStudent);
+    <span class="keyword">return</span> newStudent;
+}
+
+<span class="comment">// শিক্ষার্থী আপডেট করুন</span>
+<span class="keyword">async function</span> <span class="function">updateStudent</span>(id, data) {
+    <span class="keyword">const</span> updated = <span class="keyword">await</span> API.students.update(id, data);
+    <span class="function">showToast</span>(<span class="string">'আপডেট সফল হয়েছে'</span>, <span class="string">'success'</span>);
+    <span class="keyword">return</span> updated;
+}
+
+<span class="comment">// শিক্ষার্থী মুছুন</span>
+<span class="keyword">async function</span> <span class="function">deleteStudent</span>(id) {
+    <span class="keyword">await</span> API.students.delete(id);
+    <span class="function">showToast</span>(<span class="string">'শিক্ষার্থী মুছে ফেলা হয়েছে'</span>, <span class="string">'success'</span>);
+}
+
+<span class="comment">// সার্চ করুন</span>
+<span class="keyword">async function</span> <span class="function">searchStudents</span>(query) {
+    <span class="keyword">const</span> results = <span class="keyword">await</span> API.students.search(query);
+    <span class="keyword">return</span> results;
+}
+
+<span class="comment">// ক্লাস অনুযায়ী শিক্ষার্থী</span>
+<span class="keyword">async function</span> <span class="function">getStudentsByClass</span>(classId, section) {
+    <span class="keyword">const</span> students = <span class="keyword">await</span> API.students.getByClass(classId, section);
+    <span class="keyword">return</span> students;
+}
+            </div>
+        </div>
+        
+        <!-- লাইভ ডেমো -->
+        <div class="demo-card">
+            <h2><i class="fas fa-play-circle"></i> লাইভ ডেমো</h2>
+            
+            <div class="section-note">
+                নিচের বাটনগুলো ক্লিক করে এপিআই ইন্টিগ্রেশন পরীক্ষা করুন। সার্ভার চালু না থাকলে স্বয়ংক্রিয়ভাবে স্টোরেজ মোডে চলে যাবে।
+            </div>
+            
+            <div style="margin: 20px 0;">
+                <button class="btn btn-primary" onclick="demoGetAllStudents()">
+                    <i class="fas fa-users"></i> সকল শিক্ষার্থী দেখুন
+                </button>
+                
+                <button class="btn btn-success" onclick="demoCreateStudent()">
+                    <i class="fas fa-user-plus"></i> নতুন শিক্ষার্থী যোগ করুন
+                </button>
+                
+                <button class="btn btn-warning" onclick="demoSearchStudents()">
+                    <i class="fas fa-search"></i> সার্চ করুন
+                </button>
+                
+                <button class="btn btn-danger" onclick="demoCheckStatus()">
+                    <i class="fas fa-server"></i> সার্ভার স্ট্যাটাস চেক করুন
+                </button>
+            </div>
+            
+            <div class="output-area" id="demoOutput">
+                <p style="color: #666;">আউটপুট এখানে দেখাবে...</p>
+            </div>
+        </div>
+        
+        <!-- ডেটা ম্যানেজার উদাহরণ -->
+        <div class="demo-card">
+            <h2><i class="fas fa-layer-group"></i> ডেটা ম্যানেজার - হাইব্রিড মোড</h2>
+            
+            <div class="section-note">
+                <strong>DataManager</strong> ব্যবহার করে একই কোড দিয়ে স্বয়ংক্রিয়ভাবে API বা স্টোরেজ মোড কাজ করবে।
+            </div>
+            
+            <div class="code-block">
+<span class="comment">// ডেটা ম্যানেজার ইনিশিয়ালাইজ করুন</span>
+<span class="keyword">await</span> DataManager.init({
+    mode: <span class="string">'hybrid'</span>,  <span class="comment">// 'api', 'storage', or 'hybrid'</span>
+    useAPIFirst: <span class="keyword">true</span>     <span class="comment">// API আগে চেষ্টা করবে</span});
+
+<span class="comment">// সার্বজনীন মেথড - স্বয়ংক্রিয় মোড নির্বাচন</span>
+<span class="keyword">const</span> students = <span class="keyword">await</span> DataManager.get(<span class="string">'students'</span>);
+<span class="keyword">const</span> student = <span class="keyword">await</span> DataManager.getById(<span class="string">'students'</span>, <span class="string">'1'</span>);
+<span class="keyword">await</span> DataManager.create(<span class="string">'students'</span>, studentData);
+<span class="keyword">await</span> DataManager.update(<span class="string">'students'</span>, id, data);
+<span class="keyword">await</span> DataManager.delete(<span class="string">'students'</span>, id);
+
+<span class="comment">// ড্যাশবোর্ড স্ট্যাটিস</span>
+<span class="keyword">const</span> stats = <span class="keyword">await</span> DataManager.getDashboardStats();
+
+<span class="comment">// সার্চ</span>
+<span class="keyword">const</span> results = <span class="keyword">await</span> DataManager.search(<span class="string">'students'</span>, <span class="string">'আব্দুল'</span>);
+            </div>
+            
+            <div style="margin: 20px 0;">
+                <button class="btn btn-primary" onclick="demoDataManager()">
+                    <i class="fas fa-magic"></i> ডেটা ম্যানেজার টেস্ট করুন
+                </button>
+            </div>
+            
+            <div class="output-area" id="dataManagerOutput">
+                <p style="color: #666;">আউটপুট এখানে দেখাবে...</p>
+            </div>
+        </div>
+        
+        <!-- ব্যবহার নির্দেশনা -->
+        <div class="demo-card">
+            <h2><i class="fas fa-book"></i> ব্যবহার নির্দেশনা</h2>
+            
+            <ul class="feature-list">
+                <li>
+                    <strong>ধাপ ১:</strong> প্রথমে Node.js সার্ভার চালু করুন:
+                    <br><code style="background: #edf2f7; padding: 5px 10px; border-radius: 4px;">npm run dev</code> অথবা <code style="background: #edf2f7; padding: 5px 10px; border-radius: 4px;">node server/index.js</code>
+                </li>
+                <li>
+                    <strong>ধাপ ২:</strong> HTML ফাইলে স্ক্রিপ্ট যোগ করুন:
+                    <div class="code-block" style="margin-top: 10px;">
+<span class="string">&lt;script src="js/api.js"&gt;&lt;/script&gt;</span>
+<span class="string">&lt;script src="js/data-manager.js"&gt;&lt;/script&gt;</span>
+                    </div>
+                </li>
+                <li>
+                    <strong>ধাপ ৩:</strong> পেজ লোডে ডেটা ম্যানেজার ইনিশিয়ালাইজ করুন:
+                    <div class="code-block" style="margin-top: 10px;">
+<span class="keyword">document</span>.addEventListener(<span class="string">'DOMContentLoaded'</span>, <span class="keyword">async</span> () => {
+    <span class="keyword">await</span> DataManager.init({ mode: <span class="string">'hybrid'</span> });
+    loadStudents();
+});
+                    </div>
+                </li>
+                <li>
+                    <strong>ধাপ ৪:</strong> স্টোরেজ ম্যানেজার কলগুলো API দিয়ে রিপ্লেস করুন:
+                    <div class="code-block" style="margin-top: 10px;">
+<span class="comment">// পুরাতন:</span>
+<span class="keyword">const</span> students = StorageManager.getStudents();
+
+<span class="comment">// নতুন:</span>
+<span class="keyword">const</span> students = <span class="keyword">await</span> API.students.getAll();
+                    </div>
+                </li>
+            </ul>
+        </div>
+        
+        <!-- এভেইলেবল এপিআই এন্ডপয়েন্ট -->
+        <div class="demo-card">
+            <h2><i class="fas fa-sitemap"></i> এভেইলেবল এপিআই এন্ডপয়েন্ট</h2>
+            
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>মডিউল</th>
+                        <th>এন্ডপয়েন্ট</th>
+                        <th>মেথডস</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Authentication</td>
+                        <td>/api/auth/*</td>
+                        <td>login, register, logout, profile</td>
+                    </tr>
+                    <tr>
+                        <td>Students</td>
+                        <td>/api/students</td>
+                        <td>getAll, getById, create, update, delete, search</td>
+                    </tr>
+                    <tr>
+                        <td>Teachers</td>
+                        <td>/api/teachers</td>
+                        <td>getAll, getById, create, update, delete, search</td>
+                    </tr>
+                    <tr>
+                        <td>Classes</td>
+                        <td>/api/classes</td>
+                        <td>getAll, getById, create, update, delete</td>
+                    </tr>
+                    <tr>
+                        <td>Subjects</td>
+                        <td>/api/subjects</td>
+                        <td>getAll, getById, create, update, delete</td>
+                    </tr>
+                    <tr>
+                        <td>Fees</td>
+                        <td>/api/fees</td>
+                        <td>getAll, getById, create, update, delete, markAsPaid</td>
+                    </tr>
+                    <tr>
+                        <td>Payments</td>
+                        <td>/api/payments</td>
+                        <td>getAll, getById, create, getSummary</td>
+                    </tr>
+                    <tr>
+                        <td>Attendance</td>
+                        <td>/api/attendance</td>
+                        <td>getAll, getByDate, save, update</td>
+                    </tr>
+                    <tr>
+                        <td>Exams</td>
+                        <td>/api/exams</td>
+                        <td>getAll, getById, create, update, delete</td>
+                    </tr>
+                    <tr>
+                        <td>Results</td>
+                        <td>/api/results</td>
+                        <td>getAll, getByExam, getByStudent, create, update</td>
+                    </tr>
+                    <tr>
+                        <td>Notifications</td>
+                        <td>/api/notifications</td>
+                        <td>getAll, create, sendSMS, sendEmail</td>
+                    </tr>
+                    <tr>
+                        <td>Dashboard</td>
+                        <td>/api/dashboard</td>
+                        <td>getStats, getRecentActivities</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    <!-- Scripts -->
+    <script src="../js/api.js"></script>
+    <script src="../js/data-manager.js"></script>
+    
+    <script>
+        // ডেমো ফাংশনস
+        
+        async function demoGetAllStudents() {
+            const output = document.getElementById('demoOutput');
+            output.innerHTML = '<p style="color: #667eea;"><i class="fas fa-spinner fa-spin"></i> লোড হচ্ছে...</p>';
+            
+            try {
+                const students = await API.students.getAll();
+                output.innerHTML = `<pre>${JSON.stringify(students, null, 2)}</pre>`;
+            } catch (error) {
+                output.innerHTML = `<p style="color: #e53e3e;">এরর: ${error.message}</p>
+                    <p style="color: #666; margin-top: 10px;">সার্ভার চালু না থাকলে স্টোরেজ মোড ব্যবহার করুন।</p>`;
+            }
+        }
+        
+        async function demoCreateStudent() {
+            const output = document.getElementById('demoOutput');
+            output.innerHTML = '<p style="color: #667eea;"><i class="fas fa-spinner fa-spin"></i> যোগ করা হচ্ছে...</p>';
+            
+            try {
+                const newStudent = await API.students.create({
+                    firstName: 'ডেমো',
+                    lastName: 'শিক্ষার্থী',
+                    banglaName: 'ডেমো শিক্ষার্থী',
+                    gender: 'male',
+                    dateOfBirth: '১৫ মার্চ ২০১২',
+                    classId: 1,
+                    section: 'ক',
+                    rollNumber: 999,
+                    status: 'active'
+                });
+                
+                output.innerHTML = `<p style="color: #38a169;"><i class="fas fa-check-circle"></i> সফল!</p>
+                    <pre>${JSON.stringify(newStudent, null, 2)}</pre>`;
+            } catch (error) {
+                output.innerHTML = `<p style="color: #e53e3e;">এরর: ${error.message}</p>`;
+            }
+        }
+        
+        async function demoSearchStudents() {
+            const output = document.getElementById('demoOutput');
+            output.innerHTML = '<p style="color: #667eea;"><i class="fas fa-spinner fa-spin"></i> সার্চ হচ্ছে...</p>';
+            
+            try {
+                const results = await API.students.search('আব্দুল');
+                output.innerHTML = `<p style="color: #38a169;">${results.length}টি ফলাফল পাওয়া গেছে</p>
+                    <pre>${JSON.stringify(results, null, 2)}</pre>`;
+            } catch (error) {
+                output.innerHTML = `<p style="color: #e53e3e;">এরর: ${error.message}</p>`;
+            }
+        }
+        
+        async function demoCheckStatus() {
+            const output = document.getElementById('demoOutput');
+            const statusBadge = document.getElementById('apiStatus');
+            
+            const status = await APIStatus.check();
+            statusBadge.textContent = status === 'online' ? 'অনলাইন' : 'অফলাইন';
+            statusBadge.className = `status-badge ${status === 'online' ? 'status-online' : 'status-offline'}`;
+            
+            output.innerHTML = `<p>সার্ভার স্ট্যাটাস: <strong>${status === 'online' ? 'অনলাইন' : 'অফলাইন'}</strong></p>
+                <p>বর্তমান মোড: <strong>${DataManager.mode}</strong></p>`;
+        }
+        
+        async function demoDataManager() {
+            const output = document.getElementById('dataManagerOutput');
+            output.innerHTML = '<p style="color: #667eea;"><i class="fas fa-spinner fa-spin"></i> টেস্ট চলছে...</p>';
+            
+            try {
+                // ডেটা ম্যানেজার ইনিট
+                await DataManager.init({ mode: 'hybrid' });
+                
+                // স্টুডেন্ট ডেটা
+                const students = await DataManager.get('students');
+                const stats = await DataManager.getDashboardStats();
+                
+                output.innerHTML = `<p style="color: #38a169;"><i class="fas fa-check-circle"></i> সফল!</p>
+                    <p><strong>মোড:</strong> ${DataManager.mode}</p>
+                    <p><strong>মোট শিক্ষার্থী:</strong> ${students.length}</p>
+                    <pre>${JSON.stringify(stats, null, 2)}</pre>`;
+            } catch (error) {
+                output.innerHTML = `<p style="color: #e53e3e;">এরর: ${error.message}</p>`;
+            }
+        }
+        
+        // পেজ লোডে চেক
+        document.addEventListener('DOMContentLoaded', async () => {
+            await demoCheckStatus();
+        });
+    </script>
+</body>
+</html>

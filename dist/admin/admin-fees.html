@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ফি ম্যানেজমেন্ট - পাঠশালা ই-ম্যানেজার</title>
+    
+    <!-- Google Fonts for Bengali -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Main Styles -->
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+    <!-- ==================== ADMIN PANEL ==================== -->
+    <div class="admin-layout">
+        <!-- Admin Sidebar -->
+        <aside class="admin-sidebar">
+            <div class="sidebar-header">
+                <a href="admin-dashboard.html">
+                    <img src="../assets/logo.png" alt="Logo">
+                </a>
+                <div class="sidebar-title">
+                    <h3>অ্যাডমিন প্যানেল</h3>
+                    <p>পাঠশালা ই-ম্যানেজার</p>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li>
+                        <a href="admin-dashboard.html">
+                            <i class="fas fa-tachometer-alt"></i>
+                            <span>ড্যাশবোর্ড</span>
+                        </a>
+                    </li>
+                    <li class="has-dropdown">
+                        <div class="dropdown-toggle" onclick="toggleDropdown(this)">
+                            <i class="fas fa-user-graduate"></i>
+                            <span>শিক্ষার্থী</span>
+                            <i class="fas fa-chevron-down arrow"></i>
+                        </div>
+                        <ul class="submenu">
+                            <li><a href="admin-students.html"><i class="fas fa-list"></i> সকল শিক্ষার্থী</a></li>
+                            <li><a href="#" onclick="openModal('add-student-modal'); return false;"><i class="fas fa-plus"></i> নতুন যোগ করুন</a></li>
+                            <li><a href="admin-student-attendance.html"><i class="fas fa-calendar-check"></i> উপস্থিতি</a></li>
+                            <li><a href="admin-student-fees.html"><i class="fas fa-money-bill-wave"></i> ফি তালিকা</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-dropdown">
+                        <div class="dropdown-toggle" onclick="toggleDropdown(this)">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                            <span>শিক্ষক</span>
+                            <i class="fas fa-chevron-down arrow"></i>
+                        </div>
+                        <ul class="submenu">
+                            <li><a href="admin-teachers.html"><i class="fas fa-list"></i> সকল শিক্ষক</a></li>
+                            <li><a href="#" onclick="openModal('add-teacher-modal'); return false;"><i class="fas fa-plus"></i> নতুন যোগ করুন</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="admin-attendance.html">
+                            <i class="fas fa-calendar-check"></i>
+                            <span>উপস্থিতি</span>
+                        </a>
+                    </li>
+                    <li class="has-dropdown active">
+                        <div class="dropdown-toggle" onclick="toggleDropdown(this)">
+                            <i class="fas fa-money-bill-wave"></i>
+                            <span>ফি ম্যানেজমেন্ট</span>
+                            <i class="fas fa-chevron-down arrow"></i>
+                        </div>
+                        <ul class="submenu">
+                            <li class="active"><a href="admin-fees.html"><i class="fas fa-list"></i> ফি তালিকা</a></li>
+                            <li><a href="admin-fee-collection.html"><i class="fas fa-coins"></i> ফি সংগ্রহ</a></li>
+                            <li><a href="admin-fee-report.html"><i class="fas fa-chart-bar"></i> ফি রিপোর্ট</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-dropdown">
+                        <div class="dropdown-toggle" onclick="toggleDropdown(this)">
+                            <i class="fas fa-clipboard-list"></i>
+                            <span>পরীক্ষা</span>
+                            <i class="fas fa-chevron-down arrow"></i>
+                        </div>
+                        <ul class="submenu">
+                            <li><a href="admin-exams.html"><i class="fas fa-list"></i> পরীক্ষার তালিকা</a></li>
+                            <li><a href="admin-exam-routine.html"><i class="fas fa-calendar"></i> পরীক্ষার রুটিন</a></li>
+                            <li><a href="admin-results.html"><i class="fas fa-chart-line"></i> ফলাফল</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="admin-payments.html">
+                            <i class="fas fa-credit-card"></i>
+                            <span>পেমেন্ট</span>
+                        </a>
+                    </li>
+                    <li class="has-dropdown">
+                        <div class="dropdown-toggle" onclick="toggleDropdown(this)">
+                            <i class="fas fa-book"></i>
+                            <span>একাডেমিক</span>
+                            <i class="fas fa-chevron-down arrow"></i>
+                        </div>
+                        <ul class="submenu">
+                            <li><a href="admin-classes.html"><i class="fas fa-list"></i> শ্রেণি তালিকা</a></li>
+                            <li><a href="admin-sections.html"><i class="fas fa-layer-group"></i> শাখা/সেকশন</a></li>
+                            <li><a href="admin-subjects.html"><i class="fas fa-book-open"></i> বিষয় তালিকা</a></li>
+                            <li><a href="admin-syllabus.html"><i class="fas fa-scroll"></i> সিলেবাস</a></li>
+                            <li><a href="admin-class-routine.html"><i class="fas fa-calendar-alt"></i> ক্লাস রুটিন</a></li>
+                            <li><a href="admin-academic-calendar.html"><i class="fas fa-calendar-week"></i> একাডেমিক ক্যালেন্ডার</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="admin-notifications.html">
+                            <i class="fas fa-bell"></i>
+                            <span>নোটিফিকেশন</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="admin-settings.html">
+                            <i class="fas fa-cogs"></i>
+                            <span>সেটিংস</span>
+                        </a>
+                    </li>
+                    <li class="logout-item">
+                        <a href="../index.html">
+                            <i class="fas fa-sign-out-alt"></i>
+                            <span>লগআউট</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Sidebar Overlay for Mobile -->
+        <div class="sidebar-overlay" onclick="toggleSidebar()"></div>
+
+        <!-- Admin Main Content -->
+        <main class="admin-main">
+            <!-- Top Bar -->
+            <div class="admin-topbar">
+                <button class="sidebar-toggle" onclick="toggleSidebar()">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="breadcrumb">
+                    <a href="../index.html">সাইট দেখুন</a>
+                    <span><i class="fas fa-chevron-left"></i></span>
+                    <span>অ্যাডমিন প্যানেল</span>
+                    <span><i class="fas fa-chevron-left"></i></span>
+                    <span>ফি ম্যানেজমেন্ট</span>
+                </div>
+                <div class="admin-actions">
+                    <button class="notification-btn">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-count">৩</span>
+                    </button>
+                    <div class="admin-profile">
+                        <img src="../assets/logo.png" alt="Admin">
+                        <span>অ্যাডমিন</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fees Content -->
+            <div class="module-content">
+                <!-- Page Header -->
+                <div class="page-header">
+                    <div class="page-title">
+                        <h2><i class="fas fa-money-bill-wave"></i> ফি ম্যানেজমেন্ট</h2>
+                        <p>স্কুল ফি কালেকশন এবং ব্যবস্থাপনা করুন</p>
+                    </div>
+                </div>
+
+                <!-- Fee Tabs -->
+                <div class="fee-tabs">
+                    <button class="fee-tab active" data-fee-tab="fee-collection" onclick="switchFeeTab('fee-collection')">ফি কালেকশন</button>
+                    <button class="fee-tab" data-fee-tab="fee-setup" onclick="switchFeeTab('fee-setup')">ফি সেটআপ</button>
+                    <button class="fee-tab" data-fee-tab="fee-reports" onclick="switchFeeTab('fee-reports')">ফি রিপোর্ট</button>
+                    <button class="fee-tab" data-fee-tab="due-fees" onclick="switchFeeTab('due-fees')">বকেয়া ফি</button>
+                </div>
+
+                <!-- Fee Collection Tab -->
+                <div id="fee-collection" class="fee-tab-content active">
+                    <div class="fee-collection-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>শিক্ষার্থী নির্বাচন করুন</label>
+                                <select id="fee-student-select" onchange="loadStudentFees()">
+                                    <option value="">শিক্ষার্থী নির্বাচন করুন</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>ফি ধরন</label>
+                                <select id="fee-type-select">
+                                    <option value="monthly">মাসিক ফি</option>
+                                    <option value="exam">পরীক্ষার ফি</option>
+                                    <option value="admission">ভর্তি ফি</option>
+                                    <option value="library">লাইব্রেরি ফি</option>
+                                    <option value="transport">পরিবহন ফি</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>মাস/সময়কাল</label>
+                                <input type="text" id="fee-month" placeholder="যেমন: জানুয়ারি ২০২৫">
+                            </div>
+                            <div class="form-group">
+                                <label>টাকা (৳)</label>
+                                <input type="number" id="fee-amount" placeholder="ফি এমাউন্ট">
+                            </div>
+                        </div>
+                        <button class="btn-primary" onclick="collectFee()">
+                            <i class="fas fa-money-bill-alt"></i> ফি কালেকশন করুন
+                        </button>
+                    </div>
+                    
+                    <h3>সাম্প্রতিক লেনদেন</h3>
+                    <div class="data-table-container">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>তারিখ</th>
+                                    <th>শিক্ষার্থী</th>
+                                    <th>ফি ধরন</th>
+                                    <th>এমাউন্ট</th>
+                                    <th>পেমেন্ট মেথড</th>
+                                    <th>স্ট্যাটাস</th>
+                                </tr>
+                            </thead>
+                            <tbody id="transactions-table-body">
+                                <tr>
+                                    <td colspan="6" class="empty-state">কোনো লেনদেন নেই</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Fee Setup Tab -->
+                <div id="fee-setup" class="fee-tab-content">
+                    <div class="fee-structure-form">
+                        <h3>ফি স্ট্রাকচার সেটআপ</h3>
+                        <form id="fee-structure-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>ফি নাম</label>
+                                    <input type="text" id="fee-name" placeholder="ফি এর নাম">
+                                </div>
+                                <div class="form-group">
+                                    <label>শ্রেণি</label>
+                                    <select id="fee-class">
+                                        <option value="all">সব শ্রেণি</option>
+                                        <option value="৬ষ্ঠ">৬ষ্ঠ শ্রেণি</option>
+                                        <option value="৭ম">৭ম শ্রেণি</option>
+                                        <option value="৮ম">৮ম শ্রেণি</option>
+                                        <option value="৯ম">৯ম শ্রেণি</option>
+                                        <option value="১০ম">১০ম শ্রেণি</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>এমাউন্ট (৳)</label>
+                                    <input type="number" id="fee-structure-amount" placeholder="১০০০">
+                                </div>
+                                <div class="form-group">
+                                    <label>ডিউডেট</label>
+                                    <input type="date" id="fee-due-date">
+                                </div>
+                            </div>
+                            <button type="submit" class="btn-primary">
+                                <i class="fas fa-plus"></i> ফি স্ট্রাকচার যোগ করুন
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Fee Reports Tab -->
+                <div id="fee-reports" class="fee-tab-content">
+                    <div class="fee-report-controls">
+                        <div class="control-group">
+                            <label>রিপোর্ট ধরন</label>
+                            <select id="fee-report-type" onchange="generateFeeReport()">
+                                <option value="daily">দৈনিক</option>
+                                <option value="monthly">মাসিক</option>
+                                <option value="yearly">বার্ষিক</option>
+                            </select>
+                        </div>
+                        <div class="control-group">
+                            <label>তারিখ</label>
+                            <input type="date" id="fee-report-date" onchange="generateFeeReport()">
+                        </div>
+                    </div>
+                    <div id="fee-report-content" class="report-content">
+                        <div class="report-summary">
+                            <div class="summary-card">
+                                <h4>মোট কালেকশন</h4>
+                                <p class="amount">৳<span id="total-collection">০</span></p>
+                            </div>
+                            <div class="summary-card">
+                                <h4>মোট লেনদেন</h4>
+                                <p class="count"><span id="total-transactions">০</span>টি</p>
+                            </div>
+                            <div class="summary-card">
+                                <h4>গড় লেনদেন</h4>
+                                <p class="amount">৳<span id="avg-transaction">০</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Due Fees Tab -->
+                <div id="due-fees" class="fee-tab-content">
+                    <h3>বকেয়া ফি তালিকা</h3>
+                    <div class="data-table-container">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>শিক্ষার্থী</th>
+                                    <th>শ্রেণি</th>
+                                    <th>ফি ধরন</th>
+                                    <th>পরিমাণ</th>
+                                    <th>ডিউডেট</th>
+                                    <th>অ্যাকশন</th>
+                                </tr>
+                            </thead>
+                            <tbody id="due-fees-table-body">
+                                <tr>
+                                    <td colspan="6" class="empty-state">কোনো বকেয়া ফি নেই</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast-container"></div>
+
+    <!-- Scripts -->
+    <script src="../js/storage.js"></script>
+    <script src="../js/app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check URL parameters
+            const urlParams = new URLSearchParams(window.location.search);
+            const tab = urlParams.get('tab');
+            if (tab) {
+                switchFeeTab(tab);
+            }
+            
+            // Load students for dropdown
+            loadStudentsDropdown();
+        });
+
+        function loadStudentsDropdown() {
+            const students = StorageManager.getStudents();
+            const select = document.getElementById('fee-student-select');
+            select.innerHTML = '<option value="">শিক্ষার্থী নির্বাচন করুন</option>' +
+                students.map(s => `<option value="${s.id}">${s.banglaName || s.firstName + ' ' + s.lastName} (${s.rollNumber})</option>`).join('');
+        }
+
+        function switchFeeTab(tabId) {
+            document.querySelectorAll('.fee-tab').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.fee-tab-content').forEach(content => content.classList.remove('active'));
+            
+            document.querySelector(`[data-fee-tab="${tabId}"]`).classList.add('active');
+            document.getElementById(tabId).classList.add('active');
+        }
+
+        function collectFee() {
+            const studentId = document.getElementById('fee-student-select').value;
+            const feeType = document.getElementById('fee-type-select').value;
+            const amount = document.getElementById('fee-amount').value;
+            
+            if (!studentId || !amount) {
+                showToast('শিক্ষার্থী এবং ফি এমাউন্ট প্রয়োজন', 'warning');
+                return;
+            }
+            
+            showToast('ফি কালেকশন সম্পন্ন হয়েছে', 'success');
+        }
+
+        function loadStudentFees() {
+            // Load student fee details
+        }
+
+        function generateFeeReport() {
+            document.getElementById('total-collection').textContent = '০';
+            document.getElementById('total-transactions').textContent = '০';
+            document.getElementById('avg-transaction').textContent = '০';
+        }
+
+        function toggleSidebar() {
+            const sidebar = document.querySelector('.admin-sidebar');
+            const overlay = document.querySelector('.sidebar-overlay');
+            sidebar.classList.toggle('active');
+            if (overlay) {
+                overlay.classList.toggle('active');
+            }
+        }
+    </script>
+</body>
+</html>

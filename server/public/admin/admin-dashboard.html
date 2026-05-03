@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>অ্যাডমিন ড্যাশবোর্ড - পাঠশালা ই-ম্যানেজার</title>
+    
+    <!-- Google Fonts for Bengali -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Main Styles -->
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+    <!-- ==================== ADMIN PANEL ==================== -->
+    <div class="admin-layout">
+        <!-- Admin Sidebar -->
+        <aside class="admin-sidebar">
+            <div class="sidebar-header">
+                <a href="admin-dashboard.html">
+                    <img src="../assets/logo.png" alt="Logo">
+                </a>
+                <div class="sidebar-title">
+                    <h3>অ্যাডমিন প্যানেল</h3>
+                    <p>পাঠশালা ই-ম্যানেজার</p>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li class="active">
+                        <a href="admin-dashboard.html">
+                            <i class="fas fa-tachometer-alt"></i>
+                            <span>ড্যাশবোর্ড</span>
+                        </a>
+                    </li>
+                    <li class="has-dropdown">
+                        <div class="dropdown-toggle" onclick="toggleDropdown(this)">
+                            <i class="fas fa-user-graduate"></i>
+                            <span>শিক্ষার্থী</span>
+                            <i class="fas fa-chevron-down arrow"></i>
+                        </div>
+                        <ul class="submenu">
+                            <li><a href="admin-students.html"><i class="fas fa-list"></i> সকল শিক্ষার্থী</a></li>
+                            <li><a href="#" onclick="openModal('add-student-modal'); return false;"><i class="fas fa-plus"></i> নতুন যোগ করুন</a></li>
+                            <li><a href="admin-student-attendance.html"><i class="fas fa-calendar-check"></i> উপস্থিতি</a></li>
+                            <li><a href="admin-student-fees.html"><i class="fas fa-money-bill-wave"></i> ফি তালিকা</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-dropdown">
+                        <div class="dropdown-toggle" onclick="toggleDropdown(this)">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                            <span>শিক্ষক</span>
+                            <i class="fas fa-chevron-down arrow"></i>
+                        </div>
+                        <ul class="submenu">
+                            <li><a href="admin-teachers.html"><i class="fas fa-list"></i> সকল শিক্ষক</a></li>
+                            <li><a href="#" onclick="openModal('add-teacher-modal'); return false;"><i class="fas fa-plus"></i> নতুন যোগ করুন</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="admin-attendance.html">
+                            <i class="fas fa-calendar-check"></i>
+                            <span>উপস্থিতি</span>
+                        </a>
+                    </li>
+                    <li class="has-dropdown">
+                        <div class="dropdown-toggle" onclick="toggleDropdown(this)">
+                            <i class="fas fa-money-bill-wave"></i>
+                            <span>ফি ম্যানেজমেন্ট</span>
+                            <i class="fas fa-chevron-down arrow"></i>
+                        </div>
+                        <ul class="submenu">
+                            <li><a href="admin-fees.html"><i class="fas fa-list"></i> ফি তালিকা</a></li>
+                            <li><a href="admin-fee-collection.html"><i class="fas fa-coins"></i> ফি সংগ্রহ</a></li>
+                            <li><a href="admin-fee-report.html"><i class="fas fa-chart-bar"></i> ফি রিপোর্ট</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-dropdown">
+                        <div class="dropdown-toggle" onclick="toggleDropdown(this)">
+                            <i class="fas fa-clipboard-list"></i>
+                            <span>পরীক্ষা</span>
+                            <i class="fas fa-chevron-down arrow"></i>
+                        </div>
+                        <ul class="submenu">
+                            <li><a href="admin-exams.html"><i class="fas fa-list"></i> পরীক্ষার তালিকা</a></li>
+                            <li><a href="admin-exam-routine.html"><i class="fas fa-calendar"></i> পরীক্ষার রুটিন</a></li>
+                            <li><a href="admin-results.html"><i class="fas fa-chart-line"></i> ফলাফল</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="admin-payments.html">
+                            <i class="fas fa-credit-card"></i>
+                            <span>পেমেন্ট</span>
+                        </a>
+                    </li>
+                    <li class="has-dropdown">
+                        <div class="dropdown-toggle" onclick="toggleDropdown(this)">
+                            <i class="fas fa-book"></i>
+                            <span>একাডেমিক</span>
+                            <i class="fas fa-chevron-down arrow"></i>
+                        </div>
+                        <ul class="submenu">
+                            <li><a href="admin-classes.html"><i class="fas fa-list"></i> শ্রেণি তালিকা</a></li>
+                            <li><a href="admin-sections.html"><i class="fas fa-layer-group"></i> শাখা/সেকশন</a></li>
+                            <li><a href="admin-subjects.html"><i class="fas fa-book-open"></i> বিষয় তালিকা</a></li>
+                            <li><a href="admin-syllabus.html"><i class="fas fa-scroll"></i> সিলেবাস</a></li>
+                            <li><a href="admin-class-routine.html"><i class="fas fa-calendar-alt"></i> ক্লাস রুটিন</a></li>
+                            <li><a href="admin-academic-calendar.html"><i class="fas fa-calendar-week"></i> একাডেমিক ক্যালেন্ডার</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="admin-notifications.html">
+                            <i class="fas fa-bell"></i>
+                            <span>নোটিফিকেশন</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="admin-settings.html">
+                            <i class="fas fa-cogs"></i>
+                            <span>সেটিংস</span>
+                        </a>
+                    </li>
+                    <li class="logout-item">
+                        <a href="../index.html">
+                            <i class="fas fa-sign-out-alt"></i>
+                            <span>লগআউট</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Sidebar Overlay for Mobile -->
+        <div class="sidebar-overlay" onclick="toggleSidebar()"></div>
+
+        <!-- Admin Main Content -->
+        <main class="admin-main">
+            <!-- Top Bar -->
+            <div class="admin-topbar">
+                <button class="sidebar-toggle" onclick="toggleSidebar()">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="breadcrumb">
+                    <a href="../index.html">সাইট দেখুন</a>
+                    <span><i class="fas fa-chevron-left"></i></span>
+                    <span>অ্যাডমিন প্যানেল</span>
+                    <span><i class="fas fa-chevron-left"></i></span>
+                    <span>ড্যাশবোর্ড</span>
+                </div>
+                <div class="admin-actions">
+                    <button class="notification-btn">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-count">৩</span>
+                    </button>
+                    <div class="admin-profile">
+                        <img src="assets/logo.png" alt="Admin">
+                        <span>অ্যাডমিন</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dashboard Content -->
+            <div class="dashboard-content">
+                <!-- Welcome Section -->
+                <div class="welcome-section">
+                    <div class="welcome-text">
+                        <h2>স্বাগতম, অ্যাডমিন!</h2>
+                        <p>আজকের স্কুল ম্যানেজমেন্ট সারসংক্ষেপ নিচে দেখুন</p>
+                    </div>
+                    <div class="quick-actions">
+                        <a href="admin-students.html" class="quick-action-btn">
+                            <i class="fas fa-user-plus"></i>
+                            <span>নতুন ছাত্র</span>
+                        </a>
+                        <a href="admin-fees.html" class="quick-action-btn">
+                            <i class="fas fa-money-bill-alt"></i>
+                            <span>ফি কালেকশন</span>
+                        </a>
+                        <a href="admin-notifications.html" class="quick-action-btn">
+                            <i class="fas fa-paper-plane"></i>
+                            <span>নোটিফিকেশন</span>
+                        </a>
+                        <a href="admin-settings.html" class="quick-action-btn">
+                            <i class="fas fa-cog"></i>
+                            <span>সেটিংস</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Stats Grid -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon students">
+                            <i class="fas fa-user-graduate"></i>
+                        </div>
+                        <div class="stat-details">
+                            <h3>মোট শিক্ষার্থী</h3>
+                            <p class="stat-number" id="total-students">০</p>
+                            <p class="stat-change positive"><i class="fas fa-arrow-up"></i> গত মাসের চেয়ে +৫%</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon teachers">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                        </div>
+                        <div class="stat-details">
+                            <h3>মোট শিক্ষক</h3>
+                            <p class="stat-number" id="total-teachers">০</p>
+                            <p class="stat-change neutral"><i class="fas fa-minus"></i> অপরিবর্তিত</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon fees">
+                            <i class="fas fa-money-bill-wave"></i>
+                        </div>
+                        <div class="stat-details">
+                            <h3>আজকের কালেকশন</h3>
+                            <p class="stat-number" id="today-collection">৳০</p>
+                            <p class="stat-change positive"><i class="fas fa-arrow-up"></i> গত দিনের চেয়ে +১২%</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon attendance">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <div class="stat-details">
+                            <h3>আজকের উপস্থিতি</h3>
+                            <p class="stat-number" id="today-attendance">০%</p>
+                            <p class="stat-change positive"><i class="fas fa-arrow-up"></i> ২৫০ জন উপস্থিত</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Main Dashboard Grid -->
+                <div class="dashboard-grid">
+                    <!-- Recent Notices -->
+                    <div class="dashboard-widget">
+                        <div class="widget-header">
+                            <h3><i class="fas fa-bell"></i> সাম্প্রতিক নোটিশ</h3>
+                            <a href="notices.html" class="view-all">সব দেখুন <i class="fas fa-arrow-left"></i></a>
+                        </div>
+                        <div class="widget-content">
+                            <ul class="notice-list" id="recent-notices">
+                                <li>
+                                    <span class="notice-date">১৩ জানুয়ারি</span>
+                                    <p>জানুয়ারি মাসিক পরীক্ষার সময়সূচি প্রকাশ</p>
+                                </li>
+                                <li>
+                                    <span class="notice-date">১২ জানুয়ারি</span>
+                                    <p>৬ষ্ঠ শ্রেণির ক্লাস রুটিন পরিবর্তন</p>
+                                </li>
+                                <li>
+                                    <span class="notice-date">১১ জানুয়ারি</span>
+                                    <p>বার্ষিক ক্রীড়া প্রতিযোগিতার তারিখ ঘোষণা</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Recent Transactions -->
+                    <div class="dashboard-widget">
+                        <div class="widget-header">
+                            <h3><i class="fas fa-money-bill-alt"></i> সাম্প্রতিক লেনদেন</h3>
+                            <a href="admin-payments.html" class="view-all">সব দেখুন <i class="fas fa-arrow-left"></i></a>
+                        </div>
+                        <div class="widget-content">
+                            <ul class="transaction-list" id="recent-transactions">
+                                <li>
+                                    <div class="transaction-info">
+                                        <i class="fas fa-plus-circle text-success"></i>
+                                        <span>আব্দুল রহমান - মাসিক ফি</span>
+                                    </div>
+                                    <span class="transaction-amount">৳৫০০</span>
+                                </li>
+                                <li>
+                                    <div class="transaction-info">
+                                        <i class="fas fa-plus-circle text-success"></i>
+                                        <span>সারা আক্তার - লাইব্রেরি ফি</span>
+                                    </div>
+                                    <span class="transaction-amount">৳২০০</span>
+                                </li>
+                                <li>
+                                    <div class="transaction-info">
+                                        <i class="fas fa-plus-circle text-success"></i>
+                                        <span>রহিম মিয়া - পরীক্ষার ফি</span>
+                                    </div>
+                                    <span class="transaction-amount">৳৩০০</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Pending Fees -->
+                    <div class="dashboard-widget">
+                        <div class="widget-header">
+                            <h3><i class="fas fa-exclamation-triangle"></i> বকেয়া ফি</h3>
+                            <a href="admin-fees.html" class="view-all">সব দেখুন <i class="fas fa-arrow-left"></i></a>
+                        </div>
+                        <div class="widget-content">
+                            <ul class="pending-list" id="pending-fees">
+                                <li>
+                                    <span>করিম আহমেদ - মাসিক ফি</span>
+                                    <span class="pending-amount">৳৫০০</span>
+                                </li>
+                                <li>
+                                    <span>জান্নাত আলী - পরীক্ষার ফি</span>
+                                    <span class="pending-amount">৳৩০০</span>
+                                </li>
+                                <li>
+                                    <span>মোহন চন্দ্র - বার্ষিক ফি</span>
+                                    <span class="pending-amount">৳৩০০০</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Upcoming Exams -->
+                    <div class="dashboard-widget">
+                        <div class="widget-header">
+                            <h3><i class="fas fa-clipboard-list"></i> আসন্ন পরীক্ষা</h3>
+                            <a href="admin-exams.html" class="view-all">সব দেখুন <i class="fas fa-arrow-left"></i></a>
+                        </div>
+                        <div class="widget-content">
+                            <ul class="exam-list" id="upcoming-exams">
+                                <li>
+                                    <div class="exam-info">
+                                        <h4>মাসিক পরীক্ষা - ফেব্রুয়ারি</h4>
+                                        <p>৬ষ্ঠ - ১০ম শ্রেণি</p>
+                                    </div>
+                                    <span class="exam-date">১৫ ফেব্রুয়ারি</span>
+                                </li>
+                                <li>
+                                    <div class="exam-info">
+                                        <h4>প্রথম সাময়িক পরীক্ষা</h4>
+                                        <p>সকল শ্রেণি</p>
+                                    </div>
+                                    <span class="exam-date">১ মার্চ</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Attendance Overview -->
+                <div class="attendance-overview">
+                    <div class="widget-header">
+                        <h3><i class="fas fa-chart-pie"></i> আজকের উপস্থিতি সারসংক্ষেপ</h3>
+                    </div>
+                    <div class="attendance-stats">
+                        <div class="attendance-stat present">
+                            <h4>উপস্থিত</h4>
+                            <p class="count" id="present-count">০</p>
+                        </div>
+                        <div class="attendance-stat absent">
+                            <h4>অনুপস্থিত</h4>
+                            <p class="count" id="absent-count">০</p>
+                        </div>
+                        <div class="attendance-stat late">
+                            <h4>বিলম্বে</h4>
+                            <p class="count" id="late-count">০</p>
+                        </div>
+                        <div class="attendance-stat leave">
+                            <h4>ছুটি</h4>
+                            <p class="count" id="leave-count">০</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast-container"></div>
+
+    <!-- Scripts -->
+    <script src="../js/storage.js"></script>
+    <script src="../js/app.js"></script>
+    <script>
+        // Initialize dashboard
+        document.addEventListener('DOMContentLoaded', function() {
+            StorageManager.init();
+            loadDashboardData();
+        });
+
+        // Load dashboard data
+        function loadDashboardData() {
+            const stats = StorageManager.getDashboardStats();
+            
+            // Update stats
+            document.getElementById('total-students').textContent = AdminManager.getBanglaNumber(stats.totalStudents);
+            document.getElementById('total-teachers').textContent = AdminManager.getBanglaNumber(stats.totalTeachers);
+            document.getElementById('today-collection').textContent = '৳' + AdminManager.getBanglaNumber(stats.totalFeeCollection);
+            document.getElementById('today-attendance').textContent = AdminManager.getBanglaNumber(Math.floor((stats.todayAttendance / stats.totalStudents) * 100)) + '%';
+            
+            // Update attendance stats
+            document.getElementById('present-count').textContent = AdminManager.getBanglaNumber(stats.todayAttendance || 0);
+            document.getElementById('absent-count').textContent = AdminManager.getBanglaNumber(stats.totalStudents - (stats.todayAttendance || 0));
+        }
+
+    </script>
+</body>
+</html>

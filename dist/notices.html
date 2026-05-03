@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>নোটিশ বোর্ড - পাঠশালা ই-ম্যানেজার</title>
+    
+    <!-- Google Fonts for Bengali -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Main Styles -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- ==================== HEADER ==================== -->
+    <header id="main-header">
+        <div class="header-container">
+            <div class="logo-section">
+                <a href="index.html">
+                    <img id="school-logo" src="assets/logo.png" alt="স্কুল লোগো">
+                </a>
+                <div class="school-name">
+                    <h1 id="header-school-name">পাঠশালা ই-ম্যানেজার</h1>
+                    <span id="header-school-tagline">আমাদের স্কুল, আমাদের গর্ব</span>
+                </div>
+            </div>
+            <nav class="main-nav">
+                <ul id="nav-menu">
+                    <li><a href="index.html">হোম</a></li>
+                    <li><a href="amra-somproshe.html">আমাদের সম্পর্কে</a></li>
+                    <li><a href="academics.html">একাডেমিক্স</a></li>
+                    <li><a href="admissions.html">ভর্তি</a></li>
+                    <li><a href="notices.html" class="active">নোটিশ</a></li>
+                    <li><a href="contact.html">যোগাযোগ</a></li>
+                    <li><a href="admin-dashboard.html" class="btn-login"><i class="fas fa-user-shield"></i> অ্যাডমিন</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation -->
+    <div id="mobile-nav" class="mobile-nav">
+        <ul id="mobile-nav-menu">
+            <li><a href="index.html">হোম</a></li>
+            <li><a href="amra-somproshe.html">আমাদের সম্পর্কে</a></li>
+            <li><a href="academics.html">একাডেমিক্স</a></li>
+            <li><a href="admissions.html">ভর্তি</a></li>
+            <li><a href="notices.html">নোটিশ</a></li>
+            <li><a href="contact.html">যোগাযোগ</a></li>
+            <li><a href="admin-dashboard.html">অ্যাডমিন প্যানেল</a></li>
+        </ul>
+    </div>
+
+    <!-- ==================== PAGE CONTENT ==================== -->
+    <main class="page-content">
+        <!-- Page Banner -->
+        <section class="page-banner notice-banner">
+            <div class="banner-content">
+                <h1><i class="fas fa-bullhorn"></i> নোটিশ বোর্ড</h1>
+                <p>সর্বশেষ নোটিশ এবং ঘোষণা</p>
+            </div>
+        </section>
+
+        <!-- Breadcrumb -->
+        <div class="breadcrumb-nav">
+            <a href="index.html">হোম</a>
+            <span><i class="fas fa-chevron-left"></i></span>
+            <span>নোটিশ বোর্ড</span>
+        </div>
+
+        <!-- Notices Content -->
+        <section class="notices-section">
+            <div class="container">
+                <!-- Notice Categories -->
+                <div class="notice-categories">
+                    <button class="category-btn active" data-category="all" onclick="filterNotices('all')">
+                        <i class="fas fa-list"></i> সব নোটিশ
+                    </button>
+                    <button class="category-btn" data-category="exam" onclick="filterNotices('exam')">
+                        <i class="fas fa-clipboard-list"></i> পরীক্ষা
+                    </button>
+                    <button class="category-btn" data-category="admission" onclick="filterNotices('admission')">
+                        <i class="fas fa-user-plus"></i> ভর্তি
+                    </button>
+                    <button class="category-btn" data-category="event" onclick="filterNotices('event')">
+                        <i class="fas fa-calendar-star"></i> ইভেন্ট
+                    </button>
+                    <button class="category-btn" data-category="holiday" onclick="filterNotices('holiday')">
+                        <i class="fas fa holiday"></i> ছুটি
+                    </button>
+                </div>
+
+                <!-- Search Box -->
+                <div class="notice-search">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="notice-search" placeholder="নোটিশ খুঁজুন..." onkeyup="searchNotices()">
+                </div>
+
+                <!-- Notices List -->
+                <div class="notices-list" id="notices-list">
+                    <!-- Notice Item 1 -->
+                    <div class="notice-item" data-category="exam">
+                        <div class="notice-date">
+                            <span class="day">১৩</span>
+                            <span class="month">জানুয়ারি</span>
+                            <span class="year">২০২৫</span>
+                        </div>
+                        <div class="notice-content">
+                            <div class="notice-badge exam">পরীক্ষা</div>
+                            <h3>জানুয়ারি মাসিক পরীক্ষার সময়সূচি প্রকাশ</h3>
+                            <p>জানুয়ারি মাসের মাসিক পরীক্ষার সময়সূচি প্রকাশ করা হয়েছে। সকল শিক্ষার্থীদের নির্ধারিত সময়ে পরীক্ষা কেন্দ্রে উপস্থিত থাকতে হবে। পরীক্ষার সময়সূচি নিচের লিংক থেকে ডাউনলোড করা যাবে।</p>
+                            <div class="notice-meta">
+                                <span><i class="fas fa-clock"></i> প্রকাশিত: ১৩ জানুয়ারি, ২০২৫</span>
+                            </div>
+                        </div>
+                        <div class="notice-actions">
+                            <a href="#" class="btn-icon" title="বিস্তারিত দেখুন"><i class="fas fa-eye"></i></a>
+                            <a href="#" class="btn-icon" title="ডাউনলোড"><i class="fas fa-download"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Notice Item 2 -->
+                    <div class="notice-item" data-category="admission">
+                        <div class="notice-date">
+                            <span class="day">১০</span>
+                            <span class="month">জানুয়ারি</span>
+                            <span class="year">২০২৫</span>
+                        </div>
+                        <div class="notice-content">
+                            <div class="notice-badge admission">ভর্তি</div>
+                            <h3>২০২৫ শিক্ষাবর্ষে ভর্তি বিজ্ঞপ্তি</h3>
+                            <p>পাঠশালা ই-ম্যানেজারে ২০২৫ শিক্ষাবর্ষে ৬ষ্ঠ থেকে ১০ম শ্রেণিতে নতুন শিক্ষার্থী ভর্তির জন্য আবেদন গ্রহণ শুরু হয়েছে। আগ্রহী অভিভাবকরা অনলাইনে আবেদন করতে পারবেন।</p>
+                            <div class="notice-meta">
+                                <span><i class="fas fa-clock"></i> প্রকাশিত: ১০ জানুয়ারি, ২০২৫</span>
+                            </div>
+                        </div>
+                        <div class="notice-actions">
+                            <a href="admissions.html" class="btn-icon" title="বিস্তারিত দেখুন"><i class="fas fa-eye"></i></a>
+                            <a href="#" class="btn-icon" title="ডাউনলোড"><i class="fas fa-download"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Notice Item 3 -->
+                    <div class="notice-item" data-category="event">
+                        <div class="notice-date">
+                            <span class="day">০৮</span>
+                            <span class="month">জানুয়ারি</span>
+                            <span class="year">২০২৫</span>
+                        </div>
+                        <div class="notice-content">
+                            <div class="notice-badge event">ইভেন্ট</div>
+                            <h3>বার্ষিক ক্রীড়া প্রতিযোগিতা</h3>
+                            <p>আগামী ২৫ জানুয়ারি বার্ষিক ক্রীড়া প্রতিযোগিতা অনুষ্ঠিত হবে। সকল শিক্ষার্থীদের অংশগ্রহণের জন্য আমন্ত্রণ জানানো হয়েছে। ইভেন্টের বিস্তারিত সময়সূচি শীঘ্রই জানানো হবে।</p>
+                            <div class="notice-meta">
+                                <span><i class="fas fa-clock"></i> প্রকাশিত: ০৮ জানুয়ারি, ২০২৫</span>
+                            </div>
+                        </div>
+                        <div class="notice-actions">
+                            <a href="#" class="btn-icon" title="বিস্তারিত দেখুন"><i class="fas fa-eye"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Notice Item 4 -->
+                    <div class="notice-item" data-category="exam">
+                        <div class="notice-date">
+                            <span class="day">০৫</span>
+                            <span class="month">জানুয়ারি</span>
+                            <span class="year">২০২৫</span>
+                        </div>
+                        <div class="notice-content">
+                            <div class="notice-badge exam">পরীক্ষা</div>
+                            <h3>প্রথম সাময়িক পরীক্ষার ফলাফল প্রকাশ</h3>
+                            <p>২০২৪ শিক্ষাবর্ষের প্রথম সাময়িক পরীক্ষার ফলাফল প্রকাশিত হয়েছে। শিক্ষার্থীরা তাদের ফলাফল অনলাইনে দেখতে পারবে।</p>
+                            <div class="notice-meta">
+                                <span><i class="fas fa-clock"></i> প্রকাশিত: ০৫ জানুয়ারি, ২০২৫</span>
+                            </div>
+                        </div>
+                        <div class="notice-actions">
+                            <a href="#" class="btn-icon" title="বিস্তারিত দেখুন"><i class="fas fa-eye"></i></a>
+                            <a href="#" class="btn-icon" title="ডাউনলোড"><i class="fas fa-download"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Notice Item 5 -->
+                    <div class="notice-item" data-category="holiday">
+                        <div class="notice-date">
+                            <span class="day">০১</span>
+                            <span class="month">জানুয়ারি</span>
+                            <span class="year">২০২৫</span>
+                        </div>
+                        <div class="notice-content">
+                            <div class="notice-badge holiday">ছুটি</div>
+                            <h3>২০২৫ শিক্ষাবর্ষের ক্যালেন্ডার</h3>
+                            <p>২০২৫ শিক্ষাবর্ষের সম্পূর্ণ ক্যালেন্ডার প্রকাশিত হয়েছে। সকল শিক্ষার্থী ও অভিভাবকদের ক্যালেন্ডারটি ডাউনলোড করে রাখার জন্য অনুরোধ করা হচ্ছে।</p>
+                            <div class="notice-meta">
+                                <span><i class="fas fa-clock"></i> প্রকাশিত: ০১ জানুয়ারি, ২০২৫</span>
+                            </div>
+                        </div>
+                        <div class="notice-actions">
+                            <a href="#" class="btn-icon" title="বিস্তারিত দেখুন"><i class="fas fa-eye"></i></a>
+                            <a href="#" class="btn-icon" title="ডাউনলোড"><i class="fas fa-download"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Notice Item 6 -->
+                    <div class="notice-item" data-category="exam">
+                        <div class="notice-date">
+                            <span class="day">২৮</span>
+                            <span class="month">ডিসেম্বর</span>
+                            <span class="year">২০২৪</span>
+                        </div>
+                        <div class="notice-content">
+                            <div class="notice-badge exam">পরীক্ষা</div>
+                            <h3>বার্ষিক পরীক্ষার সময়সূচি</h3>
+                            <p>বার্ষিক পরীক্ষার সময়সূচি প্রকাশিত হয়েছে। সকল শিক্ষার্থীদের নির্ধারিত সময়সূচি অনুযায়ী পরীক্ষায় অংশগ্রহণ করতে হবে।</p>
+                            <div class="notice-meta">
+                                <span><i class="fas fa-clock"></i> প্রকাশিত: ২৮ ডিসেম্বর, ২০২৪</span>
+                            </div>
+                        </div>
+                        <div class="notice-actions">
+                            <a href="#" class="btn-icon" title="বিস্তারিত দেখুন"><i class="fas fa-eye"></i></a>
+                            <a href="#" class="btn-icon" title="ডাউনলোড"><i class="fas fa-download"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pagination -->
+                <div class="pagination">
+                    <button class="page-btn active">১</button>
+                    <button class="page-btn">২</button>
+                    <button class="page-btn">৩</button>
+                    <button class="page-btn next"><i class="fas fa-chevron-left"></i></button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer id="main-footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>পাঠশালা ই-ম্যানেজার</h3>
+                <p>আমরা শিক্ষার্থীদের উজ্জ্বল ভবিষ্যত গড়তে প্রতিশ্রুতিবদ্ধ।</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>দ্রুত লিংক</h3>
+                <ul>
+                    <li><a href="amra-somproshe.html">আমাদের সম্পর্কে</a></li>
+                    <li><a href="academics.html">একাডেমিক্স</a></li>
+                    <li><a href="admissions.html">ভর্তি তথ্য</a></li>
+                    <li><a href="notices.html">নোটিশ বোর্ড</a></li>
+                    <li><a href="contact.html">যোগাযোগ</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>গুরুত্বপূর্ণ লিংক</h3>
+                <ul>
+                    <li><a href="#">শিক্ষার্থী পোর্টাল</a></li>
+                    <li><a href="#">অভিভাবক পোর্টাল</a></li>
+                    <li><a href="#">অনলাইন ফলাফল</a></li>
+                    <li><a href="#">ডাউনলোড</a></li>
+                    <li><a href="admin-dashboard.html">অ্যাডমিন লগইন</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>যোগাযোগ</h3>
+                <p><i class="fas fa-map-marker-alt"></i> <span id="footer-address">১২৩, শিক্ষা রোড, ঢাকা-১০০০</span></p>
+                <p><i class="fas fa-phone"></i> <span id="footer-phone">+৮৮০১২৩৪৫৬৭৮৯০</span></p>
+                <p><i class="fas fa-envelope"></i> <span id="footer-email">info@pathshala.edu.bd</span></p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; ২০২৫ পাঠশালা ই-ম্যানেজার। সর্বস্বত্ব সংরক্ষিত।</p>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div id="toast-container"></div>
+
+    <!-- Scripts -->
+    <script src="js/storage.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+        // Filter notices by category
+        function filterNotices(category) {
+            const notices = document.querySelectorAll('.notice-item');
+            const buttons = document.querySelectorAll('.category-btn');
+            
+            buttons.forEach(btn => btn.classList.remove('active'));
+            document.querySelector(`.category-btn[data-category="${category}"]`).classList.add('active');
+            
+            notices.forEach(notice => {
+                if (category === 'all' || notice.dataset.category === category) {
+                    notice.style.display = 'flex';
+                } else {
+                    notice.style.display = 'none';
+                }
+            });
+        }
+
+        // Search notices
+        function searchNotices() {
+            const searchTerm = document.getElementById('notice-search').value.toLowerCase();
+            const notices = document.querySelectorAll('.notice-item');
+            
+            notices.forEach(notice => {
+                const title = notice.querySelector('h3').textContent.toLowerCase();
+                const description = notice.querySelector('p').textContent.toLowerCase();
+                
+                if (title.includes(searchTerm) || description.includes(searchTerm)) {
+                    notice.style.display = 'flex';
+                } else {
+                    notice.style.display = 'none';
+                }
+            });
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            StorageManager.init();
+            AppManager.initShared();
+        });
+    </script>
+</body>
+</html>
