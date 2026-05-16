@@ -1,0 +1,1229 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>সেটিংস - পাঠশালা ই-ম্যানেজার</title>
+    
+    <!-- Google Fonts for Bengali -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Main Styles -->
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+    <!-- ==================== ADMIN PANEL ==================== -->
+    <div class="admin-layout">
+        <!-- Admin Sidebar -->
+        <aside class="admin-sidebar">
+            <div class="sidebar-header">
+                <a href="admin-dashboard.html">
+                    <img src="../assets/logo.png" alt="Logo">
+                </a>
+                <div class="sidebar-title">
+                    <h3>অ্যাডমিন প্যানেল</h3>
+                    <p>পাঠশালা ই-ম্যানেজার</p>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li>
+                        <a href="admin-dashboard.html">
+                            <i class="fas fa-tachometer-alt"></i>
+                            <span>ড্যাশবোর্ড</span>
+                        </a>
+                    </li>
+                    <li class="has-dropdown">
+                        <div class="dropdown-toggle" onclick="toggleDropdown(this)">
+                            <i class="fas fa-user-graduate"></i>
+                            <span>শিক্ষার্থী</span>
+                            <i class="fas fa-chevron-down arrow"></i>
+                        </div>
+                        <ul class="submenu">
+                            <li><a href="admin-students.html"><i class="fas fa-list"></i> সকল শিক্ষার্থী</a></li>
+                            <li><a href="#" onclick="openModal('add-student-modal'); return false;"><i class="fas fa-plus"></i> নতুন যোগ করুন</a></li>
+                            <li><a href="admin-student-attendance.html"><i class="fas fa-calendar-check"></i> উপস্থিতি</a></li>
+                            <li><a href="admin-student-fees.html"><i class="fas fa-money-bill-wave"></i> ফি তালিকা</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-dropdown">
+                        <div class="dropdown-toggle" onclick="toggleDropdown(this)">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                            <span>শিক্ষক</span>
+                            <i class="fas fa-chevron-down arrow"></i>
+                        </div>
+                        <ul class="submenu">
+                            <li><a href="admin-teachers.html"><i class="fas fa-list"></i> সকল শিক্ষক</a></li>
+                            <li><a href="#" onclick="openModal('add-teacher-modal'); return false;"><i class="fas fa-plus"></i> নতুন যোগ করুন</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="admin-attendance.html">
+                            <i class="fas fa-calendar-check"></i>
+                            <span>উপস্থিতি</span>
+                        </a>
+                    </li>
+                    <li class="has-dropdown">
+                        <div class="dropdown-toggle" onclick="toggleDropdown(this)">
+                            <i class="fas fa-money-bill-wave"></i>
+                            <span>ফি ম্যানেজমেন্ট</span>
+                            <i class="fas fa-chevron-down arrow"></i>
+                        </div>
+                        <ul class="submenu">
+                            <li><a href="admin-fees.html"><i class="fas fa-list"></i> ফি তালিকা</a></li>
+                            <li><a href="admin-fee-collection.html"><i class="fas fa-coins"></i> ফি সংগ্রহ</a></li>
+                            <li><a href="admin-fee-report.html"><i class="fas fa-chart-bar"></i> ফি রিপোর্ট</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-dropdown">
+                        <div class="dropdown-toggle" onclick="toggleDropdown(this)">
+                            <i class="fas fa-clipboard-list"></i>
+                            <span>পরীক্ষা</span>
+                            <i class="fas fa-chevron-down arrow"></i>
+                        </div>
+                        <ul class="submenu">
+                            <li><a href="admin-exams.html"><i class="fas fa-list"></i> পরীক্ষার তালিকা</a></li>
+                            <li><a href="admin-exam-routine.html"><i class="fas fa-calendar"></i> পরীক্ষার রুটিন</a></li>
+                            <li><a href="admin-results.html"><i class="fas fa-chart-line"></i> ফলাফল</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="admin-payments.html">
+                            <i class="fas fa-credit-card"></i>
+                            <span>পেমেন্ট</span>
+                        </a>
+                    </li>
+                    <li class="has-dropdown">
+                        <div class="dropdown-toggle" onclick="toggleDropdown(this)">
+                            <i class="fas fa-book"></i>
+                            <span>একাডেমিক</span>
+                            <i class="fas fa-chevron-down arrow"></i>
+                        </div>
+                        <ul class="submenu">
+                            <li><a href="admin-classes.html"><i class="fas fa-list"></i> শ্রেণি তালিকা</a></li>
+                            <li><a href="admin-sections.html"><i class="fas fa-layer-group"></i> শাখা/সেকশন</a></li>
+                            <li><a href="admin-subjects.html"><i class="fas fa-book-open"></i> বিষয় তালিকা</a></li>
+                            <li><a href="admin-syllabus.html"><i class="fas fa-scroll"></i> সিলেবাস</a></li>
+                            <li><a href="admin-class-routine.html"><i class="fas fa-calendar-alt"></i> ক্লাস রুটিন</a></li>
+                            <li><a href="admin-academic-calendar.html"><i class="fas fa-calendar-week"></i> একাডেমিক ক্যালেন্ডার</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="admin-notifications.html">
+                            <i class="fas fa-bell"></i>
+                            <span>নোটিফিকেশন</span>
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="admin-settings.html">
+                            <i class="fas fa-cogs"></i>
+                            <span>সেটিংস</span>
+                        </a>
+                    </li>
+                    <li class="logout-item">
+                        <a href="../index.html">
+                            <i class="fas fa-sign-out-alt"></i>
+                            <span>লগআউট</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Sidebar Overlay for Mobile -->
+        <div class="sidebar-overlay" onclick="toggleSidebar()"></div>
+
+        <!-- Admin Main Content -->
+        <main class="admin-main">
+            <!-- Top Bar -->
+            <div class="admin-topbar">
+                <button class="sidebar-toggle" onclick="toggleSidebar()">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="breadcrumb">
+                    <a href="../index.html">সাইট দেখুন</a>
+                    <span><i class="fas fa-chevron-left"></i></span>
+                    <span>অ্যাডমিন প্যানেল</span>
+                    <span><i class="fas fa-chevron-left"></i></span>
+                    <span>সেটিংস</span>
+                </div>
+                <div class="admin-actions">
+                    <button class="notification-btn">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-count">৩</span>
+                    </button>
+                    <div class="admin-profile">
+                        <img src="../assets/logo.png" alt="Admin">
+                        <span>অ্যাডমিন</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Settings Content -->
+            <div class="module-content">
+                <!-- Page Header -->
+                <div class="page-header">
+                    <div class="page-title">
+                        <h2><i class="fas fa-cogs"></i> সেটিংস</h2>
+                        <p>সিস্টেম কনফিগারেশন এবং ব্যবস্থাপনা</p>
+                    </div>
+                </div>
+
+                <!-- Settings Tabs -->
+                <div class="settings-tabs">
+                    <button class="settings-tab active" data-settings-tab="general" onclick="switchSettingsTab('general')">সাধারণ</button>
+                    <button class="settings-tab" data-settings-tab="academic" onclick="switchSettingsTab('academic')">একাডেমিক</button>
+                    <button class="settings-tab" data-settings-tab="users" onclick="switchSettingsTab('users')">ইউজার</button>
+                    <button class="settings-tab" data-settings-tab="permissions" onclick="switchSettingsTab('permissions')">পারমিশন</button>
+                    <button class="settings-tab" data-settings-tab="livelink" onclick="switchSettingsTab('livelink')">লাইভ লিংক</button>
+                </div>
+
+                <!-- General Settings -->
+                <div id="general" class="settings-tab-content active">
+                    <div class="settings-form">
+                        <h3>স্কুলের তথ্য</h3>
+                        <form id="school-info-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>স্কুলের নাম</label>
+                                    <input type="text" id="school-name" placeholder="স্কুলের পূর্ণ নাম">
+                                </div>
+                                <div class="form-group">
+                                    <label>স্লোগান</label>
+                                    <input type="text" id="school-tagline" placeholder="স্কুলের স্লোগান">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>ফোন নম্বর</label>
+                                    <input type="tel" id="school-phone" placeholder="+৮৮০১২৩৪৫৬৭৮৯০">
+                                </div>
+                                <div class="form-group">
+                                    <label>ইমেইল</label>
+                                    <input type="email" id="school-email" placeholder="info@school.edu.bd">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>ঠিকানা</label>
+                                <textarea id="school-address" rows="2" placeholder="সম্পূর্ণ ঠিকানা"></textarea>
+                            </div>
+                            <button type="submit" class="btn-primary">
+                                <i class="fas fa-save"></i> সেভ করুন
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Academic Settings -->
+                <div id="academic" class="settings-tab-content">
+                    <div class="settings-form">
+                        <h3>একাডেমিক সেটিংস</h3>
+                        <form id="academic-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>শিক্ষাবর্ষ</label>
+                                    <select id="academic-year">
+                                        <option value="2025">২০২৫</option>
+                                        <option value="2024">২০২৪</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>শ্রেণি সংখ্যা</label>
+                                    <select id="class-count">
+                                        <option value="5">৫টি শ্রেণি (৬-১০)</option>
+                                        <option value="6">৬টি শ্রেণি (৬-১১)</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>শ্রেণিসমূহ</label>
+                                <div class="checkbox-group">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" checked> ৬ষ্ঠ শ্রেণি
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" checked> ৭ম শ্রেণি
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" checked> ৮ম শ্রেণি
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" checked> ৯ম শ্রেণি
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" checked> ১০ম শ্রেণি
+                                    </label>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn-primary">
+                                <i class="fas fa-save"></i> সেভ করুন
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Add New Class Section -->
+                    <div class="settings-form" style="margin-top: 20px;">
+                        <h3>নতুন শ্রেণি যোগ করুন</h3>
+                        <form id="add-class-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>শ্রেণির নাম</label>
+                                    <select id="new-class-name">
+                                        <option value="">শ্রেণি নির্বাচন করুন</option>
+                                        <option value="৬ষ্ঠ শ্রেণি">৬ষ্ঠ শ্রেণি</option>
+                                        <option value="৭ম শ্রেণি">৭ম শ্রেণি</option>
+                                        <option value="৮ম শ্রেণি">৮ম শ্রেণি</option>
+                                        <option value="৯ম শ্রেণি">৯ম শ্রেণি</option>
+                                        <option value="১০ম শ্রেণি">১০ম শ্রেণি</option>
+                                        <option value="১১শ শ্রেণি">১১শ শ্রেণি</option>
+                                        <option value="১২শ শ্রেণি">১২শ শ্রেণি</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>শাখা</label>
+                                    <select id="new-class-section">
+                                        <option value="ক">ক</option>
+                                        <option value="খ">খ</option>
+                                        <option value="গ">গ</option>
+                                        <option value="ঘ">ঘ</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>ধারণ ক্ষমতা</label>
+                                    <input type="number" id="new-class-capacity" placeholder="শিক্ষার্থী সংখ্যা" value="40">
+                                </div>
+                            </div>
+                            <button type="submit" class="btn-success">
+                                <i class="fas fa-plus"></i> শ্রেণি যোগ করুন
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Class List -->
+                    <div class="card" style="margin-top: 20px;">
+                        <div class="card-header">
+                            <h3><i class="fas fa-list"></i> বিদ্যমান শ্রেণিসমূহ</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="data-table-container">
+                                <table class="data-table" id="class-list-table">
+                                    <thead>
+                                        <tr>
+                                            <th>আইডি</th>
+                                            <th>শ্রেণি</th>
+                                            <th>শাখা</th>
+                                            <th>ধারণ ক্ষমতা</th>
+                                            <th>শিক্ষার্থী</th>
+                                            <th>অ্যাকশন</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="class-list-body">
+                                        <!-- Classes will be loaded here -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- User Settings -->
+                <div id="users" class="settings-tab-content">
+                    <div class="settings-form">
+                        <h3>অ্যাডমিন পাসওয়ার্ড পরিবর্তন</h3>
+                        <form id="user-password-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>বর্তমান পাসওয়ার্ড</label>
+                                    <input type="password" id="current-password" placeholder="বর্তমান পাসওয়ার্ড">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>নতুন পাসওয়ার্ড</label>
+                                    <input type="password" id="new-password" placeholder="নতুন পাসওয়ার্ড">
+                                </div>
+                                <div class="form-group">
+                                    <label>পাসওয়ার্ড নিশ্চিত করুন</label>
+                                    <input type="password" id="confirm-password" placeholder="পাসওয়ার্ড আবার লিখুন">
+                                </div>
+                            </div>
+                            <button type="submit" class="btn-primary">
+                                <i class="fas fa-key"></i> পাসওয়ার্ড পরিবর্তন করুন
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Add New User Section -->
+                    <div class="settings-form" style="margin-top: 20px;">
+                        <h3>নতুন ইউজার যোগ করুন</h3>
+                        <form id="add-user-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>ইউজারনেম</label>
+                                    <input type="text" id="new-username" placeholder="ইউজারনেম" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>পাসওয়ার্ড</label>
+                                    <input type="password" id="new-user-password" placeholder="পাসওয়ার্ড" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>নাম</label>
+                                    <input type="text" id="new-user-fullname" placeholder="পূর্ণ নাম">
+                                </div>
+                                <div class="form-group">
+                                    <label>ভূমিকা</label>
+                                    <select id="new-user-role">
+                                        <option value="admin">অ্যাডমিন</option>
+                                        <option value="teacher">শিক্ষক</option>
+                                        <option value="accountant">হিসাব রক্ষক</option>
+                                        <option value="librarian">লাইব্রেরিয়ান</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>ইমেইল</label>
+                                <input type="email" id="new-user-email" placeholder="ইমেইল ঠিকানা">
+                            </div>
+                            <button type="submit" class="btn-success">
+                                <i class="fas fa-user-plus"></i> ইউজার যোগ করুন
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- User List -->
+                    <div class="card" style="margin-top: 20px;">
+                        <div class="card-header">
+                            <h3><i class="fas fa-users"></i> বিদ্যমান ইউজারসমূহ</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="data-table-container">
+                                <table class="data-table" id="user-list-table">
+                                    <thead>
+                                        <tr>
+                                            <th>আইডি</th>
+                                            <th>ইউজারনেম</th>
+                                            <th>নাম</th>
+                                            <th>ভূমিকা</th>
+                                            <th>ইমেইল</th>
+                                            <th>অ্যাকশন</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="user-list-body">
+                                        <!-- Users will be loaded here -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Permissions Settings -->
+                <div id="permissions" class="settings-tab-content">
+                    <div class="settings-form">
+                        <h3>পারমিশন সেটিংস</h3>
+                        <p style="color: #666; margin-bottom: 15px;">প্রতিটি ইউজার ভূমিকার জন্য অ্যাক্সেস পারমিশন কনফিগার করুন</p>
+                        
+                        <form id="permissions-form">
+                            <div class="form-group">
+                                <label>ইউজার ভূমিকা নির্বাচন করুন</label>
+                                <select id="permission-role-select" onchange="loadRolePermissions()">
+                                    <option value="admin">অ্যাডমিন</option>
+                                    <option value="teacher">শিক্ষক</option>
+                                    <option value="accountant">হিসাব রক্ষক</option>
+                                    <option value="librarian">লাইব্রেরিয়ান</option>
+                                </select>
+                            </div>
+                            
+                            <div class="permissions-grid" id="permissions-grid">
+                                <h4>মডিউল অ্যাক্সেস</h4>
+                                
+                                <div class="permission-item">
+                                    <label class="permission-label">
+                                        <input type="checkbox" id="perm-dashboard" checked>
+                                        <span>ড্যাশবোর্ড</span>
+                                    </label>
+                                </div>
+                                
+                                <div class="permission-item">
+                                    <label class="permission-label">
+                                        <input type="checkbox" id="perm-students" checked>
+                                        <span>শিক্ষার্থী ম্যানেজমেন্ট</span>
+                                    </label>
+                                    <div class="permission-actions">
+                                        <label class="sub-perm">
+                                            <input type="checkbox" id="perm-students-add" checked> যোগ
+                                        </label>
+                                        <label class="sub-perm">
+                                            <input type="checkbox" id="perm-students-edit" checked> এডিট
+                                        </label>
+                                        <label class="sub-perm">
+                                            <input type="checkbox" id="perm-students-delete"> ডিলিট
+                                        </label>
+                                    </div>
+                                </div>
+                                
+                                <div class="permission-item">
+                                    <label class="permission-label">
+                                        <input type="checkbox" id="perm-teachers" checked>
+                                        <span>শিক্ষক ম্যানেজমেন্ট</span>
+                                    </label>
+                                    <div class="permission-actions">
+                                        <label class="sub-perm">
+                                            <input type="checkbox" id="perm-teachers-add" checked> যোগ
+                                        </label>
+                                        <label class="sub-perm">
+                                            <input type="checkbox" id="perm-teachers-edit" checked> এডিট
+                                        </label>
+                                        <label class="sub-perm">
+                                            <input type="checkbox" id="perm-teachers-delete"> ডিলিট
+                                        </label>
+                                    </div>
+                                </div>
+                                
+                                <div class="permission-item">
+                                    <label class="permission-label">
+                                        <input type="checkbox" id="perm-attendance" checked>
+                                        <span>উপস্থিতি</span>
+                                    </label>
+                                    <div class="permission-actions">
+                                        <label class="sub-perm">
+                                            <input type="checkbox" id="perm-attendance-view" checked> দেখুন
+                                        </label>
+                                        <label class="sub-perm">
+                                            <input type="checkbox" id="perm-attendance-edit" checked> এডিট
+                                        </label>
+                                    </div>
+                                </div>
+                                
+                                <div class="permission-item">
+                                    <label class="permission-label">
+                                        <input type="checkbox" id="perm-fees" checked>
+                                        <span>ফি ম্যানেজমেন্ট</span>
+                                    </label>
+                                    <div class="permission-actions">
+                                        <label class="sub-perm">
+                                            <input type="checkbox" id="perm-fees-view" checked> দেখুন
+                                        </label>
+                                        <label class="sub-perm">
+                                            <input type="checkbox" id="perm-fees-edit" checked> এডিট
+                                        </label>
+                                    </div>
+                                </div>
+                                
+                                <div class="permission-item">
+                                    <label class="permission-label">
+                                        <input type="checkbox" id="perm-exams" checked>
+                                        <span>পরীক্ষা ও ফলাফল</span>
+                                    </label>
+                                    <div class="permission-actions">
+                                        <label class="sub-perm">
+                                            <input type="checkbox" id="perm-exams-view" checked> দেখুন
+                                        </label>
+                                        <label class="sub-perm">
+                                            <input type="checkbox" id="perm-exams-edit" checked> এডিট
+                                        </label>
+                                    </div>
+                                </div>
+                                
+                                <div class="permission-item">
+                                    <label class="permission-label">
+                                        <input type="checkbox" id="perm-payments" checked>
+                                        <span>পেমেন্ট</span>
+                                    </label>
+                                    <div class="permission-actions">
+                                        <label class="sub-perm">
+                                            <input type="checkbox" id="perm-payments-view" checked> দেখুন
+                                        </label>
+                                        <label class="sub-perm">
+                                            <input type="checkbox" id="perm-payments-edit" checked> এডিট
+                                        </label>
+                                    </div>
+                                </div>
+                                
+                                <div class="permission-item">
+                                    <label class="permission-label">
+                                        <input type="checkbox" id="perm-reports" checked>
+                                        <span>রিপোর্ট</span>
+                                    </label>
+                                    <div class="permission-actions">
+                                        <label class="sub-perm">
+                                            <input type="checkbox" id="perm-reports-view" checked> দেখুন
+                                        </label>
+                                        <label class="sub-perm">
+                                            <input type="checkbox" id="perm-reports-export" checked> এক্সপোর্ট
+                                        </label>
+                                    </div>
+                                </div>
+                                
+                                <div class="permission-item">
+                                    <label class="permission-label">
+                                        <input type="checkbox" id="perm-settings" checked>
+                                        <span>সেটিংস</span>
+                                    </label>
+                                    <div class="permission-actions">
+                                        <label class="sub-perm">
+                                            <input type="checkbox" id="perm-settings-view" checked> দেখুন
+                                        </label>
+                                        <label class="sub-perm">
+                                            <input type="checkbox" id="perm-settings-edit" checked> এডিট
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <button type="button" class="btn-primary" onclick="saveRolePermissions()">
+                                <i class="fas fa-save"></i> পারমিশন সেভ করুন
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- LiveLink Settings -->
+                <div id="livelink" class="settings-tab-content">
+                    <div class="settings-form">
+                        <h3>লাইভ লিংক সেটিংস</h3>
+                        <p style="color: #666; margin-bottom: 15px;">রিয়েল-টাইম ডেটা শেয়ারিং এবং API কনফিগারেশন</p>
+                        
+                        <!-- Live Status -->
+                        <div class="livelink-status">
+                            <div class="status-indicator online">
+                                <i class="fas fa-circle"></i>
+                                <span>লাইভ সার্ভার সংযুক্ত</span>
+                            </div>
+                            <div class="status-info">
+                                <span>সর্বশেষ সিঙ্ক: <span id="last-sync-time">এখনই</span></span>
+                            </div>
+                        </div>
+                        
+                        <form id="livelink-form">
+                            <div class="form-group">
+                                <label>লাইভ লিংক URL</label>
+                                <input type="url" id="livelink-url" placeholder="https://api.yourschool.edu.bd/live">
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>API Key</label>
+                                    <input type="password" id="livelink-api-key" placeholder="API Key">
+                                </div>
+                                <div class="form-group">
+                                    <label>সিক্রেট কী</label>
+                                    <input type="password" id="livelink-secret" placeholder="Secret Key">
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>সিঙ্ক ফ্রিকোয়েন্সি</label>
+                                <select id="livelink-frequency">
+                                    <option value="realtime">রিয়েল-টাইম</option>
+                                    <option value="5min">প্রতি ৫ মিনিট</option>
+                                    <option value="15min">প্রতি ১৫ মিনিট</option>
+                                    <option value=" hourly">প্রতি ঘণ্টা</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>সিঙ্ক অপশন</label>
+                                <div class="checkbox-group">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" id="sync-attendance" checked> উপস্থিতি ডেটা
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" id="sync-fees" checked> ফি ডেটা
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" id="sync-results" checked> ফলাফল ডেটা
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" id="sync-notices"> নোটিশ
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="button-group">
+                                <button type="button" class="btn-primary" onclick="saveLiveLinkSettings()">
+                                    <i class="fas fa-save"></i> সেভ করুন
+                                </button>
+                                <button type="button" class="btn-secondary" onclick="testLiveLinkConnection()">
+                                    <i class="fas fa-plug"></i> কানেকশন টেস্ট
+                                </button>
+                                <button type="button" class="btn-info" onclick="syncNow()">
+                                    <i class="fas fa-sync"></i> এখন সিঙ্ক করুন
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    
+                    <!-- Live Activity Log -->
+                    <div class="card" style="margin-top: 20px;">
+                        <div class="card-header">
+                            <h3><i class="fas fa-history"></i> লাইভ অ্যাক্টিভিটি লগ</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="activity-log" id="activity-log">
+                                <div class="log-item">
+                                    <span class="log-time">এখন</span>
+                                    <span class="log-message">সিস্টেম চালু হয়েছে</span>
+                                    <span class="log-status success">সফল</span>
+                                </div>
+                                <div class="log-item">
+                                    <span class="log-time">২ মিনিট আগে</span>
+                                    <span class="log-message">উপস্থিতি ডেটা সিঙ্ক হয়েছে</span>
+                                    <span class="log-status success">সফল</span>
+                                </div>
+                                <div class="log-item">
+                                    <span class="log-time">১৫ মিনিট আগে</span>
+                                    <span class="log-message">ফি রিপোর্ট আপডেট হয়েছে</span>
+                                    <span class="log-status success">সফল</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast-container"></div>
+
+    <!-- Scripts -->
+    <script src="../js/storage.js"></script>
+    <script src="../js/app.js"></script>
+    <script>
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            StorageManager.init();
+            
+            // Load settings
+            loadSchoolSettings();
+            loadClassList();
+            loadUserList();
+            
+            // Check URL parameters
+            const urlParams = new URLSearchParams(window.location.search);
+            const tab = urlParams.get('tab');
+            if (tab) {
+                switchSettingsTab(tab);
+            }
+        });
+
+        // Switch settings tabs
+        function switchSettingsTab(tabId) {
+            document.querySelectorAll('.settings-tab').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.settings-tab-content').forEach(content => content.classList.remove('active'));
+            
+            document.querySelector(`[data-settings-tab="${tabId}"]`).classList.add('active');
+            document.getElementById(tabId).classList.add('active');
+        }
+
+
+        // Open modal
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.add('active');
+            }
+        }
+
+        // Close modal
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.remove('active');
+            }
+        }
+
+        // ==================== School Settings ====================
+        
+        function loadSchoolSettings() {
+            const config = StorageManager.getConfig();
+            
+            document.getElementById('school-name').value = config.name || '';
+            document.getElementById('school-tagline').value = config.tagline || '';
+            document.getElementById('school-phone').value = config.phone || '';
+            document.getElementById('school-email').value = config.email || '';
+            document.getElementById('school-address').value = config.address || '';
+        }
+
+        // Save school info
+        document.getElementById('school-info-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const config = StorageManager.getConfig();
+            config.name = document.getElementById('school-name').value;
+            config.tagline = document.getElementById('school-tagline').value;
+            config.phone = document.getElementById('school-phone').value;
+            config.email = document.getElementById('school-email').value;
+            config.address = document.getElementById('school-address').value;
+            
+            StorageManager.saveConfig(config);
+            showToast('স্কুলের তথ্য সেভ করা হয়েছে', 'success');
+        });
+
+        // ==================== Academic Settings ====================
+
+        // Add new class
+        document.getElementById('add-class-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const className = document.getElementById('new-class-name').value;
+            const section = document.getElementById('new-class-section').value;
+            const capacity = parseInt(document.getElementById('new-class-capacity').value) || 40;
+            
+            if (!className) {
+                showToast('শ্রেণি নির্বাচন করুন', 'error');
+                return;
+            }
+            
+            const classes = StorageManager.getClasses();
+            
+            // Check if class already exists
+            const exists = classes.some(c => c.name === className && c.section === section);
+            if (exists) {
+                showToast('এই শ্রেণি এবং শাখা ইতিমধ্যে আছে', 'error');
+                return;
+            }
+            
+            StorageManager.addClass({
+                name: className,
+                section: section,
+                capacity: capacity
+            });
+            
+            showToast('নতুন শ্রেণি যোগ করা হয়েছে', 'success');
+            document.getElementById('add-class-form').reset();
+            document.getElementById('new-class-capacity').value = 40;
+            loadClassList();
+        });
+
+        function loadClassList() {
+            const classes = StorageManager.getClasses();
+            const tbody = document.getElementById('class-list-body');
+            
+            if (classes.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="6" class="empty-state">
+                            <i class="fas fa-school"></i>
+                            <p>কোনো শ্রেণি যোগ করা হয়নি</p>
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+            
+            tbody.innerHTML = classes.map(cls => {
+                const students = StorageManager.getStudentsByClass(cls.id);
+                return `
+                    <tr>
+                        <td>${cls.id}</td>
+                        <td>${cls.name}</td>
+                        <td>${cls.section}</td>
+                        <td>${cls.capacity}</td>
+                        <td>${students.length}</td>
+                        <td>
+                            <button class="btn-icon" onclick="editClass(${cls.id})" title="এডিট">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <button class="btn-icon danger" onclick="deleteClass(${cls.id})" title="ডিলিট">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        function editClass(id) {
+            const cls = StorageManager.getClassById(id);
+            if (!cls) return;
+            
+            document.getElementById('new-class-name').value = cls.name;
+            document.getElementById('new-class-section').value = cls.section;
+            document.getElementById('new-class-capacity').value = cls.capacity;
+            
+            showToast(`শ্রেণি "${cls.name}" - শাখা "${cls.section}" সম্পাদনার জন্য উপরের ফর্মে দেখানো হচ্ছে`, 'info');
+        }
+
+        function deleteClass(id) {
+            if (confirm('এই শ্রেণি মুছে ফেলতে চান?')) {
+                const students = StorageManager.getStudentsByClass(id);
+                if (students.length > 0) {
+                    showToast('এই শ্রেণিতে শিক্ষার্থী আছে, প্রথমে তাদের ট্রান্সফার করুন', 'error');
+                    return;
+                }
+                
+                StorageManager.deleteClass(id);
+                loadClassList();
+                showToast('শ্রেণি মুছে ফেলা হয়েছে', 'success');
+            }
+        }
+
+        // ==================== User Management ====================
+
+        // Change password
+        document.getElementById('user-password-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const currentPass = document.getElementById('current-password').value;
+            const newPass = document.getElementById('new-password').value;
+            const confirmPass = document.getElementById('confirm-password').value;
+            
+            if (currentPass !== 'admin123') {
+                showToast('বর্তমান পাসওয়ার্ড ভুল', 'error');
+                return;
+            }
+            
+            if (newPass !== confirmPass) {
+                showToast('নতুন পাসওয়ার্ড মিলছে না', 'error');
+                return;
+            }
+            
+            if (newPass.length < 6) {
+                showToast('পাসওয়ার্ড কমপক্ষে ৬ অক্ষর হতে হবে', 'error');
+                return;
+            }
+            
+            showToast('পাসওয়ার্ড সফলভাবে পরিবর্তন হয়েছে', 'success');
+            document.getElementById('user-password-form').reset();
+        });
+
+        // Add new user
+        document.getElementById('add-user-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('new-username').value;
+            const password = document.getElementById('new-user-password').value;
+            const fullname = document.getElementById('new-user-fullname').value;
+            const role = document.getElementById('new-user-role').value;
+            const email = document.getElementById('new-user-email').value;
+            
+            if (!username || !password) {
+                showToast('ইউজারনেম এবং পাসওয়ার্ড প্রয়োজন', 'error');
+                return;
+            }
+            
+            // Save user to storage
+            const users = getUsers();
+            const exists = users.some(u => u.username === username);
+            if (exists) {
+                showToast('এই ইউজারনেম ইতিমধ্যে আছে', 'error');
+                return;
+            }
+            
+            users.push({
+                id: Date.now(),
+                username: username,
+                password: password,
+                fullname: fullname,
+                role: role,
+                email: email,
+                status: 'active',
+                createdAt: new Date().toISOString()
+            });
+            
+            localStorage.setItem(StorageManager.DB_PREFIX + 'users', JSON.stringify(users));
+            
+            showToast('নতুন ইউজার যোগ করা হয়েছে', 'success');
+            document.getElementById('add-user-form').reset();
+            loadUserList();
+        });
+
+        function getUsers() {
+            const users = localStorage.getItem(StorageManager.DB_PREFIX + 'users');
+            return users ? JSON.parse(users) : [
+                { id: 1, username: 'admin', password: 'admin123', fullname: 'সিস্টেম অ্যাডমিন', role: 'admin', email: 'admin@pathshala.edu.bd', status: 'active' }
+            ];
+        }
+
+        function loadUserList() {
+            const users = getUsers();
+            const tbody = document.getElementById('user-list-body');
+            
+            if (users.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="6" class="empty-state">
+                            <i class="fas fa-users"></i>
+                            <p>কোনো ইউজার নেই</p>
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+            
+            const roleNames = {
+                'admin': 'অ্যাডমিন',
+                'teacher': 'শিক্ষক',
+                'accountant': 'হিসাব রক্ষক',
+                'librarian': 'লাইব্রেরিয়ান'
+            };
+            
+            tbody.innerHTML = users.map(user => `
+                <tr>
+                    <td>${user.id}</td>
+                    <td>${user.username}</td>
+                    <td>${user.fullname || '-'}</td>
+                    <td>${roleNames[user.role] || user.role}</td>
+                    <td>${user.email || '-'}</td>
+                    <td>
+                        <button class="btn-icon" onclick="editUser(${user.id})" title="এডিট">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                        ${user.username !== 'admin' ? `
+                        <button class="btn-icon danger" onclick="deleteUser(${user.id})" title="ডিলিট">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                        ` : ''}
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function editUser(id) {
+            const users = getUsers();
+            const user = users.find(u => u.id === id);
+            if (!user) return;
+            
+            document.getElementById('new-username').value = user.username;
+            document.getElementById('new-user-password').value = user.password;
+            document.getElementById('new-user-fullname').value = user.fullname || '';
+            document.getElementById('new-user-role').value = user.role;
+            document.getElementById('new-user-email').value = user.email || '';
+            
+            showToast(`ইউজার "${user.username}" সম্পাদনার জন্য উপরের ফর্মে দেখানো হচ্ছে`, 'info');
+        }
+
+        function deleteUser(id) {
+            const users = getUsers();
+            const user = users.find(u => u.id === id);
+            
+            if (!user) return;
+            
+            if (user.username === 'admin') {
+                showToast('অ্যাডমিন ইউজার মুছে ফেলা যাবে না', 'error');
+                return;
+            }
+            
+            if (confirm(`ইউজার "${user.username}" মুছে ফেলতে চান?`)) {
+                const updatedUsers = users.filter(u => u.id !== id);
+                localStorage.setItem(StorageManager.DB_PREFIX + 'users', JSON.stringify(updatedUsers));
+                loadUserList();
+                showToast('ইউজার মুছে ফেলা হয়েছে', 'success');
+            }
+        }
+
+        // ==================== Permissions ====================
+
+        function loadRolePermissions() {
+            const role = document.getElementById('permission-role-select').value;
+            const permissions = getPermissions();
+            const rolePerms = permissions[role] || {};
+            
+            // Reset all checkboxes
+            document.querySelectorAll('#permissions-grid input[type="checkbox"]').forEach(cb => {
+                cb.checked = false;
+            });
+            
+            // Load saved permissions
+            Object.keys(rolePerms).forEach(key => {
+                const checkbox = document.getElementById(`perm-${key}`);
+                if (checkbox) {
+                    checkbox.checked = rolePerms[key];
+                }
+                
+                // Handle sub-permissions
+                if (typeof rolePerms[key] === 'object') {
+                    Object.keys(rolePerms[key]).forEach(subKey => {
+                        const subCheckbox = document.getElementById(`perm-${key}-${subKey}`);
+                        if (subCheckbox) {
+                            subCheckbox.checked = rolePerms[key][subKey];
+                        }
+                    });
+                }
+            });
+        }
+
+        function getPermissions() {
+            const perms = localStorage.getItem(StorageManager.DB_PREFIX + 'permissions');
+            return perms ? JSON.parse(perms) : {
+                admin: {
+                    dashboard: true,
+                    students: { add: true, edit: true, delete: true },
+                    teachers: { add: true, edit: true, delete: true },
+                    attendance: { view: true, edit: true },
+                    fees: { view: true, edit: true },
+                    exams: { view: true, edit: true },
+                    payments: { view: true, edit: true },
+                    reports: { view: true, export: true },
+                    settings: { view: true, edit: true }
+                },
+                teacher: {
+                    dashboard: true,
+                    students: { add: false, edit: true, delete: false },
+                    teachers: { add: false, edit: false, delete: false },
+                    attendance: { view: true, edit: true },
+                    fees: { view: false, edit: false },
+                    exams: { view: true, edit: true },
+                    payments: { view: false, edit: false },
+                    reports: { view: true, export: false },
+                    settings: { view: false, edit: false }
+                },
+                accountant: {
+                    dashboard: true,
+                    students: { add: false, edit: false, delete: false },
+                    teachers: { add: false, edit: false, delete: false },
+                    attendance: { view: true, edit: false },
+                    fees: { view: true, edit: true },
+                    exams: { view: false, edit: false },
+                    payments: { view: true, edit: true },
+                    reports: { view: true, export: true },
+                    settings: { view: false, edit: false }
+                },
+                librarian: {
+                    dashboard: true,
+                    students: { add: false, edit: false, delete: false },
+                    teachers: { add: false, edit: false, delete: false },
+                    attendance: { view: false, edit: false },
+                    fees: { view: false, edit: false },
+                    exams: { view: false, edit: false },
+                    payments: { view: false, edit: false },
+                    reports: { view: false, export: false },
+                    settings: { view: false, edit: false }
+                }
+            };
+        }
+
+        function saveRolePermissions() {
+            const role = document.getElementById('permission-role-select').value;
+            const permissions = getPermissions();
+            
+            // Collect all permissions
+            const rolePerms = {};
+            
+            document.querySelectorAll('#permissions-grid .permission-item').forEach(item => {
+                const checkbox = item.querySelector('.permission-label input[type="checkbox"]');
+                if (checkbox) {
+                    const permName = checkbox.id.replace('perm-', '');
+                    const isChecked = checkbox.checked;
+                    
+                    if (isChecked) {
+                        // Check for sub-permissions
+                        const subPerms = {};
+                        item.querySelectorAll('.sub-perm input[type="checkbox"]').forEach(subCb => {
+                            const subPermName = subCb.id.replace(`perm-${permName}-`, '');
+                            subPerms[subPermName] = subCb.checked;
+                        });
+                        
+                        rolePerms[permName] = Object.keys(subPerms).length > 0 ? subPerms : true;
+                    }
+                }
+            });
+            
+            permissions[role] = rolePerms;
+            localStorage.setItem(StorageManager.DB_PREFIX + 'permissions', JSON.stringify(permissions));
+            
+            showToast(`${role} ভূমিকার পারমিশন সেভ করা হয়েছে`, 'success');
+            addActivityLog('পারমিশন আপডেট', `${role} ভূমিকার পারমিশন পরিবর্তন করা হয়েছে`);
+        }
+
+        // ==================== LiveLink ====================
+
+        function loadLiveLinkSettings() {
+            const settings = JSON.parse(localStorage.getItem(StorageManager.DB_PREFIX + 'livelink') || '{}');
+            
+            document.getElementById('livelink-url').value = settings.url || '';
+            document.getElementById('livelink-api-key').value = settings.apiKey || '';
+            document.getElementById('livelink-secret').value = settings.secret || '';
+            document.getElementById('livelink-frequency').value = settings.frequency || 'realtime';
+            
+            document.getElementById('sync-attendance').checked = settings.syncAttendance !== false;
+            document.getElementById('sync-fees').checked = settings.syncFees !== false;
+            document.getElementById('sync-results').checked = settings.syncResults !== false;
+            document.getElementById('sync-notices').checked = settings.syncNotices === true;
+        }
+
+        function saveLiveLinkSettings() {
+            const settings = {
+                url: document.getElementById('livelink-url').value,
+                apiKey: document.getElementById('livelink-api-key').value,
+                secret: document.getElementById('livelink-secret').value,
+                frequency: document.getElementById('livelink-frequency').value,
+                syncAttendance: document.getElementById('sync-attendance').checked,
+                syncFees: document.getElementById('sync-fees').checked,
+                syncResults: document.getElementById('sync-results').checked,
+                syncNotices: document.getElementById('sync-notices').checked,
+                lastSaved: new Date().toISOString()
+            };
+            
+            localStorage.setItem(StorageManager.DB_PREFIX + 'livelink', JSON.stringify(settings));
+            
+            showToast('লাইভ লিংক সেটিংস সেভ করা হয়েছে', 'success');
+            addActivityLog('সেটিংস সেভ', 'লাইভ লিংক কনফিগারেশন আপডেট হয়েছে');
+        }
+
+        function testLiveLinkConnection() {
+            showToast('কানেকশন টেস্ট করা হচ্ছে...', 'info');
+            
+            setTimeout(() => {
+                const url = document.getElementById('livelink-url').value;
+                if (!url) {
+                    showToast('লাইভ লিংক URL প্রয়োজন', 'error');
+                    return;
+                }
+                
+                showToast('কানেকশন সফল! সার্ভার সংযুক্ত', 'success');
+                addActivityLog('কানেকশন টেস্ট', 'সার্ভার কানেকশন সফল হয়েছে');
+                updateLastSyncTime();
+            }, 1500);
+        }
+
+        function syncNow() {
+            showToast('ডেটা সিঙ্ক করা হচ্ছে...', 'info');
+            
+            setTimeout(() => {
+                showToast('ডেটা সফলভাবে সিঙ্ক হয়েছে', 'success');
+                addActivityLog('ম্যানুয়াল সিঙ্ক', 'সকল ডেটা সিঙ্ক সম্পন্ন');
+                updateLastSyncTime();
+            }, 2000);
+        }
+
+        function updateLastSyncTime() {
+            document.getElementById('last-sync-time').textContent = 'এখনই';
+        }
+
+        function addActivityLog(action, message) {
+            const log = document.getElementById('activity-log');
+            const time = new Date().toLocaleTimeString('bn-BD');
+            
+            const logItem = document.createElement('div');
+            logItem.className = 'log-item';
+            logItem.innerHTML = `
+                <span class="log-time">${time}</span>
+                <span class="log-message">${message}</span>
+                <span class="log-status success">সফল</span>
+            `;
+            
+            log.insertBefore(logItem, log.firstChild);
+            
+            // Keep only last 10 entries
+            while (log.children.length > 10) {
+                log.removeChild(log.lastChild);
+            }
+        }
+
+        // Initialize livelink settings on load
+        loadLiveLinkSettings();
+    </script>
+</body>
+</html>

@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>শ্রেণি ব্যবস্থাপনা - পাঠশালা ই-ম্যানেজার</title>
+    
+    <!-- Google Fonts for Bengali -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Main Styles -->
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+    <!-- ==================== ADMIN PANEL ==================== -->
+    <div class="admin-layout">
+        <!-- Admin Sidebar -->
+        <aside class="admin-sidebar">
+            <div class="sidebar-header">
+                <a href="admin-dashboard.html">
+                    <img src="../assets/logo.png" alt="Logo">
+                </a>
+                <div class="sidebar-title">
+                    <h3>অ্যাডমিন প্যানেল</h3>
+                    <p>পাঠশালা ই-ম্যানেজার</p>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li>
+                        <a href="admin-dashboard.html">
+                            <i class="fas fa-tachometer-alt"></i>
+                            <span>ড্যাশবোর্ড</span>
+                        </a>
+                    </li>
+                    <li class="has-dropdown">
+                        <div class="dropdown-toggle" onclick="toggleDropdown(this)">
+                            <i class="fas fa-user-graduate"></i>
+                            <span>শিক্ষার্থী</span>
+                            <i class="fas fa-chevron-down arrow"></i>
+                        </div>
+                        <ul class="submenu">
+                            <li><a href="admin-students.html"><i class="fas fa-list"></i> সকল শিক্ষার্থী</a></li>
+                            <li><a href="#" onclick="openModal('add-student-modal'); return false;"><i class="fas fa-plus"></i> নতুন যোগ করুন</a></li>
+                            <li><a href="admin-student-attendance.html"><i class="fas fa-calendar-check"></i> উপস্থিতি</a></li>
+                            <li><a href="admin-student-fees.html"><i class="fas fa-money-bill-wave"></i> ফি তালিকা</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-dropdown">
+                        <div class="dropdown-toggle" onclick="toggleDropdown(this)">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                            <span>শিক্ষক</span>
+                            <i class="fas fa-chevron-down arrow"></i>
+                        </div>
+                        <ul class="submenu">
+                            <li><a href="admin-teachers.html"><i class="fas fa-list"></i> সকল শিক্ষক</a></li>
+                            <li><a href="#" onclick="openModal('add-teacher-modal'); return false;"><i class="fas fa-plus"></i> নতুন যোগ করুন</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="admin-attendance.html">
+                            <i class="fas fa-calendar-check"></i>
+                            <span>উপস্থিতি</span>
+                        </a>
+                    </li>
+                    <li class="has-dropdown">
+                        <div class="dropdown-toggle" onclick="toggleDropdown(this)">
+                            <i class="fas fa-money-bill-wave"></i>
+                            <span>ফি ম্যানেজমেন্ট</span>
+                            <i class="fas fa-chevron-down arrow"></i>
+                        </div>
+                        <ul class="submenu">
+                            <li><a href="admin-fees.html"><i class="fas fa-list"></i> ফি তালিকা</a></li>
+                            <li><a href="admin-fee-collection.html"><i class="fas fa-coins"></i> ফি সংগ্রহ</a></li>
+                            <li><a href="admin-fee-report.html"><i class="fas fa-chart-bar"></i> ফি রিপোর্ট</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-dropdown">
+                        <div class="dropdown-toggle" onclick="toggleDropdown(this)">
+                            <i class="fas fa-clipboard-list"></i>
+                            <span>পরীক্ষা</span>
+                            <i class="fas fa-chevron-down arrow"></i>
+                        </div>
+                        <ul class="submenu">
+                            <li><a href="admin-exams.html"><i class="fas fa-list"></i> পরীক্ষার তালিকা</a></li>
+                            <li><a href="admin-exam-routine.html"><i class="fas fa-calendar"></i> পরীক্ষার রুটিন</a></li>
+                            <li><a href="admin-results.html"><i class="fas fa-chart-line"></i> ফলাফল</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="admin-payments.html">
+                            <i class="fas fa-credit-card"></i>
+                            <span>পেমেন্ট</span>
+                        </a>
+                    </li>
+                    <li class="has-dropdown active">
+                        <div class="dropdown-toggle" onclick="toggleDropdown(this)">
+                            <i class="fas fa-book"></i>
+                            <span>একাডেমিক</span>
+                            <i class="fas fa-chevron-down arrow"></i>
+                        </div>
+                        <ul class="submenu">
+                            <li class="active"><a href="admin-classes.html"><i class="fas fa-list"></i> শ্রেণি তালিকা</a></li>
+                            <li><a href="admin-sections.html"><i class="fas fa-layer-group"></i> শাখা/সেকশন</a></li>
+                            <li><a href="admin-subjects.html"><i class="fas fa-book-open"></i> বিষয় তালিকা</a></li>
+                            <li><a href="admin-syllabus.html"><i class="fas fa-scroll"></i> সিলেবাস</a></li>
+                            <li><a href="admin-class-routine.html"><i class="fas fa-calendar-alt"></i> ক্লাস রুটিন</a></li>
+                            <li><a href="admin-academic-calendar.html"><i class="fas fa-calendar-week"></i> একাডেমিক ক্যালেন্ডার</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="admin-notifications.html">
+                            <i class="fas fa-bell"></i>
+                            <span>নোটিফিকেশন</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="admin-settings.html">
+                            <i class="fas fa-cogs"></i>
+                            <span>সেটিংস</span>
+                        </a>
+                    </li>
+                    <li class="logout-item">
+                        <a href="../index.html">
+                            <i class="fas fa-sign-out-alt"></i>
+                            <span>লগআউট</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Sidebar Overlay for Mobile -->
+        <div class="sidebar-overlay" onclick="toggleSidebar()"></div>
+
+        <!-- Admin Main Content -->
+        <main class="admin-main">
+            <!-- Top Bar -->
+            <div class="admin-topbar">
+                <button class="sidebar-toggle" onclick="toggleSidebar()">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="breadcrumb">
+                    <a href="admin-dashboard.html">ড্যাশবোর্ড</a>
+                    <span><i class="fas fa-chevron-left"></i></span>
+                    <span>একাডেমিক</span>
+                    <span><i class="fas fa-chevron-left"></i></span>
+                    <span>শ্রেণি তালিকা</span>
+                </div>
+                <div class="admin-actions">
+                    <button class="notification-btn">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-count">৩</span>
+                    </button>
+                    <div class="admin-profile">
+                        <img src="../assets/logo.png" alt="Admin">
+                        <span>অ্যাডমিন</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Classes Content -->
+            <div class="module-content">
+                <!-- Page Header -->
+                <div class="page-header">
+                    <div class="page-title">
+                        <h2><i class="fas fa-layer-group"></i> শ্রেণি ব্যবস্থাপনা</h2>
+                        <p>সমস্ত শ্রেণির তথ্য এবং পরিচালনা</p>
+                    </div>
+                    <button class="btn-primary" onclick="openModal('add-class-modal')">
+                        <i class="fas fa-plus"></i> নতুন শ্রেণি যোগ করুন
+                    </button>
+                </div>
+
+                <!-- Classes Grid -->
+                <div class="classes-grid" id="classes-grid">
+                    <!-- Classes will be rendered here -->
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- ==================== MODALS ==================== -->
+    
+    <!-- Add Class Modal -->
+    <div id="add-class-modal" class="modal-overlay">
+        <div class="modal">
+            <div class="modal-header">
+                <h3><i class="fas fa-plus-circle"></i> নতুন শ্রেণি যোগ করুন</h3>
+                <button class="modal-close" onclick="closeModal('add-class-modal')">&times;</button>
+            </div>
+            <form id="add-class-form" class="modal-body">
+                <div class="form-group">
+                    <label>শ্রেণির নাম *</label>
+                    <input type="text" id="class-name" required placeholder="যেমন: ৬ষ্ঠ শ্রেণি">
+                </div>
+                <div class="form-group">
+                    <label>শ্রেণির নাম (ইংরেজি)</label>
+                    <input type="text" id="class-name-en" placeholder="যেমব: Class 6">
+                </div>
+                <div class="form-group">
+                    <label>শ্রেণি ক্রমিক নম্বর</label>
+                    <input type="number" id="class-order" placeholder="১, ২, ৩...">
+                </div>
+                <div class="form-group">
+                    <label>সেশন শুরুর বছর</label>
+                    <input type="number" id="class-start-year" placeholder="২০২৫">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-secondary" onclick="closeModal('add-class-modal')">বাতিল</button>
+                    <button type="submit" class="btn-primary"><i class="fas fa-save"></i> সেভ করুন</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Edit Class Modal -->
+    <div id="edit-class-modal" class="modal-overlay">
+        <div class="modal">
+            <div class="modal-header">
+                <h3><i class="fas fa-edit"></i> শ্রেণি সম্পাদনা</h3>
+                <button class="modal-close" onclick="closeModal('edit-class-modal')">&times;</button>
+            </div>
+            <form id="edit-class-form" class="modal-body">
+                <input type="hidden" id="edit-class-id">
+                <div class="form-group">
+                    <label>শ্রেণির নাম *</label>
+                    <input type="text" id="edit-class-name" required placeholder="শ্রেণির নাম">
+                </div>
+                <div class="form-group">
+                    <label>শ্রেণি ক্রমিক নম্বর</label>
+                    <input type="number" id="edit-class-order" placeholder="ক্রমিক নম্বর">
+                </div>
+                <div class="form-group">
+                    <label>স্ট্যাটাস</label>
+                    <select id="edit-class-status">
+                        <option value="active">সক্রিয়</option>
+                        <option value="inactive">নিষ্ক্রিয়</option>
+                    </select>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-secondary" onclick="closeModal('edit-class-modal')">বাতিল</button>
+                    <button type="submit" class="btn-primary"><i class="fas fa-save"></i> আপডেট করুন</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast-container"></div>
+
+    <!-- Scripts -->
+    <script src="../js/storage.js"></script>
+    <script src="../js/app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            StorageManager.init();
+            renderClasses();
+            
+            // Add class form submission
+            document.getElementById('add-class-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const classData = {
+                    name: document.getElementById('class-name').value,
+                    nameEn: document.getElementById('class-name-en').value,
+                    order: parseInt(document.getElementById('class-order').value) || 0,
+                    startYear: document.getElementById('class-start-year').value,
+                    status: 'active'
+                };
+                
+                StorageManager.addClass(classData);
+                closeModal('add-class-modal');
+                renderClasses();
+                this.reset();
+                showToast('শ্রেণি যোগ করা হয়েছে', 'success');
+            });
+            
+            // Edit class form submission
+            document.getElementById('edit-class-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const classId = parseInt(document.getElementById('edit-class-id').value);
+                const classData = {
+                    name: document.getElementById('edit-class-name').value,
+                    order: parseInt(document.getElementById('edit-class-order').value) || 0,
+                    status: document.getElementById('edit-class-status').value
+                };
+                
+                StorageManager.updateClass(classId, classData);
+                closeModal('edit-class-modal');
+                renderClasses();
+                showToast('শ্রেণি আপডেট করা হয়েছে', 'success');
+            });
+        });
+
+        // Render all classes
+        function renderClasses() {
+            const classes = StorageManager.getClasses();
+            const grid = document.getElementById('classes-grid');
+            
+            if (classes.length === 0) {
+                grid.innerHTML = `
+                    <div class="empty-state">
+                        <i class="fas fa-layer-group"></i>
+                        <p>কোনো শ্রেণি যোগ করা হয়নি</p>
+                        <button class="btn-primary" onclick="openModal('add-class-modal')">
+                            <i class="fas fa-plus"></i> নতুন শ্রেণি যোগ করুন
+                        </button>
+                    </div>
+                `;
+                return;
+            }
+            
+            grid.innerHTML = classes.map(cls => `
+                <div class="class-card">
+                    <div class="class-header">
+                        <div class="class-number">${cls.order || '-'}</div>
+                        <div class="class-info">
+                            <h3>${cls.name}</h3>
+                            <p>${cls.nameEn || ''}</p>
+                        </div>
+                    </div>
+                    <div class="class-details">
+                        <div class="detail-item">
+                            <i class="fas fa-calendar"></i>
+                            <span>সেশন: ${cls.startYear || '-'}</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-users"></i>
+                            <span>${StorageManager.getStudentsByClass(cls.id).length} জন শিক্ষার্থী</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="status-badge ${cls.status === 'active' ? 'status-active' : 'status-inactive'}">
+                                ${cls.status === 'active' ? 'সক্রিয়' : 'নিষ্ক্রিয়'}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="class-actions">
+                        <button class="btn-icon" title="সম্পাদনা" onclick="editClass(${cls.id})">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                        <button class="btn-icon danger" title="মুছুন" onclick="deleteClass(${cls.id})">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Edit class
+        function editClass(classId) {
+            const cls = StorageManager.getClassById(classId);
+            if (!cls) return;
+            
+            document.getElementById('edit-class-id').value = cls.id;
+            document.getElementById('edit-class-name').value = cls.name;
+            document.getElementById('edit-class-order').value = cls.order || '';
+            document.getElementById('edit-class-status').value = cls.status;
+            
+            openModal('edit-class-modal');
+        }
+
+        // Delete class
+        function deleteClass(classId) {
+            if (confirm('এই শ্রেণি মুছে ফেলতে চান?')) {
+                const students = StorageManager.getStudentsByClass(classId);
+                if (students.length > 0) {
+                    showToast('এই শ্রেণিতে শিক্ষার্থী আছে। প্রথমে তাদের ট্রান্সফার করুন।', 'error');
+                    return;
+                }
+                
+                StorageManager.deleteClass(classId);
+                renderClasses();
+                showToast('শ্রেণি মুছে ফেলা হয়েছে', 'success');
+            }
+        }
+    </script>
+</body>
+</html>

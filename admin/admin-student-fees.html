@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>শিক্ষার্থী ফি তালিকা - পাঠশালা ই-ম্যানেজার</title>
+    
+    <!-- Google Fonts for Bengali -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Main Styles -->
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+    <!-- ==================== ADMIN PANEL ==================== -->
+    <div class="admin-layout">
+        <!-- Admin Sidebar -->
+        <aside class="admin-sidebar">
+            <div class="sidebar-header">
+                <a href="admin-dashboard.html">
+                    <img src="../assets/logo.png" alt="Logo">
+                </a>
+                <div class="sidebar-title">
+                    <h3>অ্যাডমিন প্যানেল</h3>
+                    <p>পাঠশালা ই-ম্যানেজার</p>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li>
+                        <a href="admin-dashboard.html">
+                            <i class="fas fa-tachometer-alt"></i>
+                            <span>ড্যাশবোর্ড</span>
+                        </a>
+                    </li>
+                    <li class="has-dropdown active">
+                        <div class="dropdown-toggle" onclick="toggleDropdown(this)">
+                            <i class="fas fa-user-graduate"></i>
+                            <span>শিক্ষার্থী</span>
+                            <i class="fas fa-chevron-down arrow"></i>
+                        </div>
+                        <ul class="submenu">
+                            <li><a href="admin-students.html"><i class="fas fa-list"></i> সকল শিক্ষার্থী</a></li>
+                            <li><a href="#" onclick="openModal('add-student-modal'); return false;"><i class="fas fa-plus"></i> নতুন যোগ করুন</a></li>
+                            <li><a href="admin-student-attendance.html"><i class="fas fa-calendar-check"></i> উপস্থিতি</a></li>
+                            <li class="active"><a href="admin-student-fees.html"><i class="fas fa-money-bill-wave"></i> ফি তালিকা</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-dropdown">
+                        <div class="dropdown-toggle" onclick="toggleDropdown(this)">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                            <span>শিক্ষক</span>
+                            <i class="fas fa-chevron-down arrow"></i>
+                        </div>
+                        <ul class="submenu">
+                            <li><a href="admin-teachers.html"><i class="fas fa-list"></i> সকল শিক্ষক</a></li>
+                            <li><a href="#" onclick="openModal('add-teacher-modal'); return false;"><i class="fas fa-plus"></i> নতুন যোগ করুন</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="admin-attendance.html">
+                            <i class="fas fa-calendar-check"></i>
+                            <span>উপস্থিতি</span>
+                        </a>
+                    </li>
+                    <li class="has-dropdown">
+                        <div class="dropdown-toggle" onclick="toggleDropdown(this)">
+                            <i class="fas fa-money-bill-wave"></i>
+                            <span>ফি ম্যানেজমেন্ট</span>
+                            <i class="fas fa-chevron-down arrow"></i>
+                        </div>
+                        <ul class="submenu">
+                            <li><a href="admin-fees.html"><i class="fas fa-list"></i> ফি তালিকা</a></li>
+                            <li><a href="admin-fee-collection.html"><i class="fas fa-coins"></i> ফি সংগ্রহ</a></li>
+                            <li><a href="admin-fee-report.html"><i class="fas fa-chart-bar"></i> ফি রিপোর্ট</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-dropdown">
+                        <div class="dropdown-toggle" onclick="toggleDropdown(this)">
+                            <i class="fas fa-clipboard-list"></i>
+                            <span>পরীক্ষা</span>
+                            <i class="fas fa-chevron-down arrow"></i>
+                        </div>
+                        <ul class="submenu">
+                            <li><a href="admin-exams.html"><i class="fas fa-list"></i> পরীক্ষার তালিকা</a></li>
+                            <li><a href="admin-exam-routine.html"><i class="fas fa-calendar"></i> পরীক্ষার রুটিন</a></li>
+                            <li><a href="admin-results.html"><i class="fas fa-chart-line"></i> ফলাফল</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="admin-payments.html">
+                            <i class="fas fa-credit-card"></i>
+                            <span>পেমেন্ট</span>
+                        </a>
+                    </li>
+                    <li class="has-dropdown">
+                        <div class="dropdown-toggle" onclick="toggleDropdown(this)">
+                            <i class="fas fa-book"></i>
+                            <span>একাডেমিক</span>
+                            <i class="fas fa-chevron-down arrow"></i>
+                        </div>
+                        <ul class="submenu">
+                            <li><a href="admin-classes.html"><i class="fas fa-list"></i> শ্রেণি তালিকা</a></li>
+                            <li><a href="admin-sections.html"><i class="fas fa-layer-group"></i> শাখা/সেকশন</a></li>
+                            <li><a href="admin-subjects.html"><i class="fas fa-book-open"></i> বিষয় তালিকা</a></li>
+                            <li><a href="admin-syllabus.html"><i class="fas fa-scroll"></i> সিলেবাস</a></li>
+                            <li><a href="admin-class-routine.html"><i class="fas fa-calendar-alt"></i> ক্লাস রুটিন</a></li>
+                            <li><a href="admin-academic-calendar.html"><i class="fas fa-calendar-week"></i> একাডেমিক ক্যালেন্ডার</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="admin-notifications.html">
+                            <i class="fas fa-bell"></i>
+                            <span>নোটিফিকেশন</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="admin-settings.html">
+                            <i class="fas fa-cogs"></i>
+                            <span>সেটিংস</span>
+                        </a>
+                    </li>
+                    <li class="logout-item">
+                        <a href="../index.html">
+                            <i class="fas fa-sign-out-alt"></i>
+                            <span>লগআউট</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Sidebar Overlay for Mobile -->
+        <div class="sidebar-overlay" onclick="toggleSidebar()"></div>
+
+        <!-- Admin Main Content -->
+        <main class="admin-main">
+            <!-- Top Bar -->
+            <div class="admin-topbar">
+                <button class="sidebar-toggle" onclick="toggleSidebar()">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="breadcrumb">
+                    <a href="admin-dashboard.html">ড্যাশবোর্ড</a>
+                    <span><i class="fas fa-chevron-left"></i></span>
+                    <span>শিক্ষার্থী</span>
+                    <span><i class="fas fa-chevron-left"></i></span>
+                    <span>ফি তালিকা</span>
+                </div>
+                <div class="admin-actions">
+                    <button class="notification-btn">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-count">৩</span>
+                    </button>
+                    <div class="admin-profile">
+                        <img src="../assets/logo.png" alt="Admin">
+                        <span>অ্যাডমিন</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Student Fees Content -->
+            <div class="module-content">
+                <!-- Page Header -->
+                <div class="page-header">
+                    <div class="page-title">
+                        <h2><i class="fas fa-money-bill-wave"></i> শিক্ষার্থী ফি তালিকা</h2>
+                        <p>প্রতিটি শিক্ষার্থীর ফি তথ্য এবং বকেয়া দেখুন</p>
+                    </div>
+                    <button class="btn-primary" onclick="generateAllInvoices()">
+                        <i class="fas fa-file-invoice"></i> সব ইনভয়েস তৈরি করুন
+                    </button>
+                </div>
+
+                <!-- Filter Section -->
+                <div class="filter-section">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="student-search" placeholder="শিক্ষার্থী খুঁজুন (নাম, আইডি)..." onkeyup="searchStudents()">
+                    </div>
+                    <div class="filter-group">
+                        <select id="class-filter" onchange="filterByClass()">
+                            <option value="">সব শ্রেণি</option>
+                            <option value="1">৬ষ্ঠ শ্রেণি</option>
+                            <option value="2">৭ম শ্রেণি</option>
+                            <option value="3">৮ম শ্রেণি</option>
+                            <option value="4">৯ম শ্রেণি</option>
+                            <option value="5">১০ম শ্রেণি</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <select id="status-filter" onchange="filterByStatus()">
+                            <option value="">সব স্ট্যাটাস</option>
+                            <option value="all">সব ফি</option>
+                            <option value="paid">পরিশোধিত</option>
+                            <option value="unpaid">বকেয়া</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Fees Summary Cards -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon total">
+                            <i class="fas fa-wallet"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h4 id="total-due">০</h4>
+                            <p>মোট বকেয়া</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon paid">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h4 id="total-paid">০</h4>
+                            <p>পরিশোধিত</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon pending">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h4 id="pending-count">০</h4>
+                            <p>বকেয়া শিক্ষার্থী</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon cleared">
+                            <i class="fas fa-check-double"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h4 id="cleared-count">০</h4>
+                            <p>পরিশোধ সম্পন্ন</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Student Fees Table -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-list"></i> শিক্ষার্থী ফি তালিকা</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="data-table-container">
+                            <table class="data-table" id="student-fees-table">
+                                <thead>
+                                    <tr>
+                                        <th>ছবি</th>
+                                        <th>আইডি</th>
+                                        <th>নাম</th>
+                                        <th>শ্রেণি</th>
+                                        <th>মোট ফি</th>
+                                        <th>পরিশোধিত</th>
+                                        <th>বকেয়া</th>
+                                        <th>স্ট্যাটাস</th>
+                                        <th>অ্যাকশন</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="student-fees-table-body">
+                                    <!-- Student fees will be rendered here -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- View Invoice Modal -->
+    <div id="view-invoice-modal" class="modal-overlay">
+        <div class="modal large">
+            <div class="modal-header">
+                <h3><i class="fas fa-file-invoice"></i> ফি রসিদ</h3>
+                <button class="modal-close" onclick="closeModal('view-invoice-modal')">&times;</button>
+            </div>
+            <div class="modal-body" id="invoice-details">
+                <!-- Invoice details will be rendered here -->
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" onclick="printInvoice()">
+                    <i class="fas fa-print"></i> প্রিন্ট করুন
+                </button>
+                <button class="btn-primary" onclick="closeModal('view-invoice-modal')">বন্ধ করুন</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast-container"></div>
+
+    <!-- Scripts -->
+    <script src="../js/storage.js"></script>
+    <script src="../js/app.js"></script>
+    <script>
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            StorageManager.init();
+            renderStudentFees();
+        });
+
+
+
+        // Render student fees
+        function renderStudentFees() {
+            const students = StorageManager.getStudents();
+            const tbody = document.getElementById('student-fees-table-body');
+            let totalDue = 0, totalPaid = 0, pendingCount = 0, clearedCount = 0;
+
+            if (students.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="9" class="empty-state">
+                            <i class="fas fa-users"></i>
+                            <p>কোনো শিক্ষার্থী নেই</p>
+                        </td>
+                    </tr>
+                `;
+                updateFeeSummary(0, 0, 0, 0);
+                return;
+            }
+
+            tbody.innerHTML = students.map(student => {
+                const classObj = StorageManager.getClassById(student.classId);
+                const feeSummary = StorageManager.getStudentFeeSummary(student.id);
+                
+                totalDue += feeSummary.total;
+                totalPaid += feeSummary.paid;
+                
+                const due = feeSummary.due;
+                const isCleared = due === 0;
+                if (isCleared) clearedCount++;
+                else pendingCount++;
+
+                const statusClass = isCleared ? 'status-active' : 'status-inactive';
+                const statusText = isCleared ? 'পরিশোধ সম্পন্ন' : 'বকেয়া আছে';
+
+                return `
+                    <tr>
+                        <td>
+                            <img src="${student.image || 'assets/logo.png'}" alt="${student.banglaName}" class="student-thumbnail">
+                        </td>
+                        <td>${student.studentId}</td>
+                        <td>${student.banglaName}</td>
+                        <td>${classObj ? classObj.name : '-'}</td>
+                        <td>${formatCurrency(feeSummary.total)}</td>
+                        <td class="text-success">${formatCurrency(feeSummary.paid)}</td>
+                        <td class="${due > 0 ? 'text-danger' : ''}">${formatCurrency(due)}</td>
+                        <td>
+                            <span class="status-badge ${statusClass}">${statusText}</span>
+                        </td>
+                        <td>
+                            <div class="action-buttons">
+                                <button class="btn-icon" title="দেখুন" onclick="viewInvoice('${student.id}')">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <button class="btn-icon" title="পরিশোধ করুন" onclick="payFees('${student.id}')">
+                                    <i class="fas fa-coins"></i>
+                                </button>
+                                <button class="btn-icon" title="প্রিন্ট" onclick="printStudentInvoice('${student.id}')">
+                                    <i class="fas fa-print"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+
+            updateFeeSummary(totalDue, totalPaid, pendingCount, clearedCount);
+        }
+
+        // Update fee summary
+        function updateFeeSummary(total, paid, pending, cleared) {
+            document.getElementById('total-due').textContent = formatCurrency(total);
+            document.getElementById('total-paid').textContent = formatCurrency(paid);
+            document.getElementById('pending-count').textContent = toBengaliNumber(pending);
+            document.getElementById('cleared-count').textContent = toBengaliNumber(cleared);
+        }
+
+        // Search students
+        function searchStudents() {
+            const query = document.getElementById('student-search').value.toLowerCase();
+            const students = StorageManager.getStudents();
+            
+            const filtered = students.filter(s => 
+                s.banglaName.toLowerCase().includes(query) ||
+                s.studentId.toLowerCase().includes(query)
+            );
+            
+            renderFilteredStudentFees(filtered);
+        }
+
+        // Filter by class
+        function filterByClass() {
+            const classId = document.getElementById('class-filter').value;
+            if (classId) {
+                const students = StorageManager.getStudentsByClass(parseInt(classId));
+                renderFilteredStudentFees(students);
+            } else {
+                renderStudentFees();
+            }
+        }
+
+        // Filter by status
+        function filterByStatus() {
+            const status = document.getElementById('status-filter').value;
+            const students = StorageManager.getStudents();
+            
+            const filtered = students.filter(s => {
+                const feeSummary = StorageManager.getStudentFeeSummary(s.id);
+                const due = feeSummary.due;
+                
+                if (status === 'paid') return due === 0;
+                if (status === 'unpaid') return due > 0;
+                return true;
+            });
+            
+            renderFilteredStudentFees(filtered);
+        }
+
+        // Render filtered student fees
+        function renderFilteredStudentFees(students) {
+            const tbody = document.getElementById('student-fees-table-body');
+            
+            if (students.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="9" class="empty-state">কোনো শিক্ষার্থী পাওয়া যায়নি</td></tr>';
+                return;
+            }
+            
+            tbody.innerHTML = students.map(student => {
+                const classObj = StorageManager.getClassById(student.classId);
+                const feeSummary = StorageManager.getStudentFeeSummary(student.id);
+                const due = feeSummary.due;
+                const isCleared = due === 0;
+                
+                return `
+                    <tr>
+                        <td><img src="${student.image || 'assets/logo.png'}" alt="${student.banglaName}" class="student-thumbnail"></td>
+                        <td>${student.studentId}</td>
+                        <td>${student.banglaName}</td>
+                        <td>${classObj ? classObj.name : '-'}</td>
+                        <td>${formatCurrency(feeSummary.total)}</td>
+                        <td class="text-success">${formatCurrency(feeSummary.paid)}</td>
+                        <td class="${due > 0 ? 'text-danger' : ''}">${formatCurrency(due)}</td>
+                        <td><span class="status-badge ${isCleared ? 'status-active' : 'status-inactive'}">${isCleared ? 'পরিশোধ সম্পন্ন' : 'বকেয়া আছে'}</span></td>
+                        <td>
+                            <div class="action-buttons">
+                                <button class="btn-icon" title="দেখুন" onclick="viewInvoice('${student.id}')"><i class="fas fa-eye"></i></button>
+                                <button class="btn-icon" title="পরিশোধ করুন" onclick="payFees('${student.id}')"><i class="fas fa-coins"></i></button>
+                                <button class="btn-icon" title="প্রিন্ট" onclick="printStudentInvoice('${student.id}')"><i class="fas fa-print"></i></button>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        // View invoice
+        function viewInvoice(studentId) {
+            const student = StorageManager.getStudentById(studentId);
+            if (!student) return;
+
+            const classObj = StorageManager.getClassById(student.classId);
+            const feeSummary = StorageManager.getStudentFeeSummary(studentId);
+            const fees = StorageManager.getFeesByStudent(studentId);
+
+            document.getElementById('invoice-details').innerHTML = `
+                <div class="invoice-header">
+                    <img src="../assets/logo.png" alt="Logo" class="invoice-logo">
+                    <div class="invoice-school-info">
+                        <h2>পাঠশালা ই-ম্যানেজার</h2>
+                        <p>১২৩, শিক্ষা রোড, ঢাকা-১০০০</p>
+                        <p>ফোন: +৮৮০১২৩৪৫৬৭৮৯০</p>
+                    </div>
+                </div>
+                <div class="invoice-student-info">
+                    <div class="info-row">
+                        <span class="label">শিক্ষার্থীর নাম:</span>
+                        <span class="value">${student.banglaName}</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="label">আইডি:</span>
+                        <span class="value">${student.studentId}</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="label">শ্রেণি:</span>
+                        <span class="value">${classObj ? classObj.name : '-'}</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="label">রোল নম্বর:</span>
+                        <span class="value">${student.rollNumber}</span>
+                    </div>
+                </div>
+                <div class="invoice-fees-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ফিের ধরন</th>
+                                <th>মোট</th>
+                                                                <th>ছাড়</th>
+                                <th>চূড়ান্ত</th>
+                                <th>স্ট্যাটাস</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${fees.map(fee => `
+                                <tr>
+                                    <td>${fee.feeTypeName}</td>
+                                    <td>${formatCurrency(fee.amount)}</td>
+                                    <td>${formatCurrency(fee.waiver)}</td>
+                                    <td>${formatCurrency(fee.finalAmount)}</td>
+                                    <td><span class="status-badge ${fee.status === 'paid' ? 'status-active' : 'status-inactive'}">${fee.status === 'paid' ? 'পরিশোধিত' : 'বকেয়া'}</span></td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="2"><strong>মোট</strong></td>
+                                <td><strong>${formatCurrency(feeSummary.total)}</strong></td>
+                                <td><strong>${formatCurrency(feeSummary.paid)}</strong></td>
+                                <td></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <div class="invoice-summary">
+                    <div class="summary-item">
+                        <span>মোট বকেয়া:</span>
+                        <strong class="text-danger">${formatCurrency(feeSummary.due)}</strong>
+                    </div>
+                </div>
+            `;
+
+            openModal('view-invoice-modal');
+        }
+
+        // Pay fees
+        function payFees(studentId) {
+            showToast('ফি পেমেন্ট পেজে নিয়ে যাচ্ছে...', 'info');
+            window.location.href = `admin-fee-collection.html?studentId=${studentId}`;
+        }
+
+        // Print student invoice
+        function printStudentInvoice(studentId) {
+            const student = StorageManager.getStudentById(studentId);
+            if (!student) return;
+
+            const classObj = StorageManager.getClassById(student.classId);
+            const fees = StorageManager.getFeesByStudent(studentId);
+
+            const printWindow = window.open('', '_blank');
+            printWindow.document.write(`
+                <html>
+                <head>
+                    <title>ফি রসিদ - ${student.banglaName}</title>
+                    <style>
+                        * { margin: 0; padding: 0; box-sizing: border-box; }
+                        body { font-family: 'Hind Siliguri', sans-serif; padding: 20px; background: #fff; }
+                        .invoice { max-width: 800px; margin: 0 auto; }
+                        .invoice-header { text-align: center; margin-bottom: 30px; padding-bottom: 20px; border-bottom: 2px solid #00695C; }
+                        .invoice-header img { width: 80px; margin-bottom: 10px; }
+                        .invoice-header h2 { color: #00695C; margin-bottom: 5px; }
+                        .invoice-header p { color: #666; font-size: 0.9rem; }
+                        .student-info { margin-bottom: 30px; }
+                        .student-info h3 { color: #1a1a2e; margin-bottom: 15px; border-bottom: 1px solid #ddd; padding-bottom: 10px; }
+                        .info-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+                        .info-item { padding: 8px; background: #f5f5f5; border-radius: 5px; }
+                        .info-item span { display: block; font-size: 0.8rem; color: #666; }
+                        .info-item strong { color: #1a1a2e; }
+                        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+                        th, td { padding: 12px; text-align: left; border-bottom: 1px solid #ddd; }
+                        th { background: #00695C; color: white; }
+                        .total-row { background: #f5f5f5; font-weight: bold; }
+                        .print-btn { display: none; }
+                        @media print {
+                            body { background: white; }
+                            .print-btn { display: none; }
+                        }
+                    </style>
+                </head>
+                <body>
+                    <div class="invoice">
+                        <div class="invoice-header">
+                            <img src="../assets/logo.png" alt="Logo">
+                            <h2>পাঠশালা ই-ম্যানেজার</h2>
+                            <p>১২৩, শিক্ষা রোড, ঢাকা-১০০০ | ফোন: +৮৮০১২৩৪৫৬৭৮৯০</p>
+                        </div>
+                        <div class="student-info">
+                            <h3>শিক্ষার্থীর তথ্য</h3>
+                            <div class="info-grid">
+                                <div class="info-item">
+                                    <span>নাম</span>
+                                    <strong>${student.banglaName}</strong>
+                                </div>
+                                <div class="info-item">
+                                    <span>আইডি</span>
+                                    <strong>${student.studentId}</strong>
+                                </div>
+                                <div class="info-item">
+                                    <span>শ্রেণি</span>
+                                    <strong>${classObj ? classObj.name : '-'}</strong>
+                                </div>
+                                <div class="info-item">
+                                    <span>রোল</span>
+                                    <strong>${student.rollNumber}</strong>
+                                </div>
+                            </div>
+                        </div>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>ফিের ধরন</th>
+                                    <th>মোট</th>
+                                    <th>ছাড়</th>
+                                    <th>চূড়ান্ত</th>
+                                    <th>স্ট্যাটাস</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                ${fees.map(fee => `
+                                    <tr>
+                                        <td>${fee.feeTypeName}</td>
+                                        <td>${formatCurrency(fee.amount)}</td>
+                                        <td>${formatCurrency(fee.waiver)}</td>
+                                        <td>${formatCurrency(fee.finalAmount)}</td>
+                                        <td>${fee.status === 'paid' ? 'পরিশোধিত' : 'বকেয়া'}</td>
+                                    </tr>
+                                `).join('')}
+                            </tbody>
+                        </table>
+                    </div>
+                    <script>window.print();<\/script>
+                </body>
+                </html>
+            `);
+        }
+
+        // Generate all invoices
+        function generateAllInvoices() {
+            const students = StorageManager.getStudents();
+            const feeTypes = StorageManager.getFeeTypes();
+            
+            students.forEach(student => {
+                feeTypes.forEach(feeType => {
+                    const existingFees = StorageManager.getFeesByStudent(student.id);
+                    const hasFee = existingFees.some(f => f.feeTypeId === feeType.id);
+                    
+                    if (!hasFee) {
+                        StorageManager.addFee({
+                            studentId: student.id,
+                            feeTypeId: feeType.id,
+                            feeTypeName: feeType.name,
+                            amount: feeType.amount,
+                            waiver: 0,
+                            finalAmount: feeType.amount,
+                            dueDate: new Date().toISOString().split('T')[0],
+                            status: 'unpaid'
+                        });
+                    }
+                });
+            });
+            
+            renderStudentFees();
+            showToast('সকল ইনভয়েস তৈরি হয়েছে', 'success');
+        }
+
+        // Open modal function
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.add('active');
+            }
+        }
+
+        // Close modal function
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.remove('active');
+            }
+        }
+
+        // Print invoice
+        function printInvoice() {
+            window.print();
+        }
+        
+        // Format currency
+        function formatCurrency(amount) {
+            return '৳ ' + toBengaliNumber(amount.toFixed(2));
+        }
+    </script>
+</body>
+</html>
